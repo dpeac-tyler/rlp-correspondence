@@ -7,11 +7,11 @@
 <!-- Custom RLP Styles -->
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-    .status-generated { color: #8F5800; font-weight: bold; }
-    .status-mailed { color: #8F5800; font-weight: bold; }
-    .status-received { color: #417505; font-weight: bold; }
-    .status-returned { color: #80252A; font-weight: bold; }
-    .status-failed { color: #CD2026; font-weight: bold; }
+    .status-generated { color: #8F5800; }
+    .status-mailed { color: #8F5800; }
+    .status-received { color: #417505; }
+    .status-returned { color: #80252A; }
+    .status-failed { color: #CD2026; }
   </style>
 </head>
 <body>
@@ -686,7 +686,7 @@
                   </div>
                 </div>
 
-                <button type="button" class="usa-button" id="upload-letter-btn" style="margin-top: 15px;">Add Letter</button>
+                <a href="add-letter.html" class="usa-button" style="margin-top: 15px;">Add Letter</a>
 
                 <div class="table-controls margin-top-2">
                   <div class="table-controls__left">
@@ -894,13 +894,8 @@
           </div>
 
           <div>
-            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Letter</p>
-            <p id="view-letter-type" style="margin: 0; font-size: 1.6rem;">
-              <a href="#" target="_blank" id="view-letter-link" style="color: #005ea2; text-decoration: underline;">-</a>
-              <svg aria-hidden="true" style="display: inline-block; width: 14px; height: 14px; margin-left: 4px; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/>
-              </svg>
-            </p>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Letter Template</p>
+            <p id="view-letter-template" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
 
           <div>
@@ -908,23 +903,26 @@
             <p id="view-delivery-method" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-            <div>
-              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Mailed Date</p>
-              <p id="view-mailed-date" style="margin: 0; font-size: 1.6rem;">-</p>
-            </div>
-            <div>
-              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Received Date</p>
-              <p id="view-received-date" style="margin: 0; font-size: 1.6rem;">-</p>
-            </div>
+          <div>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Generated Date</p>
+            <p id="view-generated-date" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
 
           <div>
-            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">License Type</p>
-            <p id="view-license-type" style="margin: 0; font-size: 1.6rem;">-</p>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Mailed Date</p>
+            <p id="view-mailed-date" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          <div id="view-received-date-container">
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Received Date</p>
+            <p id="view-received-date" style="margin: 0; font-size: 1.6rem;">-</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">License Type</p>
+              <p id="view-license-type" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
             <div>
               <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Record Type</p>
               <p id="view-record-type" style="margin: 0; font-size: 1.6rem;">-</p>
@@ -935,7 +933,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          <div id="view-tracking-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div>
               <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Tracking Number</p>
               <p id="view-tracking-number" style="margin: 0; font-size: 1.6rem;">-</p>
@@ -947,13 +945,68 @@
           </div>
 
           <div>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Status</p>
+            <p id="view-status" style="margin: 0; font-size: 1.6rem;">-</p>
+          </div>
+
+          <div>
             <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Delivery Notes</p>
             <p id="view-delivery-notes" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
 
-          <div>
-            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Status</p>
-            <p id="view-status" style="margin: 0; font-size: 1.6rem;">-</p>
+          <!-- Template Fields Section -->
+          <div id="view-template-fields-container" style="display: none;">
+            <hr style="border: none; border-top: 2px solid #ddd; margin: 1rem 0;">
+            <h3 style="margin: 1rem 0; font-size: 1.8rem;">Letter Template Fields</h3>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Date Spelled</p>
+              <p id="view-template-date" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Contact Name</p>
+              <p id="view-template-contact-name" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Full Credential Name</p>
+              <p id="view-template-credential-name" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Application Type</p>
+              <p id="view-template-application-type" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Current Manager Name</p>
+              <p id="view-template-manager-name" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Supervisor Mailing Address</p>
+              <div style="margin-top: 0.5rem;">
+                <p id="view-template-address-line1" style="margin: 0; font-size: 1.6rem;">-</p>
+                <p id="view-template-address-line2" style="margin: 0; font-size: 1.6rem;"></p>
+                <p id="view-template-address-city-state-zip" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">User Name</p>
+              <p id="view-template-user-name" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">User Email</p>
+              <p id="view-template-user-email" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">BG Number</p>
+              <p id="view-template-bg-number" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
           </div>
         </div>
 
@@ -1841,7 +1894,7 @@
               <a href="#" class="icon-button print-letter-btn" aria-label="Print Letter">
                 <img src="assets/print-icon.png" alt="" width="30" height="30">
               </a>
-              <a href="#" class="icon-button edit-letter-btn" aria-label="Edit Letter">
+              <a href="edit-letter.html?id=${rowToEdit.dataset.id || ''}" class="icon-button edit-letter-btn" aria-label="Edit Letter">
                 <img src="assets/edit-icon.png" alt="" width="30" height="30">
               </a>
             </td>
@@ -1876,6 +1929,9 @@
             noDataMessage.style.display = 'none';
           }
 
+          // Generate unique ID for this letter
+          const letterId = 'LETTER-' + Date.now();
+
           // Create new table row
           const newRow = document.createElement('tr');
           newRow.innerHTML = `
@@ -1899,13 +1955,14 @@
               <a href="#" class="icon-button print-letter-btn" aria-label="Print Letter">
                 <img src="assets/print-icon.png" alt="" width="30" height="30">
               </a>
-              <a href="#" class="icon-button edit-letter-btn" aria-label="Edit Letter">
+              <a href="edit-letter.html?id=${letterId}" class="icon-button edit-letter-btn" aria-label="Edit Letter">
                 <img src="assets/edit-icon.png" alt="" width="30" height="30">
               </a>
             </td>
           `;
 
           // Store data attributes (store in YYYY-MM-DD format for editing)
+          newRow.dataset.id = letterId;
           newRow.dataset.visibility = visibility;
           newRow.dataset.letterType = letterType;
           newRow.dataset.deliveryMethod = deliveryMethod;
@@ -1933,6 +1990,92 @@
       });
     }
 
+    // Function to generate letter HTML from row data
+    function generateLetterHTML(row) {
+      const letterData = row.dataset;
+      const templateFields = JSON.parse(localStorage.getItem('letters') || '[]')
+        .find(letter => letter.id === letterData.id)?.templateFields || {};
+
+      // If no template fields, return a simple message
+      if (!templateFields || Object.keys(templateFields).length === 0) {
+        return '<p style="padding: 2rem; text-align: center;">No letter template data available for this letter.</p>';
+      }
+
+      // Generate the Arkansas State Police letter with background image overlay
+      return `
+        <div style="position: relative; width: 9in; min-height: 11in; background-image: url('assets/ar-state-police-blank.png'); background-size: cover; background-repeat: no-repeat; font-family: 'Times New Roman', serif;">
+          <!-- Date Spelled -->
+          <div style="position: absolute; top: 330px; left: 300px; font-size: 11pt;">
+            ${templateFields.date || '[Date]'}
+          </div>
+
+          <!-- Supervisor Address -->
+          <div style="position: absolute; top: 370px; left: 300px; font-size: 11pt; line-height: 1.4;">
+            ${templateFields.addressLine1 || ''}<br>
+            ${templateFields.addressLine2 ? templateFields.addressLine2 + '<br>' : ''}
+            ${templateFields.city || ''}, ${templateFields.state || ''} ${templateFields.zip || ''}
+          </div>
+
+          <!-- Dear Manager Name -->
+          <div style="position: absolute; top: 440px; left: 300px; font-size: 11pt;">
+            Dear ${templateFields.managerName || '[Manager Name]'}:
+          </div>
+
+          <!-- First Paragraph -->
+          <div style="position: absolute; top: 480px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+            The Arkansas State Police Private Investigators, Private Security, and Alarm Installation/Monitoring Section has received the <strong>${templateFields.credentialName || '[Credential Name]'}</strong> <strong>${templateFields.applicationType || '[Application Type]'}</strong> application for <strong>${templateFields.contactName || '[Contact Name]'}</strong>.
+          </div>
+
+          <!-- Second Paragraph -->
+          <div style="position: absolute; top: 560px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+            The application will be placed on hold since <strong>${templateFields.contactName || '[Contact Name]'}</strong>'s current credential is suspended. The <strong>${templateFields.applicationType || '[Application Type]'}</strong> application will be processed once the suspension has been lifted.
+          </div>
+
+          <!-- Third Paragraph -->
+          <div style="position: absolute; top: 640px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+            <strong>${templateFields.contactName || '[Contact Name]'}</strong> <strong>cannot be employed</strong> in a position that requires a license, credential, or commission issued by the Arkansas Private Investigators, Private Security, and Alarm Installation/Monitoring Licensing Section during the suspension period.
+          </div>
+
+          <!-- Fourth Paragraph -->
+          <div style="position: absolute; top: 730px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+            If you have any questions related to this matter, you may contact a member of the staff at 501-618-8600. Please refer to the file number at the bottom of the letter.
+          </div>
+
+          <!-- Sincerely -->
+          <div style="position: absolute; top: 800px; left: 300px; font-size: 11pt;">
+            Sincerely,
+          </div>
+
+          <!-- Signature -->
+          <div style="position: absolute; top: 830px; left: 300px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='0' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="Signature" style="display: block; max-width: 200px;">
+          </div>
+
+          <!-- User Name and Contact Info -->
+          <div style="position: absolute; top: 900px; left: 300px; font-size: 10pt; line-height: 1.4;">
+            ${templateFields.userName || '[User Name]'}<br>
+            Administrative Coordinator<br>
+            PI & Security Licensing Section<br>
+            1 State Police Plaza Drive<br>
+            Little Rock, AR 72209<br>
+            ${templateFields.userEmail || '[User Email]'}<br>
+            (501) 618-8600<br>
+            (501) 618-8125 fax
+          </div>
+
+          <!-- CC Line -->
+          <div style="position: absolute; top: 1040px; left: 300px; font-size: 11pt;">
+            cc: ${templateFields.bgNumber || '[BG Number]'}
+          </div>
+
+          <!-- CERTIFIED -->
+          <div style="position: absolute; top: 1090px; left: 320px; font-size: 11pt; font-weight: bold;">
+            CERTIFIED
+          </div>
+        </div>
+      `;
+    }
+
     // Function to attach event handlers to letter row
     function attachLetterRowHandlers(row) {
       const viewInfoBtn = row.querySelector('.view-letter-info-btn');
@@ -1943,13 +2086,118 @@
         });
       }
 
-      const editBtn = row.querySelector('.edit-letter-btn');
-      if (editBtn) {
-        editBtn.addEventListener('click', function(e) {
+      const viewLetterBtn = row.querySelector('.view-letter-btn');
+      if (viewLetterBtn) {
+        viewLetterBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          openEditLetterModal(row);
+
+          // Create modal to view letter
+          const modal = document.createElement('div');
+          modal.className = 'modal-overlay';
+          modal.innerHTML = `
+            <div class="modal-content" style="max-width: 950px;">
+              <div class="modal-header">
+                <h2 class="modal-title">View Letter</h2>
+                <button type="button" class="modal-close" aria-label="Close modal">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="modal-body" style="font-family: 'Times New Roman', serif; line-height: 1.6;">
+                <div style="padding: 2rem; background: white;">
+                  ${generateLetterHTML(row)}
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="usa-button usa-button--secondary close-btn">Close</button>
+              </div>
+            </div>
+          `;
+
+          document.body.appendChild(modal);
+          document.body.style.overflow = 'hidden';
+
+          const closeModal = () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = '';
+          };
+
+          modal.querySelector('.modal-close').addEventListener('click', closeModal);
+          modal.querySelector('.close-btn').addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+          });
         });
       }
+
+      const downloadLetterBtn = row.querySelector('.download-letter-btn');
+      if (downloadLetterBtn) {
+        downloadLetterBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const letterHTML = generateLetterHTML(row);
+          const fullHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <title>Letter - ${row.dataset.letterType}</title>
+              <style>
+                body { font-family: 'Times New Roman', serif; line-height: 1.6; padding: 2rem; }
+              </style>
+            </head>
+            <body>
+              ${letterHTML}
+            </body>
+            </html>
+          `;
+
+          const blob = new Blob([fullHTML], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `Letter-${row.dataset.letterType}-${new Date().toISOString().split('T')[0]}.html`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        });
+      }
+
+      const printLetterBtn = row.querySelector('.print-letter-btn');
+      if (printLetterBtn) {
+        printLetterBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const letterHTML = generateLetterHTML(row);
+          const printWindow = window.open('', '', 'width=800,height=600');
+          printWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <title>Print Letter</title>
+              <style>
+                body { font-family: 'Times New Roman', serif; line-height: 1.6; padding: 2rem; }
+                @media print {
+                  body { padding: 0; }
+                }
+              </style>
+            </head>
+            <body>
+              ${letterHTML}
+            </body>
+            </html>
+          `);
+          printWindow.document.close();
+          printWindow.focus();
+          setTimeout(() => {
+            printWindow.print();
+          }, 250);
+        });
+      }
+
     }
 
     // View Letter Information Modal functionality
@@ -1967,20 +2215,30 @@
 
       // Populate the modal with row data
       document.getElementById('view-visibility').textContent = row.dataset.visibility || '-';
-
-      // Set the letter type link
-      const letterLink = document.getElementById('view-letter-link');
-      letterLink.textContent = row.dataset.letterType || '-';
-      letterLink.href = '#'; // TODO: Add actual letter URL when available
-
+      document.getElementById('view-letter-template').textContent = row.dataset.letterType || '-';
       document.getElementById('view-delivery-method').textContent = row.dataset.deliveryMethod || '-';
+      document.getElementById('view-generated-date').textContent = formatDateForDisplay(row.dataset.generatedDate);
       document.getElementById('view-mailed-date').textContent = formatDateForDisplay(row.dataset.mailedDate);
-      document.getElementById('view-received-date').textContent = formatDateForDisplay(row.dataset.receivedDate);
+
+      // Handle conditional display for Certified vs Standard
+      const deliveryMethod = row.dataset.deliveryMethod;
+      const receivedDateContainer = document.getElementById('view-received-date-container');
+      const trackingContainer = document.getElementById('view-tracking-container');
+
+      if (deliveryMethod === 'Certified') {
+        receivedDateContainer.style.display = 'block';
+        trackingContainer.style.display = 'grid';
+        document.getElementById('view-received-date').textContent = formatDateForDisplay(row.dataset.receivedDate);
+        document.getElementById('view-tracking-number').textContent = row.dataset.trackingNumber !== '-' ? row.dataset.trackingNumber : '-';
+        document.getElementById('view-delivery-attempts').textContent = row.dataset.deliveryAttempts || '0';
+      } else {
+        receivedDateContainer.style.display = 'none';
+        trackingContainer.style.display = 'none';
+      }
+
       document.getElementById('view-license-type').textContent = row.dataset.licenseType !== '-' ? row.dataset.licenseType : '-';
       document.getElementById('view-record-type').textContent = row.dataset.recordType !== '-' ? row.dataset.recordType : '-';
       document.getElementById('view-associated-record').textContent = row.dataset.associatedRecord !== '-' ? row.dataset.associatedRecord : '-';
-      document.getElementById('view-tracking-number').textContent = row.dataset.trackingNumber !== '-' ? row.dataset.trackingNumber : '-';
-      document.getElementById('view-delivery-attempts').textContent = row.dataset.deliveryAttempts || '0';
       document.getElementById('view-delivery-notes').textContent = row.dataset.deliveryNotes || '-';
 
       // Set status with color
@@ -1992,6 +2250,41 @@
       // Add the appropriate status class
       if (status !== '-') {
         viewStatus.classList.add('status-' + status.toLowerCase().replace(' ', '-'));
+      }
+
+      // Get template fields from localStorage
+      const templateFieldsContainer = document.getElementById('view-template-fields-container');
+      const letters = JSON.parse(localStorage.getItem('letters') || '[]');
+      const letter = letters.find(l => l.id === row.dataset.id);
+
+      if (letter && letter.templateFields && Object.keys(letter.templateFields).length > 0) {
+        const tf = letter.templateFields;
+        templateFieldsContainer.style.display = 'block';
+
+        document.getElementById('view-template-date').textContent = tf.date || '-';
+        document.getElementById('view-template-contact-name').textContent = tf.contactName || '-';
+        document.getElementById('view-template-credential-name').textContent = tf.credentialName || '-';
+        document.getElementById('view-template-application-type').textContent = tf.applicationType || '-';
+        document.getElementById('view-template-manager-name').textContent = tf.managerName || '-';
+
+        // Address fields
+        document.getElementById('view-template-address-line1').textContent = tf.addressLine1 || '-';
+        const addressLine2 = document.getElementById('view-template-address-line2');
+        if (tf.addressLine2) {
+          addressLine2.textContent = tf.addressLine2;
+          addressLine2.style.display = 'block';
+        } else {
+          addressLine2.style.display = 'none';
+        }
+
+        const cityStateZip = [tf.city, tf.state, tf.zip].filter(Boolean).join(', ');
+        document.getElementById('view-template-address-city-state-zip').textContent = cityStateZip || '-';
+
+        document.getElementById('view-template-user-name').textContent = tf.userName || '-';
+        document.getElementById('view-template-user-email').textContent = tf.userEmail || '-';
+        document.getElementById('view-template-bg-number').textContent = tf.bgNumber || '-';
+      } else {
+        templateFieldsContainer.style.display = 'none';
       }
 
       viewLetterInfoModal.removeAttribute('hidden');
@@ -2124,6 +2417,152 @@
     // Initialize letters count and apply striping
     updateLettersCount();
     reapplyLetterStriping();
+
+    // Load letters from localStorage on page load
+    function loadLettersFromStorage() {
+      const letters = JSON.parse(localStorage.getItem('letters') || '[]');
+      const tbody = lettersTable.querySelector('tbody');
+      const noDataMessage = document.getElementById('no-letters-message');
+
+      // Clear existing rows (except no-data message)
+      const existingRows = tbody.querySelectorAll('tr:not(#no-letters-message)');
+      existingRows.forEach(row => row.remove());
+
+      if (letters.length > 0) {
+        // Hide no-data message
+        if (noDataMessage) {
+          noDataMessage.style.display = 'none';
+        }
+
+        // Add each letter to the table
+        letters.forEach(letter => {
+          // Format dates for display
+          function formatDateForDisplay(dateStr) {
+            if (!dateStr) return '-';
+            const [year, month, day] = dateStr.split('-');
+            return `${month}/${day}/${year}`;
+          }
+
+          const generatedDate = formatDateForDisplay(letter.generatedDate);
+          const mailedDate = letter.mailedDate ? formatDateForDisplay(letter.mailedDate) : '-';
+
+          // Combine Record Type and Associated Record for display
+          let recordTypeDisplay = letter.recordType || '-';
+          if (letter.recordType !== '-' && letter.associatedRecord) {
+            recordTypeDisplay = `${letter.recordType}: ${letter.associatedRecord}`;
+          }
+
+          // Add lock icon if Agency Only
+          const lockIcon = letter.visibility === 'Agency Only' ? '<img src="assets/lock.png" alt="Agency Only" width="16" height="16" style="margin-right: 0.5rem; vertical-align: middle;">' : '';
+
+          // Create new table row
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+            <td>${lockIcon}${letter.letterType}</td>
+            <td>${letter.deliveryMethod}</td>
+            <td>${generatedDate}</td>
+            <td>${mailedDate}</td>
+            <td>${letter.licenseType}</td>
+            <td>${recordTypeDisplay}</td>
+            <td><span class="status-${letter.status.toLowerCase().replace(' ', '-')}">${letter.status}</span></td>
+            <td style="white-space: nowrap;">
+              <a href="#" class="icon-button view-letter-info-btn" aria-label="View Information">
+                <img src="assets/eye-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button view-letter-btn" aria-label="View Letter">
+                <img src="assets/envelope-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button download-letter-btn" aria-label="Download Letter">
+                <img src="assets/download-certificate.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button print-letter-btn" aria-label="Print Letter">
+                <img src="assets/print-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="edit-letter.html?id=${letter.id}" class="icon-button edit-letter-btn" aria-label="Edit Letter">
+                <img src="assets/edit-icon.png" alt="" width="30" height="30">
+              </a>
+            </td>
+          `;
+
+          // Store data attributes
+          newRow.dataset.id = letter.id;
+          newRow.dataset.visibility = letter.visibility;
+          newRow.dataset.letterType = letter.letterType;
+          newRow.dataset.deliveryMethod = letter.deliveryMethod;
+          newRow.dataset.mailedDate = letter.mailedDate || '';
+          newRow.dataset.licenseType = letter.licenseType;
+          newRow.dataset.recordType = letter.recordType;
+          newRow.dataset.associatedRecord = letter.associatedRecord || '';
+          newRow.dataset.trackingNumber = letter.trackingNumber || '';
+          newRow.dataset.deliveryAttempts = letter.deliveryAttempts || '0';
+          newRow.dataset.letterStatus = letter.status;
+          newRow.dataset.deliveryNotes = letter.deliveryNotes || '';
+
+          tbody.appendChild(newRow);
+          attachLetterRowHandlers(newRow);
+        });
+
+        // Update count and striping
+        updateLettersCount();
+        reapplyLetterStriping();
+      } else {
+        // Show no-data message if no letters
+        if (noDataMessage) {
+          noDataMessage.style.display = '';
+        }
+        updateLettersCount();
+      }
+    }
+
+    // Check if we should show notification and activate Correspondence tab
+    if (localStorage.getItem('showLetterNotification') === 'true') {
+      // Activate Correspondence tab
+      const correspondenceTab = Array.from(document.querySelectorAll('.profile-tab')).find(tab =>
+        tab.textContent.trim() === 'Correspondence'
+      );
+
+      if (correspondenceTab) {
+        // Deactivate all tabs
+        document.querySelectorAll('.profile-tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+        // Activate Correspondence tab
+        correspondenceTab.classList.add('active');
+        const correspondencePanel = document.getElementById('correspondence-tab');
+        if (correspondencePanel) {
+          correspondencePanel.classList.add('active');
+        }
+
+        // Activate Letters sub-tab within Correspondence
+        const lettersSubTab = document.querySelector('.horizontal-tab[data-correspondence-tab="letters"]');
+        const lettersSubTabContent = document.getElementById('letters-subtab');
+
+        if (lettersSubTab && lettersSubTabContent) {
+          // Deactivate all correspondence sub-tabs
+          document.querySelectorAll('.horizontal-tab[data-correspondence-tab]').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.correspondence-subtab-content').forEach(content => {
+            content.classList.remove('active');
+            content.setAttribute('hidden', '');
+          });
+
+          // Activate Letters sub-tab
+          lettersSubTab.classList.add('active');
+          lettersSubTabContent.classList.add('active');
+          lettersSubTabContent.removeAttribute('hidden');
+        }
+      }
+
+      // Show success notification
+      const notificationMessage = localStorage.getItem('letterNotificationMessage') || 'Letter has been successfully added.';
+      showSuccessAlert(notificationMessage);
+
+      // Clear the flags
+      localStorage.removeItem('showLetterNotification');
+      localStorage.removeItem('letterNotificationMessage');
+    }
+
+    // Load letters on page load
+    loadLettersFromStorage();
   </script>
 
 </body>
