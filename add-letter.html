@@ -342,7 +342,7 @@
 
   <!-- Preview Letter Modal -->
   <div id="preview-letter-modal" class="modal-overlay" hidden>
-    <div class="modal-content" style="max-width: 800px;">
+    <div class="modal-content" style="max-width: 950px;">
       <div class="modal-header">
         <h2 class="modal-title">Letter Preview</h2>
         <button type="button" class="modal-close" id="close-preview-modal" aria-label="Close modal">
@@ -523,132 +523,76 @@
         const userEmail = document.getElementById('template-user-email').value;
         const bgNumber = document.getElementById('template-bg-number').value || '[BG Number]';
 
-        // Create letter template matching the actual Arkansas State Police letter format
+        // Create letter with background image overlay
         const letterHTML = `
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 3px solid #000; padding-bottom: 0.5rem;">
-            <div style="text-align: center; flex: 1;">
-              <div style="width: 80px; height: 80px; border: 2px solid #000; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; font-weight: bold; font-size: 2em;">AR</div>
-              <div style="font-size: 0.75em; font-weight: bold;">
-                Mike A. Hagar<br>
-                <span style="font-style: italic; font-weight: normal;">Secretary</span>
-              </div>
-            </div>
-            <div style="text-align: center; flex: 2;">
-              <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 0.25rem;">State of Arkansas</div>
-              <div style="font-size: 1em; margin-bottom: 0.5rem;">Governor Sarah Huckabee Sanders</div>
-              <div style="font-size: 1.3em; font-weight: bold; letter-spacing: 0.2em; border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 0.25rem 0; margin-bottom: 0.25rem;">ARKANSAS STATE POLICE</div>
-              <div style="font-size: 0.75em; margin-bottom: 0.25rem;">1 State Police Plaza Drive &nbsp;&nbsp; Little Rock, Arkansas 72209-4822 &nbsp;&nbsp; www.asp.arkansas.gov</div>
-              <div style="font-size: 0.75em; font-style: italic;">"SERVING WITH PRIDE AND DISTINCTION SINCE 1935"</div>
-            </div>
-            <div style="text-align: center; flex: 1;">
-              <div style="width: 80px; height: 80px; border: 2px solid #000; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
-                <div style="text-align: center; font-size: 0.6em; font-weight: bold;">ARKANSAS<br>STATE<br>POLICE</div>
-              </div>
-              <div style="font-size: 0.75em; font-weight: bold;">
-                Mike A. Hagar<br>
-                <span style="font-style: italic; font-weight: normal;">Director</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="display: flex; margin-top: 1.5rem;">
-            <div style="width: 140px; padding-right: 1rem; border-right: 2px solid #000; font-size: 0.8em;">
-              <div style="font-weight: bold; margin-bottom: 1.5rem;">ARKANSAS<br>STATE POLICE<br>COMMISSION</div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>Jim Hinkle</strong><br>
-                Chairman<br>
-                <em>Conway</em>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>Ken Reeves</strong><br>
-                Vice-Chairman<br>
-                <em>Harrison</em>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>Neil Basore</strong><br>
-                Secretary<br>
-                <em>Bella Vista</em>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>Mike Akin</strong><br>
-                <em>Monticello</em>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>Steve Edwards</strong><br>
-                <em>Marianna</em>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>Jeff Teague</strong><br>
-                <em>Fayetteville</em>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <strong>John Allison</strong><br>
-                <em>Conway</em>
-              </div>
+          <div style="position: relative; width: 9in; min-height: 11in; background-image: url('assets/ar-state-police-blank.png'); background-size: cover; background-repeat: no-repeat; font-family: 'Times New Roman', serif;">
+            <!-- Date Spelled -->
+            <div style="position: absolute; top: 330px; left: 300px; font-size: 11pt;">
+              ${dateSpelled}
             </div>
 
-            <div style="flex: 1; padding-left: 2rem; font-size: 0.95em;">
-              <div style="font-weight: bold; text-align: center; margin-bottom: 1.5rem;">
-                PRIVATE INVESTIGATORS, PRIVATE SECURITY, AND ALARM<br>
-                INSTALLATION/MONITORING SECTION
-              </div>
+            <!-- Address -->
+            <div style="position: absolute; top: 370px; left: 300px; font-size: 11pt; line-height: 1.4;">
+              ${addressLine1}<br>
+              ${addressLine2 ? addressLine2 + '<br>' : ''}
+              ${city}, ${state} ${zip}
+            </div>
 
-              <div style="margin-bottom: 1.5rem;">
-                ${dateSpelled}
-              </div>
+            <!-- Dear Line -->
+            <div style="position: absolute; top: 460px; left: 300px; font-size: 11pt;">
+              Dear ${managerName}:
+            </div>
 
-              <div style="margin-bottom: 1.5rem;">
-                ${addressLine1}<br>
-                ${addressLine2 ? addressLine2 + '<br>' : ''}
-                ${city}, ${state} ${zip}
-              </div>
+            <!-- First Paragraph -->
+            <div style="position: absolute; top: 500px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+              The Arkansas State Police Private Investigators, Private Security, and Alarm Installation/Monitoring Section has received the <strong>${credentialName}</strong> <strong>${applicationType}</strong> application for <strong>${contactName}</strong>.
+            </div>
 
-              <div style="margin-bottom: 1.5rem;">
-                Dear ${managerName}:
-              </div>
+            <!-- Second Paragraph -->
+            <div style="position: absolute; top: 570px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+              The application will be placed on hold since <strong>${contactName}</strong>'s current credential is suspended. The <strong>${applicationType}</strong> application will be processed once the suspension has been lifted.
+            </div>
 
-              <div style="margin-bottom: 1.5rem; text-align: justify;">
-                The Arkansas State Police Private Investigators, Private Security, and Alarm Installation/Monitoring Section has received the <strong>${credentialName}</strong> <strong>${applicationType}</strong> application for <strong>${contactName}</strong>.
-              </div>
+            <!-- Third Paragraph -->
+            <div style="position: absolute; top: 640px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+              <strong>${contactName}</strong> <strong>cannot be employed</strong> in a position that requires a license, credential, or commission issued by the Arkansas Private Investigators, Private Security, and Alarm Installation/Monitoring Licensing Section during the suspension period.
+            </div>
 
-              <div style="margin-bottom: 1.5rem; text-align: justify;">
-                The application will be placed on hold since <strong>${contactName}</strong>'s current credential is suspended. The <strong>${applicationType}</strong> application will be processed once the suspension has been lifted.
-              </div>
+            <!-- Fourth Paragraph -->
+            <div style="position: absolute; top: 730px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
+              If you have any questions related to this matter, you may contact a member of the staff at 501-618-8600. Please refer to the file number at the bottom of the letter.
+            </div>
 
-              <div style="margin-bottom: 1.5rem; text-align: justify;">
-                <strong>${contactName}</strong> <strong>cannot be employed</strong> in a position that requires a license, credential, or commission issued by the Arkansas Private Investigators, Private Security, and Alarm Installation/Monitoring Licensing Section during the suspension period.
-              </div>
+            <!-- Sincerely -->
+            <div style="position: absolute; top: 800px; left: 300px; font-size: 11pt;">
+              Sincerely,
+            </div>
 
-              <div style="margin-bottom: 1.5rem; text-align: justify;">
-                If you have any questions related to this matter, you may contact a member of the staff at 501-618-8600. Please refer to the file number at the bottom of the letter.
-              </div>
+            <!-- Signature -->
+            <div style="position: absolute; top: 830px; left: 300px;">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='0' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="Signature" style="display: block; max-width: 200px;">
+            </div>
 
-              <div style="margin-bottom: 1rem;">
-                Sincerely,
-              </div>
+            <!-- User Name and Contact Info -->
+            <div style="position: absolute; top: 900px; left: 300px; font-size: 10pt; line-height: 1.4;">
+              ${userName}<br>
+              Administrative Coordinator<br>
+              PI & Security Licensing Section<br>
+              1 State Police Plaza Drive<br>
+              Little Rock, AR 72209<br>
+              ${userEmail}<br>
+              (501) 618-8600<br>
+              (501) 618-8125 fax
+            </div>
 
-              <div style="margin-bottom: 0.5rem;">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='0' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="Signature" style="display: block; max-width: 200px;">
-              </div>
+            <!-- CC Line -->
+            <div style="position: absolute; top: 1040px; left: 300px; font-size: 11pt;">
+              cc: ${bgNumber}
+            </div>
 
-              <div style="margin-bottom: 1.5rem;">
-                ${userName}<br>
-                Administrative Coordinator<br>
-                PI & Security Licensing Section<br>
-                1 State Police Plaza Drive<br>
-                Little Rock, AR 72209<br>
-                ${userEmail}<br>
-                (501) 618-8600<br>
-                (501) 618-8125 fax
-              </div>
-
-              <div style="margin-bottom: 1rem;">
-                cc: ${bgNumber}
-              </div>
-
-              <div>
-                <strong>CERTIFIED</strong>
-              </div>
+            <!-- CERTIFIED -->
+            <div style="position: absolute; top: 1090px; left: 320px; font-size: 11pt; font-weight: bold;">
+              CERTIFIED
             </div>
           </div>
         `;
