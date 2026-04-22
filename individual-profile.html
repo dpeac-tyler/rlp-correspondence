@@ -2406,11 +2406,11 @@
 
       dataRows.forEach((row, index) => {
         // First row (index 0) should be white, second should be gray, etc.
-        if (index % 2 === 0) {
-          row.style.backgroundColor = '#fff';
-        } else {
-          row.style.backgroundColor = '#f0f0f0';
-        }
+        const bgColor = index % 2 === 0 ? '#fff' : '#f0f0f0';
+        const cells = row.querySelectorAll('td');
+        cells.forEach(cell => {
+          cell.style.backgroundColor = bgColor;
+        });
       });
     }
 
