@@ -157,6 +157,36 @@
               </div>
             </fieldset>
 
+            <!-- License Type -->
+            <div class="usa-form-group">
+              <label class="usa-label" for="letter-license-type">License Type</label>
+              <select class="usa-select" id="letter-license-type" name="letter-license-type">
+                <option value="">Please Select</option>
+                <option value="Commercial Fishing">Commercial Fishing</option>
+                <option value="Hunting">Hunting</option>
+                <option value="Boating">Boating</option>
+              </select>
+            </div>
+
+            <!-- Record Type -->
+            <div class="usa-form-group">
+              <label class="usa-label" for="letter-record-type">Record Type</label>
+              <select class="usa-select" id="letter-record-type" name="letter-record-type">
+                <option value="">Please Select</option>
+                <option value="License">License</option>
+                <option value="Application">Application</option>
+                <option value="Case">Case</option>
+              </select>
+            </div>
+
+            <!-- Associated Record (appears in 3rd column when Record Type is selected) -->
+            <div class="usa-form-group" id="letter-associated-record-group" style="visibility: hidden;">
+              <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
+              <select class="usa-select" id="letter-associated-record" name="letter-associated-record">
+                <option value="">Please Select</option>
+              </select>
+            </div>
+
             <!-- Letter Template -->
             <div class="usa-form-group">
               <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
@@ -278,49 +308,6 @@
                 <label class="usa-radio__label" for="letter-delivery-certified">Certified</label>
               </div>
             </fieldset>
-
-            <!-- License Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="letter-license-type">License Type</label>
-              <select class="usa-select" id="letter-license-type" name="letter-license-type">
-                <option value="">Please Select</option>
-                <option value="Commercial Fishing">Commercial Fishing</option>
-                <option value="Hunting">Hunting</option>
-                <option value="Boating">Boating</option>
-              </select>
-            </div>
-
-            <!-- Record Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="letter-record-type">Record Type</label>
-              <select class="usa-select" id="letter-record-type" name="letter-record-type">
-                <option value="">Please Select</option>
-                <option value="License">License</option>
-                <option value="Application">Application</option>
-                <option value="Case">Case</option>
-              </select>
-            </div>
-
-            <!-- Associated Record (appears in 3rd column when Record Type is selected) -->
-            <div class="usa-form-group" id="letter-associated-record-group" style="visibility: hidden;">
-              <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-associated-record" name="letter-associated-record">
-                <option value="">Please Select</option>
-              </select>
-            </div>
-
-            <!-- Status (full width) -->
-            <div class="usa-form-group form-field-full">
-              <label class="usa-label" for="letter-status">Status <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-status" name="letter-status" required>
-                <option value="">Please Select</option>
-                <option value="Generated">Generated</option>
-                <option value="Mailed">Mailed</option>
-                <option value="Received">Received</option>
-                <option value="Returned">Returned</option>
-                <option value="Failed">Failed</option>
-              </select>
-            </div>
 
             <!-- Delivery Notes (full width) -->
             <div class="usa-form-group form-field-full">
@@ -451,7 +438,7 @@
         associatedRecord: document.getElementById('letter-associated-record').value || '',
         trackingNumber: '',
         deliveryAttempts: 0,
-        status: document.getElementById('letter-status').value,
+        status: 'Generated', // Always set to Generated for new letters
         deliveryNotes: document.getElementById('letter-delivery-notes').value || '',
         templateFields: {}
       };
