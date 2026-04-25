@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Email - RLP</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .form-grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-field-full {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 1024px) {
+      .form-grid-3col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .form-grid-3col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="header management">
+      <a class="usa-skipnav" href="#main-content">Skip to Main Content</a>
+
+      <header class="usa-header">
+        <div class="skinny-header-container">
+          <div class="grid-container">
+            <div class="welcome-agency usa-banner__header-text">
+              Welcome DNR! &nbsp;<a href="#"><u>Logout</u></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="border-bottom-2px border-base-lighter">
+        <div class="grid-container navigation">
+          <div class="grid-row">
+            <div class="tablet:grid-col-6 logo-flex">
+              <a class="agency-logo-link" href="index.html">
+                <img src="assets/il-logo.png"
+                     alt="Illinois Department of Natural Resources agency logo"
+                     class="agency-logo">
+              </a>
+              <a class="agency-name-link" href="index.html">
+                <div class="agency-name">Illinois Department of Natural Resources</div>
+              </a>
+            </div>
+            <div class="tablet:grid-col-6">
+              <nav class="grid-container">
+                <div class="grid-row header--nav-links">
+                  <div class="tablet:grid-col nav__item">
+                    <a class="usa-link" href="index.html">
+                      <img src="assets/rlp-logo.png"
+                           alt="RLP logo"
+                           class="margin-right-1"
+                           height="30">Home
+                    </a>
+                  </div>
+                  <div class="tablet:grid-col-auto nav__item">
+                    <a class="usa-link" href="search.html">
+                      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-magnifying-glass fa-xl margin-right-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                        <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                      </svg>Search
+                    </a>
+                  </div>
+                  <div class="tablet:grid-col nav__item">
+                    <a class="usa-link" href="#" target="_blank">
+                      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-life-ring fa-xl margin-right-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                        <path fill="currentColor" d="M367.2 412.5C335.9 434.9 297.5 448 256 448s-79.9-13.1-111.2-35.5l58-58c15.8 8.6 34 13.5 53.3 13.5s37.4-4.9 53.3-13.5l58 58zm90.7 .8c33.8-43.4 54-98 54-157.3s-20.2-113.9-54-157.3c9-12.5 7.9-30.1-3.4-41.3S425.8 45 413.3 54C369.9 20.2 315.3 0 256 0S142.1 20.2 98.7 54c-12.5-9-30.1-7.9-41.3 3.4S45 86.2 54 98.7C20.2 142.1 0 196.7 0 256s20.2 113.9 54 157.3c-9 12.5-7.9 30.1 3.4 41.3S86.2 467 98.7 458c43.4 33.8 98 54 157.3 54s113.9-20.2 157.3-54c12.5 9 30.1 7.9 41.3-3.4s12.4-28.8 3.4-41.3zm-45.5-46.1l-58-58c8.6-15.8 13.5-34 13.5-53.3s-4.9-37.4-13.5-53.3l58-58C434.9 176.1 448 214.5 448 256s-13.1 79.9-35.5 111.2zM367.2 99.5l-58 58c-15.8-8.6-34-13.5-53.3-13.5s-37.4 4.9-53.3 13.5l-58-58C176.1 77.1 214.5 64 256 64s79.9 13.1 111.2 35.5zM157.5 309.3l-58 58C77.1 335.9 64 297.5 64 256s13.1-79.9 35.5-111.2l58 58c-8.6 15.8-13.5 34-13.5 53.3s4.9 37.4 13.5 53.3zM208 256a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"></path>
+                      </svg>Help
+                    </a>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="horizontalNav main-menu">
+      <ul class="usa-nav__primary display-flex padding-left-0">
+        <li class="usa-nav__primary-item">
+          <span class="menuItem-inner"><a href="queues.html">Queues</a></span>
+        </li>
+        <li class="usa-nav__primary-item">
+          <span class="menuItem-inner"><a href="my-tasks.html">My Tasks</a></span>
+        </li>
+        <li class="usa-nav__primary-item">
+          <span class="menuItem-inner"><a href="license-types.html">License Types</a></span>
+        </li>
+        <li class="usa-nav__primary-item">
+          <span class="menuItem-inner"><a href="applications.html">Applications</a></span>
+        </li>
+        <li class="usa-nav__primary-item">
+          <span class="menuItem-inner"><a href="settings.html">Settings</a></span>
+        </li>
+      </ul>
+    </nav>
+
+    <main id="main-content" class="grid-container">
+      <nav class="usa-breadcrumb margin-top-2" aria-label="Breadcrumbs">
+        <ol class="usa-breadcrumb__list">
+          <li class="usa-breadcrumb__list-item">
+            <a href="search.html" class="usa-breadcrumb__link">Back to Submission Search Results</a>
+          </li>
+          <li class="usa-breadcrumb__list-item">
+            <a href="individual-profile.html" class="usa-breadcrumb__link">Sarah Johnson</a>
+          </li>
+          <li class="usa-breadcrumb__list-item usa-current" aria-current="page">
+            <span>Add Email</span>
+          </li>
+        </ol>
+      </nav>
+
+      <div class="profile-header">
+        <h1 class="profile-header__title">Profile</h1>
+      </div>
+
+      <div class="profile-content">
+        <div class="profile-content__header">
+          <h2 class="profile-content__heading">Add Email</h2>
+        </div>
+
+        <form id="add-email-form">
+          <div class="form-grid-3col">
+
+            <!-- Visibility (full width) -->
+            <fieldset class="usa-fieldset form-field-full">
+              <legend class="usa-legend">Visibility <span class="field-required">Required</span></legend>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="email-visibility-agency-only" type="radio" name="email-visibility" value="Agency Only" required>
+                <label class="usa-radio__label" for="email-visibility-agency-only">Agency Only</label>
+              </div>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="email-visibility-public" type="radio" name="email-visibility" value="Public" required>
+                <label class="usa-radio__label" for="email-visibility-public">Public</label>
+              </div>
+            </fieldset>
+
+            <!-- License Type -->
+            <div class="usa-form-group">
+              <label class="usa-label" for="email-license-type">License Type</label>
+              <select class="usa-select" id="email-license-type" name="email-license-type">
+                <option value="">Please Select</option>
+                <option value="Commercial Fishing">Commercial Fishing</option>
+                <option value="Hunting">Hunting</option>
+                <option value="Boating">Boating</option>
+              </select>
+            </div>
+
+            <!-- Record Type -->
+            <div class="usa-form-group">
+              <label class="usa-label" for="email-record-type">Record Type</label>
+              <select class="usa-select" id="email-record-type" name="email-record-type">
+                <option value="">Please Select</option>
+                <option value="License">License</option>
+                <option value="Application">Application</option>
+                <option value="Case">Case</option>
+              </select>
+            </div>
+
+            <!-- Associated Record (shown when Record Type is selected) -->
+            <div class="usa-form-group" id="email-associated-record-group" style="visibility: hidden;">
+              <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
+              <select class="usa-select" id="email-associated-record" name="email-associated-record">
+                <option value="">Please Select</option>
+              </select>
+            </div>
+
+            <!-- Email Template -->
+            <div class="usa-form-group">
+              <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
+              <select class="usa-select" id="email-template" name="email-template" required>
+                <option value="">Please Select</option>
+                <option value="Email Template 1">Email Template 1</option>
+                <option value="Email Template 2">Email Template 2</option>
+                <option value="Email Template 3">Email Template 3</option>
+                <option value="Email Template 4">Email Template 4</option>
+                <option value="Email Template 5">Email Template 5</option>
+              </select>
+            </div>
+
+            <!-- Email Template Fields (dynamic, shown when template is selected) -->
+            <div id="email-template-fields" style="display: none; grid-column: 1 / -1;">
+              <!-- Email Template 1 Fields -->
+              <div id="email-template-1-fields" style="display: none;">
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-to">To</label>
+                  <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-cc">CC</label>
+                  <input class="usa-input" id="email-cc" name="email-cc" type="email" placeholder="Enter email address">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-subject">Subject</label>
+                  <input class="usa-input" id="email-subject" name="email-subject" type="text" value="Email Template 1" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+              </div>
+
+              <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+            </div>
+
+            <!-- Notes (full width) -->
+            <div class="usa-form-group form-field-full">
+              <label class="usa-label" for="email-notes">Notes</label>
+              <textarea class="usa-textarea" id="email-notes" name="email-notes" maxlength="500" rows="4"></textarea>
+              <p style="font-size: 1.4rem; color: #71767a; margin-top: 0.5rem;">Maximum 500 characters</p>
+            </div>
+
+          </div>
+
+          <!-- Form Buttons -->
+          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="usa-button">Send Email</button>
+            <button type="button" class="usa-button usa-button--secondary" id="cancel-add-email">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Email Template conditional logic
+    const emailTemplateSelect = document.getElementById('email-template');
+    const emailTemplateFields = document.getElementById('email-template-fields');
+    const emailTemplate1Fields = document.getElementById('email-template-1-fields');
+
+    emailTemplateSelect.addEventListener('change', function() {
+      const selectedTemplate = this.value;
+
+      emailTemplateFields.style.display = 'none';
+      emailTemplate1Fields.style.display = 'none';
+
+      if (selectedTemplate === 'Email Template 1') {
+        emailTemplateFields.style.display = 'block';
+        emailTemplate1Fields.style.display = 'block';
+      }
+    });
+
+    // Record Type conditional logic
+    const recordTypeSelect = document.getElementById('email-record-type');
+    const associatedRecordGroup = document.getElementById('email-associated-record-group');
+    const associatedRecordSelect = document.getElementById('email-associated-record');
+
+    recordTypeSelect.addEventListener('change', function() {
+      if (this.value) {
+        associatedRecordGroup.style.visibility = 'visible';
+        associatedRecordSelect.required = true;
+
+        associatedRecordSelect.innerHTML = '<option value="">Please Select</option>';
+
+        if (this.value === 'License') {
+          associatedRecordSelect.innerHTML += '<option value="LIC-2024-001">LIC-2024-001 - Commercial Fishing</option>';
+          associatedRecordSelect.innerHTML += '<option value="LIC-2024-002">LIC-2024-002 - Hunting</option>';
+        } else if (this.value === 'Application') {
+          associatedRecordSelect.innerHTML += '<option value="APP-2024-001">APP-2024-001 - New License Application</option>';
+          associatedRecordSelect.innerHTML += '<option value="APP-2024-002">APP-2024-002 - Renewal Application</option>';
+        } else if (this.value === 'Case') {
+          associatedRecordSelect.innerHTML += '<option value="CASE-2024-001">CASE-2024-001 - Compliance Case</option>';
+          associatedRecordSelect.innerHTML += '<option value="CASE-2024-002">CASE-2024-002 - Enforcement Case</option>';
+        }
+      } else {
+        associatedRecordGroup.style.visibility = 'hidden';
+        associatedRecordSelect.required = false;
+        associatedRecordSelect.value = '';
+      }
+    });
+
+    // Form submission handler
+    document.getElementById('add-email-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const today = new Date().toISOString().split('T')[0];
+
+      const formData = {
+        id: 'EMAIL-' + Date.now(),
+        visibility: document.querySelector('input[name="email-visibility"]:checked').value,
+        title: document.getElementById('email-template').value,
+        emailTemplate: document.getElementById('email-template').value,
+        generatedDate: today,
+        lastSentDate: today,
+        lastDeliveredDate: '',
+        licenseType: document.getElementById('email-license-type').value || '-',
+        recordType: document.getElementById('email-record-type').value || '-',
+        associatedRecord: document.getElementById('email-associated-record').value || '',
+        status: 'Sent',
+        sentCount: 1,
+        notes: document.getElementById('email-notes').value || ''
+      };
+
+      let emails = JSON.parse(localStorage.getItem('emails') || '[]');
+      emails.unshift(formData);
+      localStorage.setItem('emails', JSON.stringify(emails));
+
+      localStorage.setItem('showEmailNotification', 'true');
+
+      window.location.href = 'individual-profile.html';
+    });
+
+    // Cancel button handler
+    document.getElementById('cancel-add-email').addEventListener('click', function() {
+      if (confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
+        window.location.href = 'individual-profile.html';
+      }
+    });
+  </script>
+</body>
+</html>

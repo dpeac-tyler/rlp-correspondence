@@ -614,25 +614,80 @@
                   <div class="icon-key-grid">
                     <div class="icon-key-item">
                       <img src="assets/eye-icon.png" alt="" width="24" height="24">
+                      <span>- View Information</span>
+                    </div>
+                    <div class="icon-key-item">
+                      <img src="assets/envelope-icon.png" alt="" width="24" height="24">
                       <span>- View Email</span>
+                    </div>
+                    <div class="icon-key-item">
+                      <img src="assets/download-certificate.png" alt="" width="24" height="24">
+                      <span>- Download Email</span>
+                    </div>
+                    <div class="icon-key-item">
+                      <img src="assets/print-icon.png" alt="" width="24" height="24">
+                      <span>- Print Email</span>
+                    </div>
+                    <div class="icon-key-item">
+                      <img src="assets/edit-icon.png" alt="" width="24" height="24">
+                      <span>- Edit Email</span>
+                    </div>
+                    <div class="icon-key-item">
+                      <img src="assets/resend-email.png" alt="" width="24" height="24">
+                      <span>- Resend Email</span>
+                    </div>
+                    <div class="icon-key-item">
+                      <img src="assets/lock.png" alt="" width="24" height="24">
+                      <span>- Visibility: Agency Only</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="margin-top-2">
-                <table class="usa-table usa-table--borderless usa-table--striped">
+                <div class="usa-form-group">
+                  <label class="usa-label" for="emails-search">Search</label>
+                  <div style="display: flex; gap: 1rem;">
+                    <input class="usa-input" id="emails-search" name="emails-search" type="text" style="flex: 1;">
+                    <button type="button" class="usa-button">Search</button>
+                  </div>
+                </div>
+
+                <a href="add-email.html" class="usa-button" style="margin-top: 15px;">Add Email</a>
+
+                <div class="table-controls margin-top-2">
+                  <div class="table-controls__left">
+                    <strong id="emails-count">Showing 0 - 0 of 0 Entries</strong>
+                  </div>
+                  <div class="table-controls__right">
+                    <label for="entries-per-page-emails" class="table-controls__label">Show</label>
+                    <select class="usa-select table-controls__select" id="entries-per-page-emails" name="entries-per-page-emails">
+                      <option value="10" selected>10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
+
+                <table class="usa-table usa-table--borderless" id="emails-table">
                   <thead>
                     <tr>
-                      <th scope="col" role="columnheader" aria-sort="none">Date <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" aria-sort="none">Subject <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" aria-sort="none">From <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" aria-sort="none">To <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader">Controls</th>
+                      <th scope="col" role="columnheader" aria-sort="none" style="width: 15%;">Title <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Generated Date <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Last Sent Date <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Last Delivered Date <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Sent Count <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" style="width: 200px; white-space: nowrap;">Controls</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- Email rows will go here -->
+                    <tr id="no-emails-message" style="background-color: #fff;">
+                      <td colspan="9" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -1727,6 +1782,147 @@
       });
     });
 
+    // Emails Tab Functionality
+    const emailsTable = document.getElementById('emails-table');
+    const emailsCount = document.getElementById('emails-count');
+
+    // Function to update emails count
+    function updateEmailsCount() {
+      const tbody = emailsTable.querySelector('tbody');
+      const noDataMessage = document.getElementById('no-emails-message');
+      const dataRows = tbody.querySelectorAll('tr:not(#no-emails-message)');
+      const rowCount = dataRows.length;
+
+      if (rowCount === 0) {
+        emailsCount.textContent = 'Showing 0 - 0 of 0 Entries';
+        if (noDataMessage) {
+          noDataMessage.style.display = '';
+        }
+      } else {
+        emailsCount.textContent = `Showing 1 - ${rowCount} of ${rowCount} Entries`;
+        if (noDataMessage) {
+          noDataMessage.style.display = 'none';
+        }
+      }
+    }
+
+    // Function to reapply striping to emails table
+    function reapplyEmailStriping() {
+      const tbody = emailsTable.querySelector('tbody');
+      const dataRows = tbody.querySelectorAll('tr:not(#no-emails-message)');
+
+      dataRows.forEach((row, index) => {
+        const bgColor = index % 2 === 0 ? '#fff' : '#f0f0f0';
+        const cells = row.querySelectorAll('td');
+        cells.forEach(cell => {
+          cell.style.backgroundColor = bgColor;
+        });
+      });
+    }
+
+    // Initialize emails count and apply striping
+    updateEmailsCount();
+    reapplyEmailStriping();
+
+    // Load emails from localStorage on page load
+    function loadEmailsFromStorage() {
+      const emails = JSON.parse(localStorage.getItem('emails') || '[]');
+      const tbody = emailsTable.querySelector('tbody');
+      const noDataMessage = document.getElementById('no-emails-message');
+
+      // Clear existing rows (except no-data message)
+      const existingRows = tbody.querySelectorAll('tr:not(#no-emails-message)');
+      existingRows.forEach(row => row.remove());
+
+      if (emails.length > 0) {
+        // Hide no-data message
+        if (noDataMessage) {
+          noDataMessage.style.display = 'none';
+        }
+
+        // Add each email to the table
+        emails.forEach(email => {
+          // Format dates for display
+          function formatDateForDisplay(dateStr) {
+            if (!dateStr) return '-';
+            const [year, month, day] = dateStr.split('-');
+            return `${month}/${day}/${year}`;
+          }
+
+          const generatedDate = formatDateForDisplay(email.generatedDate);
+          const lastSentDate = email.lastSentDate ? formatDateForDisplay(email.lastSentDate) : '-';
+          const lastDeliveredDate = email.lastDeliveredDate ? formatDateForDisplay(email.lastDeliveredDate) : '-';
+
+          // Combine Record Type and Associated Record for display
+          let recordTypeDisplay = email.recordType || '-';
+          if (email.recordType !== '-' && email.associatedRecord) {
+            recordTypeDisplay = `${email.recordType}: ${email.associatedRecord}`;
+          }
+
+          // Add lock icon if Agency Only
+          const lockIcon = email.visibility === 'Agency Only' ? '<img src="assets/lock.png" alt="Agency Only" width="16" height="16" style="margin-right: 0.5rem; vertical-align: middle;">' : '';
+
+          // Create new table row
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+            <td>${lockIcon}${email.title}</td>
+            <td>${generatedDate}</td>
+            <td>${lastSentDate}</td>
+            <td>${lastDeliveredDate}</td>
+            <td>${email.licenseType}</td>
+            <td>${recordTypeDisplay}</td>
+            <td><span class="status-${email.status.toLowerCase().replace(' ', '-')}">${email.status}</span></td>
+            <td>${email.sentCount || 0}</td>
+            <td style="white-space: nowrap;">
+              <a href="#" class="icon-button view-email-info-btn" aria-label="View Information">
+                <img src="assets/eye-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button view-email-btn" aria-label="View Email">
+                <img src="assets/envelope-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button download-email-btn" aria-label="Download Email">
+                <img src="assets/download-certificate.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button print-email-btn" aria-label="Print Email">
+                <img src="assets/print-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="edit-email.html?id=${email.id}" class="icon-button edit-email-btn" aria-label="Edit Email">
+                <img src="assets/edit-icon.png" alt="" width="30" height="30">
+              </a>
+              <a href="#" class="icon-button resend-email-btn" aria-label="Resend Email">
+                <img src="assets/publish-icon.png" alt="" width="30" height="30">
+              </a>
+            </td>
+          `;
+
+          // Store data attributes
+          newRow.dataset.id = email.id;
+          newRow.dataset.visibility = email.visibility;
+          newRow.dataset.title = email.title;
+          newRow.dataset.generatedDate = email.generatedDate;
+          newRow.dataset.lastSentDate = email.lastSentDate || '';
+          newRow.dataset.lastDeliveredDate = email.lastDeliveredDate || '';
+          newRow.dataset.licenseType = email.licenseType;
+          newRow.dataset.recordType = email.recordType;
+          newRow.dataset.associatedRecord = email.associatedRecord || '';
+          newRow.dataset.emailStatus = email.status;
+          newRow.dataset.sentCount = email.sentCount || '0';
+
+          tbody.appendChild(newRow);
+        });
+
+        // Update count and striping
+        updateEmailsCount();
+        reapplyEmailStriping();
+      } else {
+        // Show no-data message if no emails
+        if (noDataMessage) {
+          noDataMessage.style.display = '';
+        }
+        updateEmailsCount();
+      }
+    }
+
     // Upload Letter Modal functionality
     const uploadLetterBtn = document.getElementById('upload-letter-btn');
     const uploadLetterModal = document.getElementById('upload-letter-modal');
@@ -2563,6 +2759,45 @@
 
     // Load letters on page load
     loadLettersFromStorage();
+
+    // Check if we should show notification and activate Emails sub-tab
+    if (localStorage.getItem('showEmailNotification') === 'true') {
+      const correspondenceTab = Array.from(document.querySelectorAll('.profile-tab')).find(tab =>
+        tab.textContent.trim() === 'Correspondence'
+      );
+
+      if (correspondenceTab) {
+        document.querySelectorAll('.profile-tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+        correspondenceTab.classList.add('active');
+        const correspondencePanel = document.getElementById('correspondence-tab');
+        if (correspondencePanel) {
+          correspondencePanel.classList.add('active');
+        }
+
+        const emailsSubTab = document.querySelector('.horizontal-tab[data-correspondence-tab="emails"]');
+        const emailsSubTabContent = document.getElementById('emails-subtab');
+
+        if (emailsSubTab && emailsSubTabContent) {
+          document.querySelectorAll('.horizontal-tab[data-correspondence-tab]').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.correspondence-subtab-content').forEach(content => {
+            content.classList.remove('active');
+            content.setAttribute('hidden', '');
+          });
+
+          emailsSubTab.classList.add('active');
+          emailsSubTabContent.classList.add('active');
+          emailsSubTabContent.removeAttribute('hidden');
+        }
+      }
+
+      showSuccessAlert('Email Sent Successfully.');
+      localStorage.removeItem('showEmailNotification');
+    }
+
+    // Load emails on page load
+    loadEmailsFromStorage();
   </script>
 
 </body>
