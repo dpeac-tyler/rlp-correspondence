@@ -1216,6 +1216,27 @@
   </div>
 
   <!-- Delete Confirmation Modal -->
+  <!-- Resend Email Confirmation Modal -->
+  <div id="resend-email-modal" class="modal-overlay" hidden>
+    <div class="modal-content" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 class="modal-title">Resend Email</h2>
+        <button type="button" class="modal-close" id="close-resend-email-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="resend-email-confirm-text" style="font-size: 1.6rem; margin-bottom: 2rem;"></p>
+        <div class="modal-footer" style="padding-left: 0;">
+          <button type="button" class="usa-button" id="confirm-resend-email-btn">Send</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-resend-email-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="delete-document-modal" class="modal-overlay" hidden>
     <div class="modal-content" style="max-width: 480px;">
       <div class="modal-header">
@@ -2799,6 +2820,63 @@
 
     // Load emails on page load
     loadEmailsFromStorage();
+
+    // Resend Email functionality
+    const resendEmailModal = document.getElementById('resend-email-modal');
+    const resendEmailConfirmText = document.getElementById('resend-email-confirm-text');
+    const confirmResendEmailBtn = document.getElementById('confirm-resend-email-btn');
+    const cancelResendEmailBtn = document.getElementById('cancel-resend-email-btn');
+    const closeResendEmailModalBtn = document.getElementById('close-resend-email-modal');
+    let resendEmailRow = null;
+
+    function closeResendEmailModal() {
+      resendEmailModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      resendEmailRow = null;
+    }
+
+    emailsTable.addEventListener('click', function(e) {
+      const btn = e.target.closest('.resend-email-btn');
+      if (!btn) return;
+      e.preventDefault();
+
+      resendEmailRow = btn.closest('tr');
+      const emailTemplate = resendEmailRow.dataset.title || 'this email';
+      resendEmailConfirmText.textContent = `Are you sure you want to resend "${emailTemplate}" again?`;
+      resendEmailModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    confirmResendEmailBtn.addEventListener('click', function() {
+      if (!resendEmailRow) return;
+
+      const emailId = resendEmailRow.dataset.id;
+      let emails = JSON.parse(localStorage.getItem('emails') || '[]');
+      const email = emails.find(e => e.id === emailId);
+
+      if (email) {
+        email.sentCount = (email.sentCount || 0) + 1;
+        email.lastSentDate = new Date().toISOString().split('T')[0];
+        localStorage.setItem('emails', JSON.stringify(emails));
+
+        // Update the sent count cell in the row
+        const cells = resendEmailRow.querySelectorAll('td');
+        // Find the sent count cell by matching dataset
+        resendEmailRow.dataset.sentCount = email.sentCount;
+        // Reload the table to reflect the update
+        loadEmailsFromStorage();
+      }
+
+      closeResendEmailModal();
+      showSuccessAlert('Email sent successfully.');
+    });
+
+    cancelResendEmailBtn.addEventListener('click', closeResendEmailModal);
+    closeResendEmailModalBtn.addEventListener('click', closeResendEmailModal);
+
+    resendEmailModal.addEventListener('click', function(e) {
+      if (e.target === resendEmailModal) closeResendEmailModal();
+    });
   </script>
 
 </body>
