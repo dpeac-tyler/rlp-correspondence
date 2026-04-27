@@ -186,7 +186,7 @@
               <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
               <select class="usa-select" id="email-template" name="email-template" required>
                 <option value="">Please Select</option>
-                <option value="Email Template 1">Email Template 1</option>
+                <option value="Application Voided">Application Voided</option>
                 <option value="Email Template 2">Email Template 2</option>
                 <option value="Email Template 3">Email Template 3</option>
                 <option value="Email Template 4">Email Template 4</option>
@@ -196,22 +196,80 @@
 
             <!-- Email Template Fields (dynamic, shown when template is selected) -->
             <div id="email-template-fields" style="display: none; grid-column: 1 / -1;">
-              <!-- Email Template 1 Fields -->
-              <div id="email-template-1-fields" style="display: none;">
+              <!-- Application Voided Fields -->
+              <div id="email-application-voided-fields" style="display: none;">
+
                 <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-to">To</label>
-                  <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                  <label class="usa-label" for="email-template-date">Date Spelled</label>
+                  <input class="usa-input" id="email-template-date" name="email-template-date" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                  <h3 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">Mailing Address</h3>
+
+                  <div class="usa-form-group" style="margin-bottom: 1rem;">
+                    <label class="usa-label" for="email-address-line1">Address Line 1</label>
+                    <input class="usa-input" id="email-address-line1" name="email-address-line1" type="text" value="4521 Maple Street" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                  </div>
+
+                  <div class="usa-form-group" style="margin-bottom: 1rem;">
+                    <label class="usa-label" for="email-city">City</label>
+                    <input class="usa-input" id="email-city" name="email-city" type="text" value="Chicago" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                  </div>
+
+                  <div class="usa-form-group" style="margin-bottom: 1rem;">
+                    <label class="usa-label" for="email-state">State</label>
+                    <input class="usa-input" id="email-state" name="email-state" type="text" value="IL" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                  </div>
+
+                  <div class="usa-form-group" style="margin-bottom: 1rem;">
+                    <label class="usa-label" for="email-zip">Zip Code</label>
+                    <input class="usa-input" id="email-zip" name="email-zip" type="text" value="60601" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                  </div>
                 </div>
 
                 <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-cc">CC</label>
-                  <input class="usa-input" id="email-cc" name="email-cc" type="email" placeholder="Enter email address">
+                  <label class="usa-label" for="email-contact-name">Contact Name</label>
+                  <input class="usa-input" id="email-contact-name" name="email-contact-name" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
                 </div>
 
                 <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="email-subject">Subject</label>
-                  <input class="usa-input" id="email-subject" name="email-subject" type="text" value="Email Template 1" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                  <label class="usa-label" for="email-credential-name">Full Credential Name</label>
+                  <input class="usa-input" id="email-credential-name" name="email-credential-name" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
                 </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-supervised-by">Supervised By Name</label>
+                  <input class="usa-input" id="email-supervised-by" name="email-supervised-by" type="text" value="James Patterson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label">User Signature</label>
+                  <div style="background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 1rem; border-radius: 4px;">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='10' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="User Signature" style="display: block; max-width: 200px;">
+                  </div>
+                  <input type="hidden" id="email-user-signature" name="email-user-signature" value="Michael Rodriguez">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-user-name">User Name</label>
+                  <input class="usa-input" id="email-user-name" name="email-user-name" type="text" value="Michael Rodriguez" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-user-email">User Email</label>
+                  <input class="usa-input" id="email-user-email" name="email-user-email" type="email" value="michael.rodriguez@dnr.illinois.gov" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
+                </div>
+
+                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
+                  <label class="usa-label" for="email-rejection-dates">Rejection Date(s)</label>
+                  <input class="usa-input" id="email-rejection-dates" name="email-rejection-dates" type="date">
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                  <button type="button" id="preview-email-btn" class="usa-button">Preview Email</button>
+                </div>
+
               </div>
 
               <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
@@ -236,21 +294,62 @@
     </main>
   </div>
 
+  <!-- Preview Email Modal -->
+  <div id="preview-email-modal" class="modal-overlay" hidden>
+    <div class="modal-content" style="max-width: 800px;">
+      <div class="modal-header">
+        <h2 class="modal-title">Email Preview</h2>
+        <button type="button" class="modal-close" id="close-preview-email-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="email-preview-content" style="padding: 2rem; background: white; font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.6;">
+          <!-- Email content will be inserted here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="usa-button usa-button--secondary" id="close-preview-email-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Set today's date in spelled format (e.g., "27th of April 2026")
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.toLocaleString('en-US', { month: 'long' });
+    const year = today.getFullYear();
+
+    function getOrdinalSuffix(d) {
+      if (d > 3 && d < 21) return 'th';
+      switch (d % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+      }
+    }
+
+    const todayFormatted = `${day}${getOrdinalSuffix(day)} of ${month} ${year}`;
+    document.getElementById('email-template-date').value = todayFormatted;
+
     // Email Template conditional logic
     const emailTemplateSelect = document.getElementById('email-template');
     const emailTemplateFields = document.getElementById('email-template-fields');
-    const emailTemplate1Fields = document.getElementById('email-template-1-fields');
+    const emailApplicationVoidedFields = document.getElementById('email-application-voided-fields');
 
     emailTemplateSelect.addEventListener('change', function() {
       const selectedTemplate = this.value;
 
       emailTemplateFields.style.display = 'none';
-      emailTemplate1Fields.style.display = 'none';
+      emailApplicationVoidedFields.style.display = 'none';
 
-      if (selectedTemplate === 'Email Template 1') {
+      if (selectedTemplate === 'Application Voided') {
         emailTemplateFields.style.display = 'block';
-        emailTemplate1Fields.style.display = 'block';
+        emailApplicationVoidedFields.style.display = 'block';
       }
     });
 
@@ -289,11 +388,12 @@
 
       const today = new Date().toISOString().split('T')[0];
 
+      const selectedEmailTemplate = document.getElementById('email-template').value;
       const formData = {
         id: 'EMAIL-' + Date.now(),
         visibility: document.querySelector('input[name="email-visibility"]:checked').value,
-        title: document.getElementById('email-template').value,
-        emailTemplate: document.getElementById('email-template').value,
+        title: selectedEmailTemplate,
+        emailTemplate: selectedEmailTemplate,
         generatedDate: today,
         lastSentDate: today,
         lastDeliveredDate: '',
@@ -302,8 +402,26 @@
         associatedRecord: document.getElementById('email-associated-record').value || '',
         status: 'Sent',
         sentCount: 1,
-        notes: document.getElementById('email-notes').value || ''
+        notes: document.getElementById('email-notes').value || '',
+        templateFields: {}
       };
+
+      if (selectedEmailTemplate === 'Application Voided') {
+        formData.templateFields = {
+          date: document.getElementById('email-template-date').value,
+          addressLine1: document.getElementById('email-address-line1').value,
+          city: document.getElementById('email-city').value,
+          state: document.getElementById('email-state').value,
+          zip: document.getElementById('email-zip').value,
+          contactName: document.getElementById('email-contact-name').value,
+          credentialName: document.getElementById('email-credential-name').value,
+          supervisedBy: document.getElementById('email-supervised-by').value,
+          userSignature: document.getElementById('email-user-signature').value,
+          userName: document.getElementById('email-user-name').value,
+          userEmail: document.getElementById('email-user-email').value,
+          rejectionDates: document.getElementById('email-rejection-dates').value
+        };
+      }
 
       let emails = JSON.parse(localStorage.getItem('emails') || '[]');
       emails.unshift(formData);
@@ -320,6 +438,104 @@
         window.location.href = 'individual-profile.html';
       }
     });
+
+    // Preview Email functionality
+    const previewEmailBtn = document.getElementById('preview-email-btn');
+    const previewEmailModal = document.getElementById('preview-email-modal');
+    const closePreviewEmailModalBtn = document.getElementById('close-preview-email-modal');
+    const closePreviewEmailBtn = document.getElementById('close-preview-email-btn');
+    const emailPreviewContent = document.getElementById('email-preview-content');
+
+    if (previewEmailBtn) {
+      previewEmailBtn.addEventListener('click', function() {
+        const dateSpelled = document.getElementById('email-template-date').value;
+        const addressLine1 = document.getElementById('email-address-line1').value;
+        const city = document.getElementById('email-city').value;
+        const state = document.getElementById('email-state').value;
+        const zip = document.getElementById('email-zip').value;
+        const contactName = document.getElementById('email-contact-name').value;
+        const credentialName = document.getElementById('email-credential-name').value;
+        const supervisedBy = document.getElementById('email-supervised-by').value;
+        const userName = document.getElementById('email-user-name').value;
+        const userEmail = document.getElementById('email-user-email').value;
+        const rejectionDatesRaw = document.getElementById('email-rejection-dates').value;
+
+        let rejectionDates = '[Rejection Date]';
+        if (rejectionDatesRaw) {
+          const d = new Date(rejectionDatesRaw + 'T00:00:00');
+          rejectionDates = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        const emailHTML = `
+          <div style="max-width: 680px; margin: 0 auto; font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #000;">
+            <div style="font-weight: bold; text-align: center; margin-bottom: 2rem; text-transform: uppercase;">
+              Private Investigators, Private Security, and Alarm Installation/Monitoring Section
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">${dateSpelled}</div>
+
+            <div style="margin-bottom: 1.5rem; line-height: 1.5;">
+              ${addressLine1}<br>
+              ${city}, ${state} ${zip}
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">Dear ${contactName}:</div>
+
+            <p style="margin-bottom: 1rem;">Please be advised that your application for <strong>${credentialName}</strong> has been voided based upon your failure to provide a complete application as outlined in 17 CAR § 350-212.</p>
+
+            <p style="margin-bottom: 1rem;">Our office submitted a request to you for additional information on <strong>${rejectionDates}</strong>. As of this date, no information has been received.</p>
+
+            <p style="margin-bottom: 1rem;">The company for which you were applying, cannot employ you in a position that requires a license, credential, or commission issued by the Arkansas Private Investigators, Private Security, and Alarm Installation/Monitoring Licensing Section. If you are still seeking employment with this company, a new, complete application must be submitted with applicable fees.</p>
+
+            <p style="margin-bottom: 1.5rem;">Should you have any questions or concerns, please contact this department at 501-618-8600 or ${userEmail}.</p>
+
+            <div style="margin-bottom: 1rem;">Sincerely,</div>
+
+            <div style="margin-bottom: 0.5rem;">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='0' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="Signature" style="display: block; max-width: 200px;">
+            </div>
+
+            <div style="line-height: 1.5; margin-bottom: 1.5rem;">
+              ${userName}<br>
+              Administrative Coordinator<br>
+              PI &amp; Security Licensing Section<br>
+              1 State Police Plaza Drive<br>
+              Little Rock, AR 72209<br>
+              ${userEmail}<br>
+              (501) 618-8600<br>
+              (501) 618-8125 fax
+            </div>
+
+            <div>cc: ${supervisedBy}</div>
+          </div>
+        `;
+
+        emailPreviewContent.innerHTML = emailHTML;
+        previewEmailModal.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    function closeEmailPreviewModal() {
+      previewEmailModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    if (closePreviewEmailModalBtn) {
+      closePreviewEmailModalBtn.addEventListener('click', closeEmailPreviewModal);
+    }
+
+    if (closePreviewEmailBtn) {
+      closePreviewEmailBtn.addEventListener('click', closeEmailPreviewModal);
+    }
+
+    if (previewEmailModal) {
+      previewEmailModal.addEventListener('click', function(e) {
+        if (e.target === previewEmailModal) {
+          closeEmailPreviewModal();
+        }
+      });
+    }
   </script>
 </body>
 </html>
