@@ -1237,6 +1237,120 @@
     </div>
   </div>
 
+  <!-- View Email Information Modal -->
+  <div id="view-email-info-modal" class="modal-overlay" hidden>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Email Information</h2>
+        <button type="button" class="modal-close" id="close-view-email-info-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid; gap: 1.5rem;">
+          <div>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Visibility</p>
+            <p id="view-email-visibility" style="margin: 0; font-size: 1.6rem;">-</p>
+          </div>
+          <div>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Email Template</p>
+            <p id="view-email-template" style="margin: 0; font-size: 1.6rem;">-</p>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Generated Date</p>
+              <p id="view-email-generated-date" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Last Sent Date</p>
+              <p id="view-email-last-sent-date" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Last Delivered Date</p>
+              <p id="view-email-last-delivered-date" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">License Type</p>
+              <p id="view-email-license-type" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Record Type</p>
+              <p id="view-email-record-type" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Associated Record</p>
+              <p id="view-email-associated-record" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Status</p>
+              <p id="view-email-status" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Sent Count</p>
+              <p id="view-email-sent-count" style="margin: 0; font-size: 1.6rem;">-</p>
+            </div>
+          </div>
+          <div>
+            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Notes</p>
+            <p id="view-email-notes" style="margin: 0; font-size: 1.6rem;">-</p>
+          </div>
+
+          <!-- Email Template Fields Section -->
+          <div id="view-email-template-fields-container" style="display: none;">
+            <hr style="border: none; border-top: 2px solid #ddd; margin: 1rem 0;">
+            <h3 style="margin: 1rem 0; font-size: 1.8rem;">Email Template Fields</h3>
+            <div style="display: grid; gap: 1.5rem;">
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Date Spelled</p>
+                <p id="view-email-tf-date" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Mailing Address</p>
+                <div style="margin-top: 0.25rem;">
+                  <p id="view-email-tf-address" style="margin: 0; font-size: 1.6rem;">-</p>
+                </div>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Contact Name</p>
+                <p id="view-email-tf-contact-name" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Full Credential Name</p>
+                <p id="view-email-tf-credential-name" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Supervised By Name</p>
+                <p id="view-email-tf-supervised-by" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">User Name</p>
+                <p id="view-email-tf-user-name" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">User Email</p>
+                <p id="view-email-tf-user-email" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Rejection Date(s)</p>
+                <p id="view-email-tf-rejection-dates" style="margin: 0; font-size: 1.6rem;">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
+          <button type="button" class="usa-button" id="close-view-email-info-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="delete-document-modal" class="modal-overlay" hidden>
     <div class="modal-content" style="max-width: 480px;">
       <div class="modal-header">
@@ -1931,6 +2045,7 @@
           newRow.dataset.sentCount = email.sentCount || '0';
 
           tbody.appendChild(newRow);
+          attachEmailRowHandlers(newRow);
         });
 
         // Update count and striping
@@ -1944,6 +2059,210 @@
         updateEmailsCount();
       }
     }
+
+    // Generate email HTML from stored template fields
+    function generateEmailHTML(row) {
+      const emails = JSON.parse(localStorage.getItem('emails') || '[]');
+      const email = emails.find(e => e.id === row.dataset.id);
+      const tf = email?.templateFields || {};
+
+      if (!tf || Object.keys(tf).length === 0) {
+        return '<p style="padding: 2rem; text-align: center;">No email template data available for this email.</p>';
+      }
+
+      function formatRejectionDate(raw) {
+        if (!raw) return '[Rejection Date]';
+        const d = new Date(raw + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      }
+
+      return `
+        <div style="max-width: 680px; margin: 0 auto; font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #000;">
+          <div style="font-weight: bold; text-align: center; margin-bottom: 2rem; text-transform: uppercase;">
+            Private Investigators, Private Security, and Alarm Installation/Monitoring Section
+          </div>
+          <div style="margin-bottom: 1.5rem;">${tf.date || '[Date]'}</div>
+          <div style="margin-bottom: 1.5rem; line-height: 1.5;">
+            ${tf.addressLine1 || ''}<br>
+            ${tf.city || ''}, ${tf.state || ''} ${tf.zip || ''}
+          </div>
+          <div style="margin-bottom: 1.5rem;">Dear ${tf.contactName || '[Contact Name]'}:</div>
+          <p style="margin-bottom: 1rem;">Please be advised that your application for <strong>${tf.credentialName || '[Credential Name]'}</strong> has been voided based upon your failure to provide a complete application as outlined in 17 CAR § 350-212.</p>
+          <p style="margin-bottom: 1rem;">Our office submitted a request to you for additional information on <strong>${formatRejectionDate(tf.rejectionDates)}</strong>. As of this date, no information has been received.</p>
+          <p style="margin-bottom: 1rem;">The company for which you were applying, cannot employ you in a position that requires a license, credential, or commission issued by the Arkansas Private Investigators, Private Security, and Alarm Installation/Monitoring Licensing Section. If you are still seeking employment with this company, a new, complete application must be submitted with applicable fees.</p>
+          <p style="margin-bottom: 1.5rem;">Should you have any questions or concerns, please contact this department at 501-618-8600 or ${tf.userEmail || '[User Email]'}.</p>
+          <div style="margin-bottom: 1rem;">Sincerely,</div>
+          <div style="margin-bottom: 0.5rem;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='0' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="Signature" style="display: block; max-width: 200px;">
+          </div>
+          <div style="line-height: 1.5; margin-bottom: 1.5rem;">
+            ${tf.userName || '[User Name]'}<br>
+            Administrative Coordinator<br>
+            PI &amp; Security Licensing Section<br>
+            1 State Police Plaza Drive<br>
+            Little Rock, AR 72209<br>
+            ${tf.userEmail || '[User Email]'}<br>
+            (501) 618-8600<br>
+            (501) 618-8125 fax
+          </div>
+          <div>cc: ${tf.supervisedBy || '[Supervised By]'}</div>
+        </div>
+      `;
+    }
+
+    // Function to attach event handlers to email row
+    function attachEmailRowHandlers(row) {
+      const viewInfoBtn = row.querySelector('.view-email-info-btn');
+      if (viewInfoBtn) {
+        viewInfoBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          openViewEmailInfoModal(row);
+        });
+      }
+
+      const viewEmailBtn = row.querySelector('.view-email-btn');
+      if (viewEmailBtn) {
+        viewEmailBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const modal = document.createElement('div');
+          modal.className = 'modal-overlay';
+          modal.innerHTML = `
+            <div class="modal-content" style="max-width: 800px;">
+              <div class="modal-header">
+                <h2 class="modal-title">View Email</h2>
+                <button type="button" class="modal-close" aria-label="Close modal">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div style="padding: 2rem; background: white;">
+                  ${generateEmailHTML(row)}
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="usa-button usa-button--secondary close-btn">Close</button>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(modal);
+          document.body.style.overflow = 'hidden';
+          const closeModal = () => { document.body.removeChild(modal); document.body.style.overflow = ''; };
+          modal.querySelector('.modal-close').addEventListener('click', closeModal);
+          modal.querySelector('.close-btn').addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        });
+      }
+
+      const downloadEmailBtn = row.querySelector('.download-email-btn');
+      if (downloadEmailBtn) {
+        downloadEmailBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const emailHTML = generateEmailHTML(row);
+          const fullHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Email - ${row.dataset.title}</title><style>body { font-family: Arial, sans-serif; line-height: 1.6; padding: 2rem; }</style></head><body>${emailHTML}</body></html>`;
+          const blob = new Blob([fullHTML], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `Email-${row.dataset.title}-${new Date().toISOString().split('T')[0]}.html`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        });
+      }
+
+      const printEmailBtn = row.querySelector('.print-email-btn');
+      if (printEmailBtn) {
+        printEmailBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const emailHTML = generateEmailHTML(row);
+          const printWindow = window.open('', '', 'width=800,height=600');
+          printWindow.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Print Email</title><style>body { font-family: Arial, sans-serif; line-height: 1.6; padding: 2rem; } @media print { body { padding: 0; } }</style></head><body>${emailHTML}</body></html>`);
+          printWindow.document.close();
+          printWindow.focus();
+          setTimeout(() => { printWindow.print(); }, 250);
+        });
+      }
+    }
+
+    // View Email Info Modal
+    const viewEmailInfoModal = document.getElementById('view-email-info-modal');
+    const closeViewEmailInfoModalBtn = document.getElementById('close-view-email-info-modal');
+    const closeViewEmailInfoBtn = document.getElementById('close-view-email-info-btn');
+
+    function openViewEmailInfoModal(row) {
+      function formatDateForDisplay(dateStr) {
+        if (!dateStr || dateStr === '-') return '-';
+        const [year, month, day] = dateStr.split('-');
+        return `${month}/${day}/${year}`;
+      }
+
+      document.getElementById('view-email-visibility').textContent = row.dataset.visibility || '-';
+      document.getElementById('view-email-template').textContent = row.dataset.title || '-';
+      document.getElementById('view-email-generated-date').textContent = formatDateForDisplay(row.dataset.generatedDate);
+      document.getElementById('view-email-last-sent-date').textContent = formatDateForDisplay(row.dataset.lastSentDate);
+      document.getElementById('view-email-last-delivered-date').textContent = formatDateForDisplay(row.dataset.lastDeliveredDate);
+      document.getElementById('view-email-license-type').textContent = row.dataset.licenseType || '-';
+      document.getElementById('view-email-record-type').textContent = row.dataset.recordType || '-';
+      document.getElementById('view-email-associated-record').textContent = row.dataset.associatedRecord || '-';
+      document.getElementById('view-email-sent-count').textContent = row.dataset.sentCount || '0';
+
+      const viewEmailStatus = document.getElementById('view-email-status');
+      const status = row.dataset.emailStatus || '-';
+      viewEmailStatus.textContent = status;
+      viewEmailStatus.className = '';
+      if (status !== '-') viewEmailStatus.classList.add('status-' + status.toLowerCase().replace(' ', '-'));
+
+      const emails = JSON.parse(localStorage.getItem('emails') || '[]');
+      const email = emails.find(e => e.id === row.dataset.id);
+      document.getElementById('view-email-notes').textContent = email?.notes || '-';
+
+      const tfContainer = document.getElementById('view-email-template-fields-container');
+      const tf = email?.templateFields || {};
+      if (tf && Object.keys(tf).length > 0) {
+        tfContainer.style.display = 'block';
+        document.getElementById('view-email-tf-date').textContent = tf.date || '-';
+        const addr = [tf.addressLine1, [tf.city, tf.state, tf.zip].filter(Boolean).join(', ')].filter(Boolean).join('\n');
+        document.getElementById('view-email-tf-address').textContent = addr || '-';
+        document.getElementById('view-email-tf-contact-name').textContent = tf.contactName || '-';
+        document.getElementById('view-email-tf-credential-name').textContent = tf.credentialName || '-';
+        document.getElementById('view-email-tf-supervised-by').textContent = tf.supervisedBy || '-';
+        document.getElementById('view-email-tf-user-name').textContent = tf.userName || '-';
+        document.getElementById('view-email-tf-user-email').textContent = tf.userEmail || '-';
+        if (tf.rejectionDates) {
+          const d = new Date(tf.rejectionDates + 'T00:00:00');
+          document.getElementById('view-email-tf-rejection-dates').textContent = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        } else {
+          document.getElementById('view-email-tf-rejection-dates').textContent = '-';
+        }
+      } else {
+        tfContainer.style.display = 'none';
+      }
+
+      viewEmailInfoModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (closeViewEmailInfoModalBtn) {
+      closeViewEmailInfoModalBtn.addEventListener('click', function() {
+        viewEmailInfoModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      });
+    }
+    if (closeViewEmailInfoBtn) {
+      closeViewEmailInfoBtn.addEventListener('click', function() {
+        viewEmailInfoModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      });
+    }
+    viewEmailInfoModal.addEventListener('click', function(e) {
+      if (e.target === viewEmailInfoModal) {
+        viewEmailInfoModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      }
+    });
 
     // Upload Letter Modal functionality
     const uploadLetterBtn = document.getElementById('upload-letter-btn');
