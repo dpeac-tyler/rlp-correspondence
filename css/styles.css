@@ -1466,7 +1466,9 @@ select:focus {
   width: 90%;
   max-width: 640px;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   z-index: 10000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
@@ -1478,6 +1480,7 @@ select:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .modal-title {
@@ -1509,6 +1512,16 @@ select:focus {
 
 .modal-body {
   padding: 2rem;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.modal-divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #dfe1e2;
+  flex-shrink: 0;
 }
 
 .modal-footer {
@@ -1516,6 +1529,7 @@ select:focus {
   padding-top: 0;
   display: flex;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 .text-error {
@@ -1546,6 +1560,12 @@ select:focus {
 .date-picker-wrapper .usa-input {
   flex: 1;
   padding-right: 4.4rem;
+}
+
+.date-input-custom,
+.usa-date-picker,
+input[type="date"].usa-input {
+  max-width: 200px;
 }
 
 .date-input-custom::-webkit-calendar-picker-indicator {
