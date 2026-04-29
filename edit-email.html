@@ -154,7 +154,7 @@
             <!-- License Type -->
             <div class="usa-form-group">
               <label class="usa-label" for="email-license-type">License Type</label>
-              <select class="usa-select" id="email-license-type" name="email-license-type">
+              <select class="usa-select" id="email-license-type" name="email-license-type" disabled>
                 <option value="">Please Select</option>
                 <option value="Commercial Fishing">Commercial Fishing</option>
                 <option value="Hunting">Hunting</option>
@@ -165,7 +165,7 @@
             <!-- Record Type -->
             <div class="usa-form-group">
               <label class="usa-label" for="email-record-type">Record Type</label>
-              <select class="usa-select" id="email-record-type" name="email-record-type">
+              <select class="usa-select" id="email-record-type" name="email-record-type" disabled>
                 <option value="">Please Select</option>
                 <option value="License">License</option>
                 <option value="Application">Application</option>
@@ -176,7 +176,7 @@
             <!-- Associated Record (shown when Record Type is selected) -->
             <div class="usa-form-group" id="email-associated-record-group" style="visibility: hidden;">
               <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
-              <select class="usa-select" id="email-associated-record" name="email-associated-record">
+              <select class="usa-select" id="email-associated-record" name="email-associated-record" disabled>
                 <option value="">Please Select</option>
               </select>
             </div>
@@ -184,7 +184,7 @@
             <!-- Email Template -->
             <div class="usa-form-group">
               <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
-              <select class="usa-select" id="email-template" name="email-template" required>
+              <select class="usa-select" id="email-template" name="email-template" disabled>
                 <option value="">Please Select</option>
                 <option value="Application Voided">Application Voided</option>
                 <option value="Email Template 2">Email Template 2</option>
@@ -200,15 +200,15 @@
               <div class="form-grid-3col" style="margin-bottom: 0;">
                 <div class="usa-form-group">
                   <label class="usa-label" for="email-to">To: <span class="field-required">Required</span></label>
-                  <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" required>
+                  <input class="usa-input" id="email-to" name="email-to" type="text" value="Sarah Johnson" disabled>
                 </div>
                 <div class="usa-form-group">
                   <label class="usa-label" for="email-cc">CC:</label>
-                  <input class="usa-input" id="email-cc" name="email-cc" type="text">
+                  <input class="usa-input" id="email-cc" name="email-cc" type="text" disabled>
                 </div>
                 <div class="usa-form-group">
                   <label class="usa-label" for="email-subject">Subject:</label>
-                  <input class="usa-input" id="email-subject" name="email-subject" type="text">
+                  <input class="usa-input" id="email-subject" name="email-subject" type="text" disabled>
                 </div>
               </div>
             </div>
@@ -282,7 +282,7 @@
 
                 <div class="usa-form-group" style="margin-bottom: 1.5rem;">
                   <label class="usa-label" for="email-rejection-dates">Rejection Date(s)</label>
-                  <input class="usa-input" id="email-rejection-dates" name="email-rejection-dates" type="date">
+                  <input class="usa-input" id="email-rejection-dates" name="email-rejection-dates" type="date" disabled>
                 </div>
 
                 <div style="margin-top: 1.5rem;">
@@ -476,11 +476,10 @@
       }
     });
 
-    // Form submission — update the existing record in localStorage
+    // Form submission — only visibility and notes are editable
     document.getElementById('edit-email-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const selectedEmailTemplate = document.getElementById('email-template').value;
       const emailIndex = emails.findIndex(e => e.id === emailId);
 
       if (emailIndex === -1) {
@@ -488,40 +487,10 @@
         return;
       }
 
-      const updated = Object.assign({}, emails[emailIndex], {
-        visibility: document.querySelector('input[name="email-visibility"]:checked').value,
-        title: selectedEmailTemplate,
-        emailTemplate: selectedEmailTemplate,
-        licenseType: document.getElementById('email-license-type').value || '-',
-        recordType: document.getElementById('email-record-type').value || '-',
-        associatedRecord: document.getElementById('email-associated-record').value || '',
-        to: document.getElementById('email-to').value,
-        cc: document.getElementById('email-cc').value,
-        subject: document.getElementById('email-subject').value,
-        notes: document.getElementById('email-notes').value || '',
-        templateFields: {}
-      });
+      emails[emailIndex].visibility = document.querySelector('input[name="email-visibility"]:checked').value;
+      emails[emailIndex].notes = document.getElementById('email-notes').value || '';
 
-      if (selectedEmailTemplate === 'Application Voided') {
-        updated.templateFields = {
-          date: document.getElementById('email-template-date').value,
-          addressLine1: document.getElementById('email-address-line1').value,
-          city: document.getElementById('email-city').value,
-          state: document.getElementById('email-state').value,
-          zip: document.getElementById('email-zip').value,
-          contactName: document.getElementById('email-contact-name').value,
-          credentialName: document.getElementById('email-credential-name').value,
-          supervisedBy: document.getElementById('email-supervised-by').value,
-          userSignature: document.getElementById('email-user-signature').value,
-          userName: document.getElementById('email-user-name').value,
-          userEmail: document.getElementById('email-user-email').value,
-          rejectionDates: document.getElementById('email-rejection-dates').value
-        };
-      }
-
-      emails[emailIndex] = updated;
       localStorage.setItem('emails', JSON.stringify(emails));
-
       window.location.href = 'individual-profile.html';
     });
 
