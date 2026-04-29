@@ -3161,7 +3161,7 @@
 
       resendEmailRow = btn.closest('tr');
       const emailTemplate = resendEmailRow.dataset.title || 'this email';
-      resendEmailConfirmText.textContent = `Are you sure you want to resend "${emailTemplate}" again?`;
+      resendEmailConfirmText.textContent = `Are you sure you want to resend "${emailTemplate}"?`;
       resendEmailModal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
     });
