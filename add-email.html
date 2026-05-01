@@ -497,6 +497,10 @@
       const subjectText = sub(selectedTemplate.subject || '');
       const bodyText    = sub(selectedTemplate.body    || '');
 
+      const headerUrl    = selectedTemplate.headerEnabled    ? selectedTemplate.headerDataUrl    : null;
+      const footerUrl    = selectedTemplate.footerEnabled    ? selectedTemplate.footerDataUrl    : null;
+      const watermarkUrl = selectedTemplate.watermarkEnabled ? selectedTemplate.watermarkDataUrl : null;
+
       emailPreviewContent.innerHTML = '';
       const wrapper = document.createElement('div');
       wrapper.style.cssText = 'max-width: 680px; margin: 0 auto; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #000;';
@@ -515,14 +519,49 @@
         wrapper.appendChild(subBar);
       }
 
+      // Paper (header + watermark + body + footer)
       const paper = document.createElement('div');
-      paper.style.cssText = 'background: #fff; border: 1px solid #c9c9c9; padding: 2rem 2.5rem;';
+      paper.style.cssText = 'position: relative; background: #fff; border: 1px solid #c9c9c9; box-shadow: 0 2px 8px rgba(0,0,0,0.10); overflow: hidden;';
+
+      if (watermarkUrl) {
+        const wImg = document.createElement('img');
+        wImg.src = watermarkUrl;
+        wImg.alt = '';
+        wImg.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); max-width: 65%; max-height: 65%; opacity: 0.12; pointer-events: none; z-index: 0;';
+        paper.appendChild(wImg);
+      }
+
+      if (headerUrl) {
+        const hDiv = document.createElement('div');
+        hDiv.style.cssText = 'border-bottom: 1px solid #d9d9d9; line-height: 0;';
+        const hImg = document.createElement('img');
+        hImg.src = headerUrl;
+        hImg.alt = 'Header';
+        hImg.style.cssText = 'max-width: 100%; display: block;';
+        hDiv.appendChild(hImg);
+        paper.appendChild(hDiv);
+      }
+
+      const bodyWrap = document.createElement('div');
+      bodyWrap.style.cssText = 'padding: 2rem 2.5rem; position: relative; z-index: 1;';
       const bodyEl = document.createElement('div');
       bodyEl.style.cssText = 'white-space: pre-wrap; font-family: Georgia, serif; font-size: 14px; line-height: 1.7;';
       bodyEl.textContent = bodyText || '(no content)';
-      paper.appendChild(bodyEl);
-      wrapper.appendChild(paper);
+      bodyWrap.appendChild(bodyEl);
+      paper.appendChild(bodyWrap);
 
+      if (footerUrl) {
+        const fDiv = document.createElement('div');
+        fDiv.style.cssText = 'border-top: 1px solid #d9d9d9; line-height: 0;';
+        const fImg = document.createElement('img');
+        fImg.src = footerUrl;
+        fImg.alt = 'Footer';
+        fImg.style.cssText = 'max-width: 100%; display: block;';
+        fDiv.appendChild(fImg);
+        paper.appendChild(fDiv);
+      }
+
+      wrapper.appendChild(paper);
       emailPreviewContent.appendChild(wrapper);
       previewEmailModal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
