@@ -192,107 +192,12 @@
               <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
               <select class="usa-select" id="letter-type" name="letter-type" required>
                 <option value="">Please Select</option>
-                <option value="Application Held">Application Held</option>
-                <option value="Compliance Letter">Compliance Letter</option>
-                <option value="Deficiency Notice">Deficiency Notice</option>
-                <option value="Enforcement Communications">Enforcement Communications</option>
-                <option value="Notice of Violation">Notice of Violation</option>
               </select>
             </div>
 
             <!-- Letter Template Fields (dynamic, shown when template is selected) -->
             <div id="letter-template-fields" style="display: none; grid-column: 1 / -1;">
-              <!-- Application Held Template Fields -->
-              <div id="application-held-fields" style="display: none;">
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-date">Date Spelled</label>
-                  <input class="usa-input" id="template-date" name="template-date" type="text" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-contact-name">Contact Name</label>
-                  <input class="usa-input" id="template-contact-name" name="template-contact-name" type="text" value="Sarah Johnson" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-credential-name">Full Credential Name</label>
-                  <input class="usa-input" id="template-credential-name" name="template-credential-name" type="text" value="Private Security License" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-application-type">Application Type <span class="field-required">Required</span></label>
-                  <select class="usa-select" id="template-application-type" name="template-application-type">
-                    <option value="">Please Select</option>
-                    <option value="Application Type 1">Application Type 1</option>
-                    <option value="Application Type 2">Application Type 2</option>
-                    <option value="Application Type 3">Application Type 3</option>
-                    <option value="Application Type 4">Application Type 4</option>
-                    <option value="Application Type 5">Application Type 5</option>
-                  </select>
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-manager-name">Current Manager Name</label>
-                  <input class="usa-input" id="template-manager-name" name="template-manager-name" type="text" value="Jennifer Adams" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div style="margin-bottom: 1.5rem;">
-                  <h3 style="font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">Supervisor Mailing Address</h3>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-address-line1">Address Line 1</label>
-                    <input class="usa-input" id="template-address-line1" name="template-address-line1" type="text" value="One Natural Resources Way" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-address-line2">Address Line 2</label>
-                    <input class="usa-input" id="template-address-line2" name="template-address-line2" type="text" value="Suite 300" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-city">City</label>
-                    <input class="usa-input" id="template-city" name="template-city" type="text" value="Springfield" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-state">State</label>
-                    <input class="usa-input" id="template-state" name="template-state" type="text" value="IL" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-
-                  <div class="usa-form-group" style="margin-bottom: 1rem;">
-                    <label class="usa-label" for="template-zip">Zip Code</label>
-                    <input class="usa-input" id="template-zip" name="template-zip" type="text" value="62702" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                  </div>
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-user-signature">User Signature</label>
-                  <div style="background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 1rem; border-radius: 4px;">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='10' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="User Signature" style="display: block; max-width: 200px;">
-                  </div>
-                  <input type="hidden" id="template-user-signature" name="template-user-signature" value="Michael Rodriguez">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-user-name">User Name</label>
-                  <input class="usa-input" id="template-user-name" name="template-user-name" type="text" value="Michael Rodriguez" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-user-email">User Email</label>
-                  <input class="usa-input" id="template-user-email" name="template-user-email" type="email" value="michael.rodriguez@dnr.illinois.gov" readonly aria-readonly="true" style="background-color: #f0f0f0; color: #71767a;">
-                </div>
-
-                <div class="usa-form-group" style="margin-bottom: 1.5rem;">
-                  <label class="usa-label" for="template-bg-number">BG Number</label>
-                  <input class="usa-input" id="template-bg-number" name="template-bg-number" type="text">
-                </div>
-
-                <div style="margin-top: 1.5rem;">
-                  <button type="button" id="preview-letter-btn" class="usa-button">Preview Letter</button>
-                </div>
-              </div>
-
+              <div id="letter-dynamic-fields"></div>
               <hr style="border: 0; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
             </div>
 
@@ -351,59 +256,152 @@
   </div>
 
   <script>
-    // Letter Template conditional logic
-    const letterTypeSelect = document.getElementById('letter-type');
-    const letterTemplateFields = document.getElementById('letter-template-fields');
-    const applicationHeldFields = document.getElementById('application-held-fields');
-    const templateDateInput = document.getElementById('template-date');
+    // ---- Date helpers ----
+    const _today = new Date();
+    const _day   = _today.getDate();
+    const _month = _today.toLocaleString('en-US', { month: 'long' });
+    const _year  = _today.getFullYear();
 
-    // Set today's date in spelled format (e.g., "21st of April 2026")
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.toLocaleString('en-US', { month: 'long' });
-    const year = today.getFullYear();
-
-    // Add ordinal suffix (st, nd, rd, th)
-    function getOrdinalSuffix(day) {
-      if (day > 3 && day < 21) return 'th';
-      switch (day % 10) {
+    function getOrdinalSuffix(d) {
+      if (d > 3 && d < 21) return 'th';
+      switch (d % 10) {
         case 1: return 'st';
         case 2: return 'nd';
         case 3: return 'rd';
         default: return 'th';
       }
     }
+    const todayFormatted = _day + getOrdinalSuffix(_day) + ' of ' + _month + ' ' + _year;
 
-    const todayFormatted = `${day}${getOrdinalSuffix(day)} of ${month} ${year}`;
-    templateDateInput.value = todayFormatted;
+    // ---- Merge field metadata ----
+    const FIELD_DEFS = {
+      date:            { label: 'Date',                  value: todayFormatted,                             readonly: true  },
+      contact_name:    { label: 'Contact Name',           value: 'Sarah Johnson',                            readonly: true  },
+      credential_name: { label: 'Credential Name',        value: 'Private Security License',                 readonly: true  },
+      application_type:{ label: 'Application Type',       value: 'New License Application',                  readonly: true  },
+      supervised_by:   { label: 'Supervised By',           value: 'James Patterson',                          readonly: true  },
+      address_line1:   { label: 'Address Line 1',          value: '4521 Maple Street',                        readonly: true  },
+      address_line2:   { label: 'Address Line 2',          value: '',                                         readonly: true  },
+      city:            { label: 'City',                   value: 'Chicago',                                  readonly: true  },
+      state:           { label: 'State',                  value: 'IL',                                       readonly: true  },
+      zip:             { label: 'Zip Code',                value: '60601',                                    readonly: true  },
+      user_name:       { label: 'User Name',               value: 'Michael Rodriguez',                        readonly: true  },
+      user_email:      { label: 'User Email',              value: 'michael.rodriguez@dnr.illinois.gov',       readonly: true  },
+      user_signature:  { label: 'User Signature',          value: 'Michael Rodriguez',                        readonly: true  },
+      manager_name:    { label: 'Manager Name',            value: 'Sarah Johnson',                            readonly: true  },
+      rejection_dates: { label: 'Rejection Date(s)',       value: '',                                         readonly: false },
+      mailed_date:     { label: 'Mailed Date',             value: '',                                         readonly: false },
+      agency_name:     { label: 'Agency Name',             value: 'Illinois Department of Natural Resources', readonly: true  },
+      bg_number:       { label: 'BG Number',               value: 'BG-2026-0042',                             readonly: true  },
+      tracking_number: { label: 'Tracking Number',         value: 'TRK-2026-00891',                           readonly: true  },
+      delivery_method: { label: 'Delivery Method',         value: 'Certified Mail',                           readonly: true  }
+    };
+
+    function extractMergeFields(text) {
+      const regex = /\{\{(\w+)\}\}/g;
+      const fields = [];
+      const seen = new Set();
+      let m;
+      while ((m = regex.exec(text)) !== null) {
+        if (!seen.has(m[1]) && m[1] !== 'logo') {
+          seen.add(m[1]);
+          fields.push(m[1]);
+        }
+      }
+      return fields;
+    }
+
+    // ---- Load active letter templates ----
+    const letterTypeSelect = document.getElementById('letter-type');
+    let activeTemplates = [];
+    let selectedTemplate = null;
+
+    function loadTemplates() {
+      const all = JSON.parse(localStorage.getItem('letterTemplates') || '[]');
+      activeTemplates = all
+        .filter(function(t) { return t.status === 'Active'; })
+        .sort(function(a, b) { return a.name.localeCompare(b.name); });
+      while (letterTypeSelect.options.length > 1) letterTypeSelect.remove(1);
+      activeTemplates.forEach(function(t) {
+        const opt = document.createElement('option');
+        opt.value = t.id;
+        opt.textContent = t.name;
+        letterTypeSelect.appendChild(opt);
+      });
+    }
+    loadTemplates();
+
+    // ---- Template select change handler ----
+    const letterTemplateFields = document.getElementById('letter-template-fields');
+    const letterDynamicFields  = document.getElementById('letter-dynamic-fields');
 
     letterTypeSelect.addEventListener('change', function() {
-      const selectedTemplate = this.value;
+      const id = this.value;
+      selectedTemplate = activeTemplates.find(function(t) { return t.id === id; }) || null;
 
-      // Hide all template fields first
+      letterDynamicFields.innerHTML = '';
       letterTemplateFields.style.display = 'none';
-      applicationHeldFields.style.display = 'none';
 
-      // Show appropriate template fields
-      if (selectedTemplate === 'Application Held') {
+      if (!id || !selectedTemplate) return;
+
+      const fields = extractMergeFields(selectedTemplate.body || '');
+      if (fields.length) {
         letterTemplateFields.style.display = 'block';
-        applicationHeldFields.style.display = 'block';
+        fields.forEach(function(fieldKey) {
+          const def = FIELD_DEFS[fieldKey] || {
+            label: fieldKey.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); }),
+            value: '',
+            readonly: false
+          };
+          const div = document.createElement('div');
+          div.className = 'usa-form-group';
+          div.style.marginBottom = '1.5rem';
+
+          const label = document.createElement('label');
+          label.className = 'usa-label';
+          label.setAttribute('for', 'dyn-field-' + fieldKey);
+          label.textContent = def.label;
+
+          const input = document.createElement('input');
+          input.className = 'usa-input';
+          input.id   = 'dyn-field-' + fieldKey;
+          input.name = 'dyn-field-' + fieldKey;
+          input.type  = 'text';
+          input.value = def.value;
+          if (def.readonly) {
+            input.readOnly = true;
+            input.setAttribute('aria-readonly', 'true');
+            input.style.backgroundColor = '#f0f0f0';
+            input.style.color = '#71767a';
+          }
+
+          div.appendChild(label);
+          div.appendChild(input);
+          letterDynamicFields.appendChild(div);
+        });
+
+        const previewWrap = document.createElement('div');
+        previewWrap.style.marginTop = '1.5rem';
+        const previewBtn = document.createElement('button');
+        previewBtn.type = 'button';
+        previewBtn.className = 'usa-button';
+        previewBtn.textContent = 'Preview Letter';
+        previewBtn.addEventListener('click', openLetterPreview);
+        previewWrap.appendChild(previewBtn);
+        letterDynamicFields.appendChild(previewWrap);
       }
     });
 
-    // Record Type conditional logic
-    const recordTypeSelect = document.getElementById('letter-record-type');
-    const associatedRecordGroup = document.getElementById('letter-associated-record-group');
+    // ---- Record Type conditional logic ----
+    const recordTypeSelect      = document.getElementById('letter-record-type');
+    const associatedRecordGroup  = document.getElementById('letter-associated-record-group');
     const associatedRecordSelect = document.getElementById('letter-associated-record');
 
     recordTypeSelect.addEventListener('change', function() {
       if (this.value) {
         associatedRecordGroup.style.visibility = 'visible';
         associatedRecordSelect.required = true;
-
-        // Populate options based on record type (placeholder data)
         associatedRecordSelect.innerHTML = '<option value="">Please Select</option>';
-
         if (this.value === 'License') {
           associatedRecordSelect.innerHTML += '<option value="LIC-2024-001">LIC-2024-001 - Commercial Fishing</option>';
           associatedRecordSelect.innerHTML += '<option value="LIC-2024-002">LIC-2024-002 - Hunting</option>';
@@ -421,196 +419,132 @@
       }
     });
 
-    // Form submission handler
+    // ---- Form submission ----
     document.getElementById('add-letter-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      const now = new Date().toISOString().split('T')[0];
+      const templateId   = letterTypeSelect.value;
+      const templateName = selectedTemplate ? selectedTemplate.name : templateId;
 
-      // Get form values
-      const selectedLetterType = document.getElementById('letter-type').value;
+      const templateFields = {};
+      document.querySelectorAll('[id^="dyn-field-"]').forEach(function(input) {
+        templateFields[input.id.replace('dyn-field-', '')] = input.value;
+      });
+
+      const checkedVis      = document.querySelector('input[name="letter-visibility"]:checked');
+      const checkedDelivery = document.querySelector('input[name="letter-delivery-method"]:checked');
       const formData = {
-        id: 'LETTER-' + Date.now(), // Generate unique ID
-        visibility: document.querySelector('input[name="letter-visibility"]:checked').value,
-        letterType: selectedLetterType,
-        deliveryMethod: document.querySelector('input[name="letter-delivery-method"]:checked').value,
-        generatedDate: new Date().toISOString().split('T')[0], // Today's date
-        mailedDate: '',
-        licenseType: document.getElementById('letter-license-type').value || '-',
-        recordType: document.getElementById('letter-record-type').value || '-',
+        id:               'LETTER-' + Date.now(),
+        visibility:       checkedVis      ? checkedVis.value      : '',
+        letterType:       templateName,
+        templateId:       templateId,
+        deliveryMethod:   checkedDelivery ? checkedDelivery.value : '',
+        generatedDate:    now,
+        mailedDate:       '',
+        licenseType:      document.getElementById('letter-license-type').value || '-',
+        recordType:       document.getElementById('letter-record-type').value  || '-',
         associatedRecord: document.getElementById('letter-associated-record').value || '',
-        trackingNumber: '',
+        trackingNumber:   '',
         deliveryAttempts: 0,
-        status: 'Generated', // Always set to Generated for new letters
-        deliveryNotes: document.getElementById('letter-delivery-notes').value || '',
-        templateFields: {}
+        status:           'Generated',
+        deliveryNotes:    document.getElementById('letter-delivery-notes').value || '',
+        templateFields
       };
 
-      // Add template-specific fields if Application Held is selected
-      if (selectedLetterType === 'Application Held') {
-        formData.templateFields = {
-          date: document.getElementById('template-date').value,
-          contactName: document.getElementById('template-contact-name').value,
-          credentialName: document.getElementById('template-credential-name').value,
-          applicationType: document.getElementById('template-application-type').value,
-          managerName: document.getElementById('template-manager-name').value,
-          addressLine1: document.getElementById('template-address-line1').value,
-          addressLine2: document.getElementById('template-address-line2').value,
-          city: document.getElementById('template-city').value,
-          state: document.getElementById('template-state').value,
-          zip: document.getElementById('template-zip').value,
-          userSignature: document.getElementById('template-user-signature').value,
-          userName: document.getElementById('template-user-name').value,
-          userEmail: document.getElementById('template-user-email').value,
-          bgNumber: document.getElementById('template-bg-number').value
-        };
-      }
-
-      // Get existing letters from localStorage or initialize empty array
       let letters = JSON.parse(localStorage.getItem('letters') || '[]');
-
-      // Add new letter to the beginning of the array
       letters.unshift(formData);
-
-      // Save back to localStorage
       localStorage.setItem('letters', JSON.stringify(letters));
-
-      // Set flag to show notification
       localStorage.setItem('showLetterNotification', 'true');
-
-      // Redirect back to profile page
       window.location.href = 'individual-profile.html';
     });
 
-    // Cancel button handler
+    // ---- Cancel ----
     document.getElementById('cancel-add-letter').addEventListener('click', function() {
       if (confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
         window.location.href = 'individual-profile.html';
       }
     });
 
-    // Preview Letter functionality
-    const previewLetterBtn = document.getElementById('preview-letter-btn');
-    const previewLetterModal = document.getElementById('preview-letter-modal');
-    const closePreviewModalBtn = document.getElementById('close-preview-modal');
-    const closePreviewBtn = document.getElementById('close-preview-btn');
+    // ---- Preview Letter ----
+    const previewLetterModal   = document.getElementById('preview-letter-modal');
     const letterPreviewContent = document.getElementById('letter-preview-content');
 
-    if (previewLetterBtn) {
-      previewLetterBtn.addEventListener('click', function() {
-        // Get all template field values
-        const dateSpelled = document.getElementById('template-date').value;
-        const contactName = document.getElementById('template-contact-name').value;
-        const credentialName = document.getElementById('template-credential-name').value;
-        const applicationType = document.getElementById('template-application-type').value || '[Application Type]';
-        const managerName = document.getElementById('template-manager-name').value;
-        const addressLine1 = document.getElementById('template-address-line1').value;
-        const addressLine2 = document.getElementById('template-address-line2').value;
-        const city = document.getElementById('template-city').value;
-        const state = document.getElementById('template-state').value;
-        const zip = document.getElementById('template-zip').value;
-        const userName = document.getElementById('template-user-name').value;
-        const userEmail = document.getElementById('template-user-email').value;
-        const bgNumber = document.getElementById('template-bg-number').value || '[BG Number]';
+    function openLetterPreview() {
+      if (!selectedTemplate) return;
 
-        // Create letter with background image overlay
-        const letterHTML = `
-          <div style="position: relative; width: 9in; min-height: 11in; background-image: url('assets/ar-state-police-blank.png'); background-size: cover; background-repeat: no-repeat; font-family: 'Times New Roman', serif;">
-            <!-- Date Spelled -->
-            <div style="position: absolute; top: 330px; left: 300px; font-size: 11pt;">
-              ${dateSpelled}
-            </div>
-
-            <!-- Address -->
-            <div style="position: absolute; top: 370px; left: 300px; font-size: 11pt; line-height: 1.4;">
-              ${addressLine1}<br>
-              ${addressLine2 ? addressLine2 + '<br>' : ''}
-              ${city}, ${state} ${zip}
-            </div>
-
-            <!-- Dear Line -->
-            <div style="position: absolute; top: 460px; left: 300px; font-size: 11pt;">
-              Dear ${managerName}:
-            </div>
-
-            <!-- First Paragraph -->
-            <div style="position: absolute; top: 500px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
-              The Arkansas State Police Private Investigators, Private Security, and Alarm Installation/Monitoring Section has received the <strong>${credentialName}</strong> <strong>${applicationType}</strong> application for <strong>${contactName}</strong>.
-            </div>
-
-            <!-- Second Paragraph -->
-            <div style="position: absolute; top: 570px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
-              The application will be placed on hold since <strong>${contactName}</strong>'s current credential is suspended. The <strong>${applicationType}</strong> application will be processed once the suspension has been lifted.
-            </div>
-
-            <!-- Third Paragraph -->
-            <div style="position: absolute; top: 640px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
-              <strong>${contactName}</strong> <strong>cannot be employed</strong> in a position that requires a license, credential, or commission issued by the Arkansas Private Investigators, Private Security, and Alarm Installation/Monitoring Licensing Section during the suspension period.
-            </div>
-
-            <!-- Fourth Paragraph -->
-            <div style="position: absolute; top: 730px; left: 300px; right: 50px; font-size: 11pt; line-height: 1.5; text-align: justify;">
-              If you have any questions related to this matter, you may contact a member of the staff at 501-618-8600. Please refer to the file number at the bottom of the letter.
-            </div>
-
-            <!-- Sincerely -->
-            <div style="position: absolute; top: 800px; left: 300px; font-size: 11pt;">
-              Sincerely,
-            </div>
-
-            <!-- Signature -->
-            <div style="position: absolute; top: 830px; left: 300px;">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Ctext x='0' y='40' font-family='Brush Script MT, cursive' font-size='24' fill='%23333'>Michael Rodriguez%3C/text%3E%3C/svg%3E" alt="Signature" style="display: block; max-width: 200px;">
-            </div>
-
-            <!-- User Name and Contact Info -->
-            <div style="position: absolute; top: 900px; left: 300px; font-size: 10pt; line-height: 1.4;">
-              ${userName}<br>
-              Administrative Coordinator<br>
-              PI & Security Licensing Section<br>
-              1 State Police Plaza Drive<br>
-              Little Rock, AR 72209<br>
-              ${userEmail}<br>
-              (501) 618-8600<br>
-              (501) 618-8125 fax
-            </div>
-
-            <!-- CC Line -->
-            <div style="position: absolute; top: 1040px; left: 300px; font-size: 11pt;">
-              cc: ${bgNumber}
-            </div>
-
-            <!-- CERTIFIED -->
-            <div style="position: absolute; top: 1090px; left: 320px; font-size: 11pt; font-weight: bold;">
-              CERTIFIED
-            </div>
-          </div>
-        `;
-
-        letterPreviewContent.innerHTML = letterHTML;
-        previewLetterModal.removeAttribute('hidden');
-        document.body.style.overflow = 'hidden';
+      const fieldValues = {};
+      document.querySelectorAll('[id^="dyn-field-"]').forEach(function(input) {
+        fieldValues[input.id.replace('dyn-field-', '')] = input.value;
       });
+
+      function sub(text) {
+        return (text || '').replace(/\{\{(\w+)\}\}/g, function(m, k) {
+          return fieldValues[k] !== undefined ? fieldValues[k] : m;
+        });
+      }
+
+      const bodyText    = sub(selectedTemplate.body || '');
+      const headerUrl    = selectedTemplate.headerEnabled    ? selectedTemplate.headerDataUrl    : null;
+      const footerUrl    = selectedTemplate.footerEnabled    ? selectedTemplate.footerDataUrl    : null;
+      const watermarkUrl = selectedTemplate.watermarkEnabled ? selectedTemplate.watermarkDataUrl : null;
+
+      letterPreviewContent.innerHTML = '';
+      const paper = document.createElement('div');
+      paper.style.cssText = 'position: relative; background: #fff; border: 1px solid #c9c9c9; overflow: hidden;';
+
+      if (watermarkUrl) {
+        const wImg = document.createElement('img');
+        wImg.src = watermarkUrl;
+        wImg.alt = '';
+        wImg.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); max-width: 65%; max-height: 65%; opacity: 0.12; pointer-events: none; z-index: 0;';
+        paper.appendChild(wImg);
+      }
+
+      if (headerUrl) {
+        const hDiv = document.createElement('div');
+        hDiv.style.cssText = 'border-bottom: 1px solid #d9d9d9; line-height: 0;';
+        const hImg = document.createElement('img');
+        hImg.src = headerUrl;
+        hImg.alt = 'Header';
+        hImg.style.cssText = 'max-width: 100%; display: block;';
+        hDiv.appendChild(hImg);
+        paper.appendChild(hDiv);
+      }
+
+      const bodyWrap = document.createElement('div');
+      bodyWrap.style.cssText = 'padding: 2rem 2.5rem; position: relative; z-index: 1;';
+      const bodyEl = document.createElement('div');
+      bodyEl.style.cssText = 'white-space: pre-wrap; font-family: Georgia, serif; font-size: 14px; line-height: 1.7;';
+      bodyEl.textContent = bodyText || '(no content)';
+      bodyWrap.appendChild(bodyEl);
+      paper.appendChild(bodyWrap);
+
+      if (footerUrl) {
+        const fDiv = document.createElement('div');
+        fDiv.style.cssText = 'border-top: 1px solid #d9d9d9; line-height: 0;';
+        const fImg = document.createElement('img');
+        fImg.src = footerUrl;
+        fImg.alt = 'Footer';
+        fImg.style.cssText = 'max-width: 100%; display: block;';
+        fDiv.appendChild(fImg);
+        paper.appendChild(fDiv);
+      }
+
+      letterPreviewContent.appendChild(paper);
+      previewLetterModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
     }
 
-    function closePreviewModal() {
+    function closeLetterPreviewModal() {
       previewLetterModal.setAttribute('hidden', '');
       document.body.style.overflow = '';
     }
 
-    if (closePreviewModalBtn) {
-      closePreviewModalBtn.addEventListener('click', closePreviewModal);
-    }
-
-    if (closePreviewBtn) {
-      closePreviewBtn.addEventListener('click', closePreviewModal);
-    }
-
-    if (previewLetterModal) {
-      previewLetterModal.addEventListener('click', function(e) {
-        if (e.target === previewLetterModal) {
-          closePreviewModal();
-        }
-      });
-    }
+    document.getElementById('close-preview-modal').addEventListener('click', closeLetterPreviewModal);
+    document.getElementById('close-preview-btn').addEventListener('click', closeLetterPreviewModal);
+    previewLetterModal.addEventListener('click', function(e) {
+      if (e.target === previewLetterModal) closeLetterPreviewModal();
+    });
   </script>
 </body>
 </html>
