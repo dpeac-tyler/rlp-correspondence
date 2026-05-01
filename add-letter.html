@@ -273,6 +273,9 @@
     }
     const todayFormatted = _day + getOrdinalSuffix(_day) + ' of ' + _month + ' ' + _year;
 
+    // ---- Signature image ----
+    const SIGNATURE_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='64'%3E%3Ctext x='4' y='48' font-family='Brush Script MT%2C cursive' font-size='28' fill='%23222'%3EMichael Rodriguez%3C/text%3E%3C/svg%3E";
+
     // ---- Merge field metadata ----
     const FIELD_DEFS = {
       date:            { label: 'Date',                  value: todayFormatted,                             readonly: true  },
@@ -287,7 +290,7 @@
       zip:             { label: 'Zip Code',                value: '60601',                                    readonly: true  },
       user_name:       { label: 'User Name',               value: 'Michael Rodriguez',                        readonly: true  },
       user_email:      { label: 'User Email',              value: 'michael.rodriguez@dnr.illinois.gov',       readonly: true  },
-      user_signature:  { label: 'User Signature',          value: 'Michael Rodriguez',                        readonly: true  },
+      user_signature:  { label: 'User Signature',          value: 'Michael Rodriguez',                        readonly: true, isSignature: true },
       manager_name:    { label: 'Manager Name',            value: 'Sarah Johnson',                            readonly: true  },
       rejection_dates: { label: 'Rejection Date(s)',       value: '',                                         readonly: false },
       mailed_date:     { label: 'Mailed Date',             value: '',                                         readonly: false },
@@ -376,7 +379,18 @@
           }
 
           div.appendChild(label);
-          div.appendChild(input);
+          if (def.isSignature) {
+            const sigWrap = document.createElement('div');
+            sigWrap.style.cssText = 'background-color: #f0f0f0; border: 1px solid #dfe1e2; padding: 0.8rem 1rem; border-radius: 4px; display: inline-block;';
+            const sigImg = document.createElement('img');
+            sigImg.src = SIGNATURE_SRC;
+            sigImg.alt = 'User Signature';
+            sigImg.style.cssText = 'display: block; max-width: 220px;';
+            sigWrap.appendChild(sigImg);
+            div.appendChild(sigWrap);
+          } else {
+            div.appendChild(input);
+          }
           letterDynamicFields.appendChild(div);
         });
 
@@ -515,7 +529,17 @@
       bodyWrap.style.cssText = 'padding: 2rem 2.5rem; position: relative; z-index: 1;';
       const bodyEl = document.createElement('div');
       bodyEl.style.cssText = 'white-space: pre-wrap; font-family: Georgia, serif; font-size: 14px; line-height: 1.7;';
-      bodyEl.textContent = bodyText || '(no content)';
+      const bodyParts = (bodyText || '(no content)').split('{{user_signature}}');
+      bodyParts.forEach(function(part, i) {
+        bodyEl.appendChild(document.createTextNode(part));
+        if (i < bodyParts.length - 1) {
+          const sigImg = document.createElement('img');
+          sigImg.src = SIGNATURE_SRC;
+          sigImg.alt = 'Signature';
+          sigImg.style.cssText = 'display: block; max-width: 220px; margin: 0.5rem 0;';
+          bodyEl.appendChild(sigImg);
+        }
+      });
       bodyWrap.appendChild(bodyEl);
       paper.appendChild(bodyWrap);
 
