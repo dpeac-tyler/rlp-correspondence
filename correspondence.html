@@ -322,8 +322,17 @@
         </div>
 
         <!-- Document body rendered as a paper-style block -->
-        <div id="preview-body-wrap" style="background: #fff; border: 1px solid #c9c9c9; padding: 3rem 3.5rem; font-size: 1.5rem; line-height: 1.7; white-space: pre-wrap; font-family: 'Georgia', serif; color: #1b1b1b; max-height: 480px; overflow-y: auto; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-          <div id="preview-body-text"></div>
+        <div id="preview-body-wrap" style="position: relative; background: #fff; border: 1px solid #c9c9c9; box-shadow: 0 2px 6px rgba(0,0,0,0.08); max-height: 480px; overflow-y: auto; overflow-x: hidden;">
+          <img id="preview-watermark-img" src="" alt="" style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-width:65%; max-height:65%; opacity:0.12; pointer-events:none; z-index:0;">
+          <div id="preview-header" style="display:none; border-bottom: 1px solid #d9d9d9; line-height:0;">
+            <img id="preview-header-img" src="" alt="Header" style="max-width:100%; display:block;">
+          </div>
+          <div style="padding: 3rem 3.5rem; position: relative; z-index: 1;">
+            <div id="preview-body-text" style="font-size: 1.5rem; line-height: 1.7; white-space: pre-wrap; font-family: 'Georgia', serif; color: #1b1b1b;"></div>
+          </div>
+          <div id="preview-footer" style="display:none; border-top: 1px solid #d9d9d9; line-height:0;">
+            <img id="preview-footer-img" src="" alt="Footer" style="max-width:100%; display:block;">
+          </div>
         </div>
 
       </div>
@@ -684,6 +693,22 @@
       }
 
       document.getElementById('preview-body-text').textContent = t.body;
+
+      const headerUrl    = t.headerEnabled    ? t.headerDataUrl    : null;
+      const footerUrl    = t.footerEnabled    ? t.footerDataUrl    : null;
+      const watermarkUrl = t.watermarkEnabled ? t.watermarkDataUrl : null;
+
+      const hEl = document.getElementById('preview-header');
+      hEl.style.display = headerUrl ? 'block' : 'none';
+      if (headerUrl) document.getElementById('preview-header-img').src = headerUrl;
+
+      const fEl = document.getElementById('preview-footer');
+      fEl.style.display = footerUrl ? 'block' : 'none';
+      if (footerUrl) document.getElementById('preview-footer-img').src = footerUrl;
+
+      const wImg = document.getElementById('preview-watermark-img');
+      wImg.style.display = watermarkUrl ? 'block' : 'none';
+      if (watermarkUrl) wImg.src = watermarkUrl;
 
       document.getElementById('preview-modal').removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
