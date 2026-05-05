@@ -71,6 +71,8 @@
       transition: background-color 0.12s, color 0.12s;
     }
 
+    .merge-field--hidden { display: none !important; }
+
     .version-preview-body {
       background-color: #f0f0f0;
       padding: 1.5rem;
@@ -308,13 +310,15 @@
               </div>
             </div>
 
-            <!-- Record Type -->
+            <!-- Template Applies To -->
             <div class="usa-form-group">
-              <label class="usa-label" for="template-record-type">Record Type</label>
-              <select class="usa-select" id="template-record-type" name="template-record-type">
-                <option value="All">All</option>
+              <label class="usa-label" for="template-context">Template Applies To <span class="field-required">Required</span></label>
+              <select class="usa-select" id="template-context" name="template-context">
+                <option value="">— Select context —</option>
+                <option value="Account">Account</option>
+                <option value="Application">Application (submission)</option>
                 <option value="License">License</option>
-                <option value="Application">Application</option>
+                <option value="Asset">Asset</option>
                 <option value="Case">Case</option>
               </select>
             </div>
@@ -360,52 +364,59 @@
           <div class="merge-fields-panel" aria-label="Available merge fields — click to insert into body">
             <p class="merge-fields-panel__heading">Available Merge Fields — Click to Insert</p>
 
-            <div class="merge-fields-group">
+            <!-- Context prompt banner -->
+            <div id="merge-fields-prompt" class="usa-alert usa-alert--info usa-alert--slim" style="margin-bottom:1rem;">
+              <div class="usa-alert__body">
+                <p class="usa-alert__text">Select a <strong>Template Applies To</strong> context to see relevant merge fields.</p>
+              </div>
+            </div>
+
+            <div class="merge-fields-group" data-mf-group="applicant">
               <span class="merge-fields-group__label" id="mf-applicant-label">Applicant</span>
               <div class="merge-fields-list" role="group" aria-labelledby="mf-applicant-label">
-                <button type="button" class="merge-field-chip" onclick="insertField('contact_name')" aria-label="Insert contact name field">contact_name</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('credential_name')" aria-label="Insert credential name field">credential_name</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('application_type')" aria-label="Insert application type field">application_type</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('supervised_by')" aria-label="Insert supervised by field">supervised_by</button>
+                <button type="button" class="merge-field-chip" data-field="contact_name" onclick="insertField('contact_name')" aria-label="Insert contact name field">contact_name</button>
+                <button type="button" class="merge-field-chip" data-field="credential_name" onclick="insertField('credential_name')" aria-label="Insert credential name field">credential_name</button>
+                <button type="button" class="merge-field-chip" data-field="application_type" onclick="insertField('application_type')" aria-label="Insert application type field">application_type</button>
+                <button type="button" class="merge-field-chip" data-field="supervised_by" onclick="insertField('supervised_by')" aria-label="Insert supervised by field">supervised_by</button>
               </div>
             </div>
 
-            <div class="merge-fields-group">
+            <div class="merge-fields-group" data-mf-group="address">
               <span class="merge-fields-group__label" id="mf-address-label">Mailing Address</span>
               <div class="merge-fields-list" role="group" aria-labelledby="mf-address-label">
-                <button type="button" class="merge-field-chip" onclick="insertField('address_line1')" aria-label="Insert address line 1">address_line1</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('address_line2')" aria-label="Insert address line 2">address_line2</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('city')" aria-label="Insert city">city</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('state')" aria-label="Insert state">state</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('zip')" aria-label="Insert zip code">zip</button>
+                <button type="button" class="merge-field-chip" data-field="address_line1" onclick="insertField('address_line1')" aria-label="Insert address line 1">address_line1</button>
+                <button type="button" class="merge-field-chip" data-field="address_line2" onclick="insertField('address_line2')" aria-label="Insert address line 2">address_line2</button>
+                <button type="button" class="merge-field-chip" data-field="city" onclick="insertField('city')" aria-label="Insert city">city</button>
+                <button type="button" class="merge-field-chip" data-field="state" onclick="insertField('state')" aria-label="Insert state">state</button>
+                <button type="button" class="merge-field-chip" data-field="zip" onclick="insertField('zip')" aria-label="Insert zip code">zip</button>
               </div>
             </div>
 
-            <div class="merge-fields-group">
+            <div class="merge-fields-group" data-mf-group="staff">
               <span class="merge-fields-group__label" id="mf-staff-label">Staff / Sender</span>
               <div class="merge-fields-list" role="group" aria-labelledby="mf-staff-label">
-                <button type="button" class="merge-field-chip" onclick="insertField('user_name')" aria-label="Insert user name">user_name</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('user_email')" aria-label="Insert user email">user_email</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('user_signature')" aria-label="Insert user signature">user_signature</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('manager_name')" aria-label="Insert manager name">manager_name</button>
+                <button type="button" class="merge-field-chip" data-field="user_name" onclick="insertField('user_name')" aria-label="Insert user name">user_name</button>
+                <button type="button" class="merge-field-chip" data-field="user_email" onclick="insertField('user_email')" aria-label="Insert user email">user_email</button>
+                <button type="button" class="merge-field-chip" data-field="user_signature" onclick="insertField('user_signature')" aria-label="Insert user signature">user_signature</button>
+                <button type="button" class="merge-field-chip" data-field="manager_name" onclick="insertField('manager_name')" aria-label="Insert manager name">manager_name</button>
               </div>
             </div>
 
-            <div class="merge-fields-group">
+            <div class="merge-fields-group" data-mf-group="dates">
               <span class="merge-fields-group__label" id="mf-dates-label">Dates</span>
               <div class="merge-fields-list" role="group" aria-labelledby="mf-dates-label">
-                <button type="button" class="merge-field-chip" onclick="insertField('date')" aria-label="Insert date">date</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('rejection_dates')" aria-label="Insert rejection dates">rejection_dates</button>
+                <button type="button" class="merge-field-chip" data-field="date" onclick="insertField('date')" aria-label="Insert date">date</button>
+                <button type="button" class="merge-field-chip" data-field="rejection_dates" onclick="insertField('rejection_dates')" aria-label="Insert rejection dates">rejection_dates</button>
               </div>
             </div>
 
             <br>
-            <div class="merge-fields-group" style="margin-bottom:0;">
+            <div class="merge-fields-group" style="margin-bottom:0;" data-mf-group="custom">
               <span class="merge-fields-group__label" id="mf-other-label">Custom Merge Fields</span>
               <div class="merge-fields-list" role="group" aria-labelledby="mf-other-label">
-                <button type="button" class="custom-merge-field-chip" onclick="insertField('agency_name')" aria-label="Insert agency name">agency_name</button>
-                <button type="button" class="custom-merge-field-chip" onclick="insertField('bg_number')" aria-label="Insert BG number">bg_number</button>
-                <button type="button" class="custom-merge-field-chip" onclick="insertField('tracking_number')" aria-label="Insert tracking number">tracking_number</button>
+                <button type="button" class="custom-merge-field-chip" data-field="agency_name" onclick="insertField('agency_name')" aria-label="Insert agency name">agency_name</button>
+                <button type="button" class="custom-merge-field-chip" data-field="bg_number" onclick="insertField('bg_number')" aria-label="Insert BG number">bg_number</button>
+                <button type="button" class="custom-merge-field-chip" data-field="tracking_number" onclick="insertField('tracking_number')" aria-label="Insert tracking number">tracking_number</button>
               </div>
             </div>
           </div>
@@ -686,7 +697,8 @@
 
         document.getElementById('template-status').value = currentTemplate.status;
         document.getElementById('template-name').value = currentTemplate.name;
-        document.getElementById('template-record-type').value = currentTemplate.recordType;
+        document.getElementById('template-context').value = currentTemplate.appliesTo || '';
+        applyContextFilter(currentTemplate.appliesTo || '');
         document.getElementById('template-subject').value = currentTemplate.subject || '';
         document.getElementById('template-body').value = currentTemplate.body || '';
 
@@ -813,7 +825,7 @@
       const status = statusOverride || document.getElementById('template-status').value;
       const name = document.getElementById('template-name').value.trim();
       const description = document.getElementById('template-description').value.trim();
-      const recordType = document.getElementById('template-record-type').value;
+      const appliesTo = document.getElementById('template-context').value;
       const subject = document.getElementById('template-subject').value.trim();
       const body = document.getElementById('template-body').value;
       const now = new Date().toISOString().split('T')[0];
@@ -846,7 +858,7 @@
           };
           templates[idx] = {
             ...templates[idx],
-            name, description, recordType, status, subject, body,
+            name, description, appliesTo, status, subject, body,
             ...attachments,
             version: newVer,
             lastModifiedDate: now,
@@ -858,7 +870,7 @@
       } else {
         const newTemplate = {
           id: 'TMPL-EMAIL-' + Date.now(),
-          name, description, licenseType, recordType, status, subject, body,
+          name, description, appliesTo, status, subject, body,
           ...attachments,
           version: 1,
           createdDate: now, createdBy: author,
@@ -875,6 +887,52 @@
 
     document.getElementById('save-draft-btn').addEventListener('click', function () { saveTemplate('Draft'); });
     document.getElementById('publish-btn').addEventListener('click', function () { saveTemplate('Active'); });
+
+    // ---- Merge field context filtering ----
+    const FIELD_CONTEXTS = {
+      user_name:       null,
+      user_email:      null,
+      user_signature:  null,
+      manager_name:    null,
+      date:            null,
+      agency_name:     null,
+      contact_name:    ['Account', 'Application', 'License', 'Asset', 'Case'],
+      credential_name: ['Application', 'License'],
+      application_type:['Application'],
+      supervised_by:   ['Application', 'License'],
+      address_line1:   ['Account', 'Application', 'License', 'Asset', 'Case'],
+      address_line2:   ['Account', 'Application', 'License', 'Asset', 'Case'],
+      city:            ['Account', 'Application', 'License', 'Asset', 'Case'],
+      state:           ['Account', 'Application', 'License', 'Asset', 'Case'],
+      zip:             ['Account', 'Application', 'License', 'Asset', 'Case'],
+      rejection_dates: ['Application', 'Case'],
+      bg_number:       ['Application', 'Asset', 'Case'],
+      tracking_number: ['Account', 'Application', 'License', 'Asset', 'Case']
+    };
+
+    function applyContextFilter(context) {
+      const noContext = !context;
+      document.getElementById('merge-fields-prompt').style.display = noContext ? 'block' : 'none';
+      document.getElementById('publish-btn').disabled = noContext;
+
+      document.querySelectorAll('[data-field]').forEach(function (chip) {
+        const field = chip.getAttribute('data-field');
+        const allowed = FIELD_CONTEXTS[field];
+        const visible = !noContext && (allowed === null || allowed.includes(context));
+        chip.classList.toggle('merge-field--hidden', !visible);
+      });
+
+      document.querySelectorAll('[data-mf-group]').forEach(function (group) {
+        const chips = group.querySelectorAll('[data-field]:not(.merge-field--hidden)');
+        group.style.display = chips.length ? '' : 'none';
+      });
+    }
+
+    document.getElementById('template-context').addEventListener('change', function () {
+      applyContextFilter(this.value);
+    });
+
+    applyContextFilter(document.getElementById('template-context').value);
 
     // ---- Sample data for preview rendering ----
     const SAMPLE_DATA = {

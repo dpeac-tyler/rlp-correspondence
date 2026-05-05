@@ -179,7 +179,7 @@
             <thead>
               <tr>
                 <th scope="col" role="columnheader" aria-sort="none">Template Name <span class="sort-arrows"></span></th>
-                <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Applies To <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Version <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Last Modified <span class="sort-arrows"></span></th>
@@ -280,7 +280,7 @@
             <thead>
               <tr>
                 <th scope="col" role="columnheader" aria-sort="none">Template Name <span class="sort-arrows"></span></th>
-                <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
+                <th scope="col" role="columnheader" aria-sort="none">Applies To <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Delivery <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Version <span class="sort-arrows"></span></th>
@@ -402,14 +402,14 @@
   </div>
 
   <script>
-    // ---- Seed Data (v3 — 4-status system) ----
+    // ---- Seed Data (v4 — Template Applies To) ----
     function seedTemplates() {
-      if (localStorage.getItem('correspondenceSeeded_v3')) return;
+      if (localStorage.getItem('correspondenceSeeded_v4')) return;
 
       const emailTemplates = [
         {
           id: 'TMPL-EMAIL-001', name: 'Application Voided',
-          licenseType: 'All License Types', recordType: 'Application',
+          appliesTo: 'Application',
           status: 'Active', hasUsage: true,
           subject: 'Your {{credential_name}} Application Has Been Voided',
           body: 'Dear {{contact_name}},\n\nPlease be advised that your application for {{credential_name}} has been voided based upon your failure to provide a complete application.\n\nOur office submitted a request to you for additional information on {{rejection_dates}}. As of this date, no information has been received.\n\nShould you have any questions, please contact this department at {{user_email}}.\n\nSincerely,\n{{user_name}}',
@@ -422,7 +422,7 @@
         },
         {
           id: 'TMPL-EMAIL-002', name: 'License Approval',
-          licenseType: 'All License Types', recordType: 'License',
+          appliesTo: 'License',
           status: 'Active', hasUsage: true,
           subject: 'Your {{credential_name}} License Has Been Approved',
           body: 'Dear {{contact_name}},\n\nWe are pleased to inform you that your application for {{credential_name}} has been approved.\n\nSincerely,\n{{user_name}}\n{{user_email}}',
@@ -434,7 +434,7 @@
         },
         {
           id: 'TMPL-EMAIL-003', name: 'Deficiency Notice',
-          licenseType: 'Commercial Fishing', recordType: 'Application',
+          appliesTo: 'Application',
           status: 'Active', hasUsage: true,
           subject: 'Deficiency Notice - {{credential_name}} Application',
           body: 'Dear {{contact_name}},\n\nThis notice is to advise you that your application for {{credential_name}} requires additional information before it can be processed.\n\nPlease respond within 30 days.\n\nSincerely,\n{{user_name}}',
@@ -448,7 +448,7 @@
         },
         {
           id: 'TMPL-EMAIL-004', name: 'Renewal Reminder',
-          licenseType: 'Hunting', recordType: 'License',
+          appliesTo: 'License',
           status: 'Draft', hasUsage: false,
           subject: 'Your {{credential_name}} License Expires Soon',
           body: 'Dear {{contact_name}},\n\nThis is a reminder that your {{credential_name}} license will expire soon.\n\nSincerely,\n{{user_name}}',
@@ -460,7 +460,7 @@
         },
         {
           id: 'TMPL-EMAIL-005', name: 'Payment Confirmation',
-          licenseType: 'All License Types', recordType: 'License',
+          appliesTo: 'License',
           status: 'Archived', hasUsage: true,
           subject: 'Payment Received for {{credential_name}}',
           body: 'Dear {{contact_name}},\n\nThis email confirms your payment for {{credential_name}} has been received.\n\nSincerely,\n{{user_name}}',
@@ -473,7 +473,7 @@
         },
         {
           id: 'TMPL-EMAIL-006', name: 'Out-of-Season Notice',
-          licenseType: 'Hunting', recordType: 'Application',
+          appliesTo: 'Application',
           status: 'Inactive', hasUsage: false,
           subject: 'Out-of-Season Application Notice - {{credential_name}}',
           body: 'Dear {{contact_name}},\n\nThis notice is to advise you that applications for {{credential_name}} are not being accepted at this time. The application window opens on the first business day of each season.\n\nSincerely,\n{{user_name}}',
@@ -488,7 +488,7 @@
       const letterTemplates = [
         {
           id: 'TMPL-LETTER-001', name: 'Application Held',
-          licenseType: 'Commercial Fishing', recordType: 'Application',
+          appliesTo: 'Application',
           deliveryMethod: 'Certified', status: 'Active', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{address_line2}}\n{{city}}, {{state}} {{zip}}\n\nDear {{manager_name}}:\n\nThe Arkansas State Police has received the {{credential_name}} application for {{contact_name}}.\n\nSincerely,\n{{user_name}}\n{{user_email}}',
           version: 2, createdDate: '2025-01-10', createdBy: 'Michael Rodriguez',
@@ -500,7 +500,7 @@
         },
         {
           id: 'TMPL-LETTER-002', name: 'Compliance Letter',
-          licenseType: 'All License Types', recordType: 'Case',
+          appliesTo: 'Case',
           deliveryMethod: 'Certified', status: 'Active', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter is to notify you of a compliance requirement.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-02-01', createdBy: 'Jennifer Adams',
@@ -511,7 +511,7 @@
         },
         {
           id: 'TMPL-LETTER-003', name: 'Deficiency Notice',
-          licenseType: 'Hunting', recordType: 'Application',
+          appliesTo: 'Application',
           deliveryMethod: 'Standard', status: 'Active', hasUsage: false,
           body: '{{date}}\n\nDear {{contact_name}}:\n\nYour application for {{credential_name}} is deficient. Please provide the missing information within 30 days.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-01-20', createdBy: 'Michael Rodriguez',
@@ -522,7 +522,7 @@
         },
         {
           id: 'TMPL-LETTER-004', name: 'Notice of Violation',
-          licenseType: 'All License Types', recordType: 'Case',
+          appliesTo: 'Case',
           deliveryMethod: 'Certified', status: 'Draft', hasUsage: false,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter serves as formal notification that you are in violation of applicable regulations.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-04-20', createdBy: 'Michael Rodriguez',
@@ -533,7 +533,7 @@
         },
         {
           id: 'TMPL-LETTER-005', name: 'Enforcement Communications',
-          licenseType: 'All License Types', recordType: 'Case',
+          appliesTo: 'Case',
           deliveryMethod: 'Certified', status: 'Inactive', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter is in regard to your enforcement case.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-03-15', createdBy: 'Jennifer Adams',
@@ -544,7 +544,7 @@
         },
         {
           id: 'TMPL-LETTER-006', name: 'Legacy Fee Notice',
-          licenseType: 'All License Types', recordType: 'License',
+          appliesTo: 'License',
           deliveryMethod: 'Standard', status: 'Archived', hasUsage: true,
           body: '{{date}}\n\nDear {{contact_name}}:\n\nPlease find enclosed the current fee schedule for {{credential_name}}.\n\nSincerely,\n{{user_name}}',
           version: 3, createdDate: '2023-08-01', createdBy: 'Jennifer Adams',
@@ -559,7 +559,7 @@
 
       localStorage.setItem('emailTemplates', JSON.stringify(emailTemplates));
       localStorage.setItem('letterTemplates', JSON.stringify(letterTemplates));
-      localStorage.setItem('correspondenceSeeded_v3', 'true');
+      localStorage.setItem('correspondenceSeeded_v4', 'true');
     }
 
     // ---- Helpers ----
@@ -650,7 +650,7 @@
       tbody.innerHTML = templates.map(t => `
         <tr>
           <td><a href="correspondence-email-template.html?id=${t.id}" class="usa-link">${t.name}</a></td>
-          <td>${t.recordType || ''}</td>
+          <td>${t.appliesTo || ''}</td>
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>
           <td>v${t.version}</td>
           <td>${formatDate(t.lastModifiedDate)}</td>
@@ -677,7 +677,7 @@
       tbody.innerHTML = templates.map(t => `
         <tr>
           <td><a href="correspondence-letter-template.html?id=${t.id}" class="usa-link">${t.name}</a></td>
-          <td>${t.recordType || ''}</td>
+          <td>${t.appliesTo || ''}</td>
           <td>${t.deliveryMethod || ''}</td>
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>
           <td>v${t.version}</td>
