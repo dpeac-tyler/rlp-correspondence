@@ -489,7 +489,7 @@
         {
           id: 'TMPL-LETTER-001', name: 'Application Held',
           appliesTo: 'Application',
-          deliveryMethod: 'Certified', status: 'Active', hasUsage: true,
+          deliveryMethods: ['Standard', 'Certified'], status: 'Active', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{address_line2}}\n{{city}}, {{state}} {{zip}}\n\nDear {{manager_name}}:\n\nThe Arkansas State Police has received the {{credential_name}} application for {{contact_name}}.\n\nSincerely,\n{{user_name}}\n{{user_email}}',
           version: 2, createdDate: '2025-01-10', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-04-10', lastModifiedBy: 'Michael Rodriguez',
@@ -501,7 +501,7 @@
         {
           id: 'TMPL-LETTER-002', name: 'Compliance Letter',
           appliesTo: 'Case',
-          deliveryMethod: 'Certified', status: 'Active', hasUsage: true,
+          deliveryMethods: ['Certified'], status: 'Active', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter is to notify you of a compliance requirement.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-02-01', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2025-02-01', lastModifiedBy: 'Jennifer Adams',
@@ -512,7 +512,7 @@
         {
           id: 'TMPL-LETTER-003', name: 'Deficiency Notice',
           appliesTo: 'Application',
-          deliveryMethod: 'Standard', status: 'Active', hasUsage: false,
+          deliveryMethods: ['Standard'], status: 'Active', hasUsage: false,
           body: '{{date}}\n\nDear {{contact_name}}:\n\nYour application for {{credential_name}} is deficient. Please provide the missing information within 30 days.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-01-20', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-01-20', lastModifiedBy: 'Michael Rodriguez',
@@ -523,7 +523,7 @@
         {
           id: 'TMPL-LETTER-004', name: 'Notice of Violation',
           appliesTo: 'Case',
-          deliveryMethod: 'Certified', status: 'Draft', hasUsage: false,
+          deliveryMethods: ['Certified'], status: 'Draft', hasUsage: false,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter serves as formal notification that you are in violation of applicable regulations.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-04-20', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-04-20', lastModifiedBy: 'Michael Rodriguez',
@@ -534,7 +534,7 @@
         {
           id: 'TMPL-LETTER-005', name: 'Enforcement Communications',
           appliesTo: 'Case',
-          deliveryMethod: 'Certified', status: 'Inactive', hasUsage: true,
+          deliveryMethods: ['Certified'], status: 'Inactive', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter is in regard to your enforcement case.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-03-15', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2025-03-15', lastModifiedBy: 'Jennifer Adams',
@@ -545,7 +545,7 @@
         {
           id: 'TMPL-LETTER-006', name: 'Legacy Fee Notice',
           appliesTo: 'License',
-          deliveryMethod: 'Standard', status: 'Archived', hasUsage: true,
+          deliveryMethods: ['Standard'], status: 'Archived', hasUsage: true,
           body: '{{date}}\n\nDear {{contact_name}}:\n\nPlease find enclosed the current fee schedule for {{credential_name}}.\n\nSincerely,\n{{user_name}}',
           version: 3, createdDate: '2023-08-01', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2024-03-10', lastModifiedBy: 'Jennifer Adams',
@@ -678,7 +678,7 @@
         <tr>
           <td><a href="correspondence-letter-template.html?id=${t.id}" class="usa-link">${t.name}</a></td>
           <td>${t.appliesTo || ''}</td>
-          <td>${t.deliveryMethod || ''}</td>
+          <td>${(t.deliveryMethods || (t.deliveryMethod ? [t.deliveryMethod] : [])).join(', ')}</td>
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>
           <td>v${t.version}</td>
           <td>${formatDate(t.lastModifiedDate)}</td>

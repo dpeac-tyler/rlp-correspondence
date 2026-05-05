@@ -308,8 +308,8 @@
               </div>
             </div>
 
-            <!-- Template Applies To -->
-            <div class="usa-form-group">
+            <!-- Template Applies To (full width) -->
+            <div class="usa-form-group form-field-full">
               <label class="usa-label" for="template-context">Template Applies To <span class="field-required">Required</span></label>
               <select class="usa-select" id="template-context" name="template-context">
                 <option value="">Please Select</option>
@@ -321,17 +321,19 @@
               </select>
             </div>
 
-            <!-- Delivery Method (full width fieldset) -->
-            <fieldset class="usa-fieldset form-field-full">
+            <!-- Allowed Delivery Methods (full width fieldset) -->
+            <fieldset class="usa-fieldset form-field-full" id="delivery-method-fieldset">
               <legend class="usa-legend">Allowed Delivery Method <span class="field-required">Required</span></legend>
-              <div class="usa-radio" style="display:inline-block; margin-right:3rem;">
-                <input class="usa-radio__input" id="delivery-standard" type="radio" name="template-delivery" value="Standard" checked>
-                <label class="usa-radio__label" for="delivery-standard">Standard</label>
+              <div class="usa-hint" style="margin-bottom:0.5rem;">Select which delivery options are available when using this template.</div>
+              <div class="usa-checkbox" style="display:inline-block; margin-right:3rem;">
+                <input class="usa-checkbox__input" id="delivery-standard" type="checkbox" name="template-delivery" value="Standard">
+                <label class="usa-checkbox__label" for="delivery-standard">Standard Delivery</label>
               </div>
-              <div class="usa-radio" style="display:inline-block;">
-                <input class="usa-radio__input" id="delivery-certified" type="radio" name="template-delivery" value="Certified">
-                <label class="usa-radio__label" for="delivery-certified">Certified</label>
+              <div class="usa-checkbox" style="display:inline-block;">
+                <input class="usa-checkbox__input" id="delivery-certified" type="checkbox" name="template-delivery" value="Certified">
+                <label class="usa-checkbox__label" for="delivery-certified">Certified Mail</label>
               </div>
+              <div id="delivery-method-error" class="usa-error-message" style="display:none;" role="alert">At least one delivery method must be selected.</div>
             </fieldset>
 
             <!-- Body (full width) -->
@@ -714,8 +716,10 @@
           }
         });
 
-        const deliveryRadio = document.querySelector('input[name="template-delivery"][value="' + (currentTemplate.deliveryMethod || 'Standard') + '"]');
-        if (deliveryRadio) deliveryRadio.checked = true;
+        const deliveryMethods = currentTemplate.deliveryMethods || (currentTemplate.deliveryMethod ? [currentTemplate.deliveryMethod] : []);
+        document.querySelectorAll('input[name="template-delivery"]').forEach(function (cb) {
+          cb.checked = deliveryMethods.includes(cb.value);
+        });
 
         document.getElementById('version-notes-section').style.display = 'block';
         document.getElementById('version-history-block').style.display = 'block';
@@ -784,13 +788,16 @@
     function validate() {
       const name = document.getElementById('template-name').value.trim();
       const body = document.getElementById('template-body').value.trim();
+      const deliveryChecked = document.querySelectorAll('input[name="template-delivery"]:checked').length > 0;
       const errors = [];
 
       document.getElementById('template-name').classList.toggle('usa-input--error', !name);
       document.getElementById('template-body').classList.toggle('usa-input--error', !body);
+      document.getElementById('delivery-method-error').style.display = deliveryChecked ? 'none' : 'block';
 
       if (!name) errors.push('Template Name is required.');
       if (!body) errors.push('Body is required.');
+      if (!deliveryChecked) errors.push('At least one delivery method must be selected.');
 
       const errBlock = document.getElementById('validation-error');
       if (errors.length) {
@@ -810,7 +817,7 @@
       const name = document.getElementById('template-name').value.trim();
       const description = document.getElementById('template-description').value.trim();
       const appliesTo = document.getElementById('template-context').value;
-      const deliveryMethod = document.querySelector('input[name="template-delivery"]:checked').value;
+      const deliveryMethods = Array.from(document.querySelectorAll('input[name="template-delivery"]:checked')).map(el => el.value);
       const body = document.getElementById('template-body').value;
       const now = new Date().toISOString().split('T')[0];
       const nowISO = new Date().toISOString();
@@ -841,7 +848,7 @@
           };
           templates[idx] = {
             ...templates[idx],
-            name, description, appliesTo, deliveryMethod, status, body,
+            name, description, appliesTo, deliveryMethods, status, body,
             ...attachments,
             version: newVer,
             lastModifiedDate: now,
@@ -853,7 +860,7 @@
       } else {
         const newTemplate = {
           id: 'TMPL-LETTER-' + Date.now(),
-          name, description, appliesTo, deliveryMethod, status, body,
+          name, description, appliesTo, deliveryMethods, status, body,
           ...attachments,
           version: 1,
           createdDate: now, createdBy: author,
