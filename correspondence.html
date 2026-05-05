@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Correspondence - RLP Settings</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .status-inactive {
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 2rem;
+      background-color: #fef0e0;
+      color: #9c3d10;
+    }
+  </style>
 </head>
 <body>
   <div class="app-container">
@@ -26,9 +37,7 @@
           <div class="grid-row">
             <div class="tablet:grid-col-6 logo-flex">
               <a class="agency-logo-link" href="index.html">
-                <img src="assets/il-logo.png"
-                     alt="Illinois Department of Natural Resources agency logo"
-                     class="agency-logo">
+                <img src="assets/il-logo.png" alt="Illinois Department of Natural Resources agency logo" class="agency-logo">
               </a>
               <a class="agency-name-link" href="index.html">
                 <div class="agency-name">Illinois Department of Natural Resources</div>
@@ -44,15 +53,15 @@
                   </div>
                   <div class="tablet:grid-col-auto nav__item">
                     <a class="usa-link" href="search.html">
-                      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-magnifying-glass fa-xl margin-right-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
-                        <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                      <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                        <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
                       </svg>Search
                     </a>
                   </div>
                   <div class="tablet:grid-col nav__item">
                     <a class="usa-link" href="#" target="_blank">
-                      <svg aria-hidden="true" focusable="false" class="svg-inline--fa fa-life-ring fa-xl margin-right-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
-                        <path fill="currentColor" d="M367.2 412.5C335.9 434.9 297.5 448 256 448s-79.9-13.1-111.2-35.5l58-58c15.8 8.6 34 13.5 53.3 13.5s37.4-4.9 53.3-13.5l58 58zm90.7 .8c33.8-43.4 54-98 54-157.3s-20.2-113.9-54-157.3c9-12.5 7.9-30.1-3.4-41.3S425.8 45 413.3 54C369.9 20.2 315.3 0 256 0S142.1 20.2 98.7 54c-12.5-9-30.1-7.9-41.3 3.4S45 86.2 54 98.7C20.2 142.1 0 196.7 0 256s20.2 113.9 54 157.3c-9 12.5-7.9 30.1 3.4 41.3S86.2 467 98.7 458c43.4 33.8 98 54 157.3 54s113.9-20.2 157.3-54c12.5 9 30.1 7.9 41.3-3.4s12.4-28.8 3.4-41.3zm-45.5-46.1l-58-58c8.6-15.8 13.5-34 13.5-53.3s-4.9-37.4-13.5-53.3l58-58C434.9 176.1 448 214.5 448 256s-13.1 79.9-35.5 111.2zM367.2 99.5l-58 58c-15.8-8.6-34-13.5-53.3-13.5s-37.4 4.9-53.3 13.5l-58-58C176.1 77.1 214.5 64 256 64s79.9 13.1 111.2 35.5zM157.5 309.3l-58 58C77.1 335.9 64 297.5 64 256s13.1-79.9 35.5-111.2l58 58c-8.6 15.8-13.5 34-13.5 53.3s4.9 37.4 13.5 53.3zM208 256a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"></path>
+                      <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                        <path fill="currentColor" d="M367.2 412.5C335.9 434.9 297.5 448 256 448s-79.9-13.1-111.2-35.5l58-58c15.8 8.6 34 13.5 53.3 13.5s37.4-4.9 53.3-13.5l58 58zm90.7 .8c33.8-43.4 54-98 54-157.3s-20.2-113.9-54-157.3c9-12.5 7.9-30.1-3.4-41.3S425.8 45 413.3 54C369.9 20.2 315.3 0 256 0S142.1 20.2 98.7 54c-12.5-9-30.1-7.9-41.3 3.4S45 86.2 54 98.7C20.2 142.1 0 196.7 0 256s20.2 113.9 54 157.3c-9 12.5-7.9 30.1 3.4 41.3S86.2 467 98.7 458c43.4 33.8 98 54 157.3 54s113.9-20.2 157.3-54c12.5 9 30.1 7.9 41.3-3.4s12.4-28.8 3.4-41.3zm-45.5-46.1l-58-58c8.6-15.8 13.5-34 13.5-53.3s-4.9-37.4-13.5-53.3l58-58C434.9 176.1 448 214.5 448 256s-13.1 79.9-35.5 111.2zM367.2 99.5l-58 58c-15.8-8.6-34-13.5-53.3-13.5s-37.4 4.9-53.3 13.5l-58-58C176.1 77.1 214.5 64 256 64s79.9 13.1 111.2 35.5zM157.5 309.3l-58 58C77.1 335.9 64 297.5 64 256s13.1-79.9 35.5-111.2l58 58c-8.6 15.8-13.5 34-13.5 53.3s4.9 37.4 13.5 53.3zM208 256a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/>
                       </svg>Help
                     </a>
                   </div>
@@ -66,21 +75,11 @@
 
     <nav class="horizontalNav main-menu">
       <ul class="usa-nav__primary display-flex padding-left-0">
-        <li class="usa-nav__primary-item">
-          <span class="menuItem-inner"><a href="queues.html">Queues</a></span>
-        </li>
-        <li class="usa-nav__primary-item">
-          <span class="menuItem-inner"><a href="my-tasks.html">My Tasks</a></span>
-        </li>
-        <li class="usa-nav__primary-item">
-          <span class="menuItem-inner"><a href="license-types.html">License Types</a></span>
-        </li>
-        <li class="usa-nav__primary-item">
-          <span class="menuItem-inner"><a href="applications.html">Applications</a></span>
-        </li>
-        <li class="usa-nav__primary-item active">
-          <span class="menuItem-inner"><a href="settings.html">Settings</a></span>
-        </li>
+        <li class="usa-nav__primary-item"><span class="menuItem-inner"><a href="queues.html">Queues</a></span></li>
+        <li class="usa-nav__primary-item"><span class="menuItem-inner"><a href="my-tasks.html">My Tasks</a></span></li>
+        <li class="usa-nav__primary-item"><span class="menuItem-inner"><a href="license-types.html">License Types</a></span></li>
+        <li class="usa-nav__primary-item"><span class="menuItem-inner"><a href="applications.html">Applications</a></span></li>
+        <li class="usa-nav__primary-item active"><span class="menuItem-inner"><a href="settings.html">Settings</a></span></li>
       </ul>
     </nav>
 
@@ -120,16 +119,32 @@
               <p class="text-bold margin-0 margin-bottom-2">Options and Control Types</p>
               <div class="icon-key-grid">
                 <div class="icon-key-item">
-                  <img src="assets/edit-icon.png" alt="" width="24" height="24">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M14.5 2.5a2.121 2.121 0 0 1 3 3L6 17l-4 1 1-4 11.5-11.5z" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5l3 3" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round"/></svg>
                   <span>- Edit</span>
                 </div>
                 <div class="icon-key-item">
-                  <img src="assets/eye-icon.png" alt="" width="24" height="24">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M1 10s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" stroke="#005ea2" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.5" stroke="#005ea2" stroke-width="1.5"/></svg>
                   <span>- Preview</span>
                 </div>
                 <div class="icon-key-item">
-                  <img src="assets/icon-delete.png" alt="" width="24" height="24">
-                  <span>- Delete</span>
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="#00a91c" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="#00a91c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>- Publish (Draft → Active)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="#c2850c" stroke-width="1.5"/><rect x="7" y="6.5" width="2" height="7" rx="0.5" fill="#c2850c"/><rect x="11" y="6.5" width="2" height="7" rx="0.5" fill="#c2850c"/></svg>
+                  <span>- Deactivate (Active → Inactive)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 10a6.5 6.5 0 1 0 1.5-4.1" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 4.5v3h3" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>- Reactivate (Inactive → Active)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="3.5" rx="1" stroke="#5c5f66" stroke-width="1.5"/><path d="M4 6v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6" stroke="#5c5f66" stroke-width="1.5" stroke-linecap="round"/><path d="M10 9.5v4m-2-2l2 2 2-2" stroke="#5c5f66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>- Archive (template has associations)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 5.5h13M8 5.5V4h4v1.5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5l.9 10.1a1 1 0 0 0 1 .9h6.2a1 1 0 0 0 1-.9L15 5.5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 8.5v5M11.5 8.5v5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <span>- Delete (no associations)</span>
                 </div>
               </div>
             </div>
@@ -146,6 +161,9 @@
                 </li>
                 <li class="usa-button-group__item">
                   <button type="button" class="usa-button usa-button--outline email-status-filter" data-status="Draft">Draft</button>
+                </li>
+                <li class="usa-button-group__item">
+                  <button type="button" class="usa-button usa-button--outline email-status-filter" data-status="Inactive">Inactive</button>
                 </li>
                 <li class="usa-button-group__item">
                   <button type="button" class="usa-button usa-button--outline email-status-filter" data-status="Archived">Archived</button>
@@ -184,7 +202,7 @@
           </table>
 
           <p id="no-email-msg" style="display: none; padding: 3rem 0; color: #71767a; font-size: 1.6rem;">
-            No email templates yet. <a href="correspondence-email-template.html" class="usa-link">Create your first email template.</a>
+            No email templates found. <a href="correspondence-email-template.html" class="usa-link">Create your first email template.</a>
           </p>
         </div>
       </div>
@@ -203,16 +221,32 @@
               <p class="text-bold margin-0 margin-bottom-2">Options and Control Types</p>
               <div class="icon-key-grid">
                 <div class="icon-key-item">
-                  <img src="assets/edit-icon.png" alt="" width="24" height="24">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M14.5 2.5a2.121 2.121 0 0 1 3 3L6 17l-4 1 1-4 11.5-11.5z" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5l3 3" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round"/></svg>
                   <span>- Edit</span>
                 </div>
                 <div class="icon-key-item">
-                  <img src="assets/eye-icon.png" alt="" width="24" height="24">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M1 10s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" stroke="#005ea2" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.5" stroke="#005ea2" stroke-width="1.5"/></svg>
                   <span>- Preview</span>
                 </div>
                 <div class="icon-key-item">
-                  <img src="assets/icon-delete.png" alt="" width="24" height="24">
-                  <span>- Delete</span>
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="#00a91c" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="#00a91c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>- Publish (Draft → Active)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="#c2850c" stroke-width="1.5"/><rect x="7" y="6.5" width="2" height="7" rx="0.5" fill="#c2850c"/><rect x="11" y="6.5" width="2" height="7" rx="0.5" fill="#c2850c"/></svg>
+                  <span>- Deactivate (Active → Inactive)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 10a6.5 6.5 0 1 0 1.5-4.1" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 4.5v3h3" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>- Reactivate (Inactive → Active)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="3.5" rx="1" stroke="#5c5f66" stroke-width="1.5"/><path d="M4 6v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6" stroke="#5c5f66" stroke-width="1.5" stroke-linecap="round"/><path d="M10 9.5v4m-2-2l2 2 2-2" stroke="#5c5f66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>- Archive (template has associations)</span>
+                </div>
+                <div class="icon-key-item">
+                  <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 5.5h13M8 5.5V4h4v1.5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5l.9 10.1a1 1 0 0 0 1 .9h6.2a1 1 0 0 0 1-.9L15 5.5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 8.5v5M11.5 8.5v5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <span>- Delete (no associations)</span>
                 </div>
               </div>
             </div>
@@ -229,6 +263,9 @@
                 </li>
                 <li class="usa-button-group__item">
                   <button type="button" class="usa-button usa-button--outline letter-status-filter" data-status="Draft">Draft</button>
+                </li>
+                <li class="usa-button-group__item">
+                  <button type="button" class="usa-button usa-button--outline letter-status-filter" data-status="Inactive">Inactive</button>
                 </li>
                 <li class="usa-button-group__item">
                   <button type="button" class="usa-button usa-button--outline letter-status-filter" data-status="Archived">Archived</button>
@@ -268,7 +305,7 @@
           </table>
 
           <p id="no-letter-msg" style="display: none; padding: 3rem 0; color: #71767a; font-size: 1.6rem;">
-            No letter templates yet. <a href="correspondence-letter-template.html" class="usa-link">Create your first letter template.</a>
+            No letter templates found. <a href="correspondence-letter-template.html" class="usa-link">Create your first letter template.</a>
           </p>
         </div>
       </div>
@@ -289,7 +326,7 @@
       </div>
       <div class="modal-body">
         <p style="font-size: 1.6rem; margin: 0;">
-          Are you sure you want to delete <strong id="delete-template-name"></strong>?
+          Are you sure you want to permanently delete <strong id="delete-template-name"></strong>?
           This will remove all version history and cannot be undone.
         </p>
       </div>
@@ -297,6 +334,31 @@
       <div class="modal-footer">
         <button type="button" class="usa-button usa-button--secondary" id="confirm-delete-btn">Delete Template</button>
         <button type="button" class="usa-button usa-button--outline" id="cancel-delete-btn" style="background: transparent; box-shadow: inset 0 0 0 2px #005ea2; color: #005ea2;">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Archive Confirmation Modal -->
+  <div id="archive-modal" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="archive-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="archive-modal-title">Archive Template</h2>
+        <button type="button" class="modal-close" id="close-archive-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 1.6rem; margin: 0;">
+          Are you sure you want to archive <strong id="archive-template-name"></strong>?
+          Archived templates are retired for historical reference only and can no longer be used for new correspondence.
+        </p>
+      </div>
+      <hr class="modal-divider">
+      <div class="modal-footer">
+        <button type="button" class="usa-button usa-button--secondary" id="confirm-archive-btn">Archive Template</button>
+        <button type="button" class="usa-button usa-button--outline" id="cancel-archive-btn" style="background: transparent; box-shadow: inset 0 0 0 2px #005ea2; color: #005ea2;">Cancel</button>
       </div>
     </div>
   </div>
@@ -321,7 +383,6 @@
           <p id="preview-subject-text" style="font-size: 1.5rem; margin: 0.3rem 0 0; color: #1b1b1b;"></p>
         </div>
 
-        <!-- Document body rendered as a paper-style block -->
         <div id="preview-body-wrap" style="position: relative; background: #fff; border: 1px solid #c9c9c9; box-shadow: 0 2px 6px rgba(0,0,0,0.08); max-height: 480px; overflow-y: auto; overflow-x: hidden;">
           <img id="preview-watermark-img" src="" alt="" style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-width:65%; max-height:65%; opacity:0.12; pointer-events:none; z-index:0;">
           <div id="preview-header" style="display:none; border-bottom: 1px solid #d9d9d9; line-height:0;">
@@ -334,7 +395,6 @@
             <img id="preview-footer-img" src="" alt="Footer" style="max-width:100%; display:block;">
           </div>
         </div>
-
       </div>
       <hr class="modal-divider">
       <div class="modal-footer">
@@ -355,27 +415,29 @@
   </div>
 
   <script>
-    // ---- Seed Data ----
+    // ---- Seed Data (v3 — 4-status system) ----
     function seedTemplates() {
-      if (localStorage.getItem('correspondenceSeeded')) return;
+      if (localStorage.getItem('correspondenceSeeded_v3')) return;
 
       const emailTemplates = [
         {
           id: 'TMPL-EMAIL-001', name: 'Application Voided',
           licenseType: 'All License Types', recordType: 'Application',
-          status: 'Active', subject: 'Your {{credential_name}} Application Has Been Voided',
+          status: 'Active', hasUsage: true,
+          subject: 'Your {{credential_name}} Application Has Been Voided',
           body: 'Dear {{contact_name}},\n\nPlease be advised that your application for {{credential_name}} has been voided based upon your failure to provide a complete application.\n\nOur office submitted a request to you for additional information on {{rejection_dates}}. As of this date, no information has been received.\n\nShould you have any questions, please contact this department at {{user_email}}.\n\nSincerely,\n{{user_name}}',
           version: 2, createdDate: '2025-01-10', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-04-15', lastModifiedBy: 'Michael Rodriguez',
           versions: [
             { version: 1, savedDate: '2025-01-10', savedBy: 'Michael Rodriguez', notes: 'Initial version', subject: 'Your Application Has Been Voided', body: 'Dear {{contact_name}},\n\nYour application has been voided...' },
-            { version: 2, savedDate: '2025-04-15', savedBy: 'Michael Rodriguez', notes: 'Updated contact information and added credential name to subject', subject: 'Your {{credential_name}} Application Has Been Voided', body: 'Dear {{contact_name}},\n\nPlease be advised that your application for {{credential_name}} has been voided...' }
+            { version: 2, savedDate: '2025-04-15', savedBy: 'Michael Rodriguez', notes: 'Updated contact information and added credential name to subject', subject: 'Your {{credential_name}} Application Has Been Voided', body: 'Dear {{contact_name}},\n\nPlease be advised...' }
           ]
         },
         {
           id: 'TMPL-EMAIL-002', name: 'License Approval',
           licenseType: 'All License Types', recordType: 'License',
-          status: 'Active', subject: 'Your {{credential_name}} License Has Been Approved',
+          status: 'Active', hasUsage: true,
+          subject: 'Your {{credential_name}} License Has Been Approved',
           body: 'Dear {{contact_name}},\n\nWe are pleased to inform you that your application for {{credential_name}} has been approved.\n\nSincerely,\n{{user_name}}\n{{user_email}}',
           version: 1, createdDate: '2025-01-15', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-01-15', lastModifiedBy: 'Michael Rodriguez',
@@ -386,7 +448,8 @@
         {
           id: 'TMPL-EMAIL-003', name: 'Deficiency Notice',
           licenseType: 'Commercial Fishing', recordType: 'Application',
-          status: 'Active', subject: 'Deficiency Notice - {{credential_name}} Application',
+          status: 'Active', hasUsage: true,
+          subject: 'Deficiency Notice - {{credential_name}} Application',
           body: 'Dear {{contact_name}},\n\nThis notice is to advise you that your application for {{credential_name}} requires additional information before it can be processed.\n\nPlease respond within 30 days.\n\nSincerely,\n{{user_name}}',
           version: 3, createdDate: '2024-11-20', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2025-03-01', lastModifiedBy: 'Michael Rodriguez',
@@ -399,7 +462,8 @@
         {
           id: 'TMPL-EMAIL-004', name: 'Renewal Reminder',
           licenseType: 'Hunting', recordType: 'License',
-          status: 'Draft', subject: 'Your {{credential_name}} License Expires Soon',
+          status: 'Draft', hasUsage: false,
+          subject: 'Your {{credential_name}} License Expires Soon',
           body: 'Dear {{contact_name}},\n\nThis is a reminder that your {{credential_name}} license will expire soon.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-04-01', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-04-01', lastModifiedBy: 'Michael Rodriguez',
@@ -410,13 +474,26 @@
         {
           id: 'TMPL-EMAIL-005', name: 'Payment Confirmation',
           licenseType: 'All License Types', recordType: 'License',
-          status: 'Archived', subject: 'Payment Received for {{credential_name}}',
+          status: 'Archived', hasUsage: true,
+          subject: 'Payment Received for {{credential_name}}',
           body: 'Dear {{contact_name}},\n\nThis email confirms your payment for {{credential_name}} has been received.\n\nSincerely,\n{{user_name}}',
           version: 2, createdDate: '2024-06-01', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2024-09-15', lastModifiedBy: 'Jennifer Adams',
           versions: [
             { version: 1, savedDate: '2024-06-01', savedBy: 'Jennifer Adams', notes: 'Initial version', subject: 'Payment Received', body: '...' },
             { version: 2, savedDate: '2024-09-15', savedBy: 'Jennifer Adams', notes: 'Added fee schedule reference', subject: 'Payment Received for {{credential_name}}', body: '...' }
+          ]
+        },
+        {
+          id: 'TMPL-EMAIL-006', name: 'Out-of-Season Notice',
+          licenseType: 'Hunting', recordType: 'Application',
+          status: 'Inactive', hasUsage: false,
+          subject: 'Out-of-Season Application Notice - {{credential_name}}',
+          body: 'Dear {{contact_name}},\n\nThis notice is to advise you that applications for {{credential_name}} are not being accepted at this time. The application window opens on the first business day of each season.\n\nSincerely,\n{{user_name}}',
+          version: 1, createdDate: '2025-02-14', createdBy: 'Jennifer Adams',
+          lastModifiedDate: '2025-02-14', lastModifiedBy: 'Jennifer Adams',
+          versions: [
+            { version: 1, savedDate: '2025-02-14', savedBy: 'Jennifer Adams', notes: 'Initial version', subject: 'Out-of-Season Application Notice - {{credential_name}}', body: '...' }
           ]
         }
       ];
@@ -425,7 +502,7 @@
         {
           id: 'TMPL-LETTER-001', name: 'Application Held',
           licenseType: 'Commercial Fishing', recordType: 'Application',
-          deliveryMethod: 'Certified', status: 'Active',
+          deliveryMethod: 'Certified', status: 'Active', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{address_line2}}\n{{city}}, {{state}} {{zip}}\n\nDear {{manager_name}}:\n\nThe Arkansas State Police has received the {{credential_name}} application for {{contact_name}}.\n\nSincerely,\n{{user_name}}\n{{user_email}}',
           version: 2, createdDate: '2025-01-10', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-04-10', lastModifiedBy: 'Michael Rodriguez',
@@ -437,7 +514,7 @@
         {
           id: 'TMPL-LETTER-002', name: 'Compliance Letter',
           licenseType: 'All License Types', recordType: 'Case',
-          deliveryMethod: 'Certified', status: 'Active',
+          deliveryMethod: 'Certified', status: 'Active', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter is to notify you of a compliance requirement.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-02-01', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2025-02-01', lastModifiedBy: 'Jennifer Adams',
@@ -448,7 +525,7 @@
         {
           id: 'TMPL-LETTER-003', name: 'Deficiency Notice',
           licenseType: 'Hunting', recordType: 'Application',
-          deliveryMethod: 'Standard', status: 'Active',
+          deliveryMethod: 'Standard', status: 'Active', hasUsage: false,
           body: '{{date}}\n\nDear {{contact_name}}:\n\nYour application for {{credential_name}} is deficient. Please provide the missing information within 30 days.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-01-20', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-01-20', lastModifiedBy: 'Michael Rodriguez',
@@ -459,7 +536,7 @@
         {
           id: 'TMPL-LETTER-004', name: 'Notice of Violation',
           licenseType: 'All License Types', recordType: 'Case',
-          deliveryMethod: 'Certified', status: 'Draft',
+          deliveryMethod: 'Certified', status: 'Draft', hasUsage: false,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter serves as formal notification that you are in violation of applicable regulations.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-04-20', createdBy: 'Michael Rodriguez',
           lastModifiedDate: '2025-04-20', lastModifiedBy: 'Michael Rodriguez',
@@ -470,24 +547,42 @@
         {
           id: 'TMPL-LETTER-005', name: 'Enforcement Communications',
           licenseType: 'All License Types', recordType: 'Case',
-          deliveryMethod: 'Certified', status: 'Active',
+          deliveryMethod: 'Certified', status: 'Inactive', hasUsage: true,
           body: '{{date}}\n\n{{address_line1}}\n{{city}}, {{state}} {{zip}}\n\nDear {{contact_name}}:\n\nThis letter is in regard to your enforcement case.\n\nSincerely,\n{{user_name}}',
           version: 1, createdDate: '2025-03-15', createdBy: 'Jennifer Adams',
           lastModifiedDate: '2025-03-15', lastModifiedBy: 'Jennifer Adams',
           versions: [
             { version: 1, savedDate: '2025-03-15', savedBy: 'Jennifer Adams', notes: 'Initial version', body: '...' }
           ]
+        },
+        {
+          id: 'TMPL-LETTER-006', name: 'Legacy Fee Notice',
+          licenseType: 'All License Types', recordType: 'License',
+          deliveryMethod: 'Standard', status: 'Archived', hasUsage: true,
+          body: '{{date}}\n\nDear {{contact_name}}:\n\nPlease find enclosed the current fee schedule for {{credential_name}}.\n\nSincerely,\n{{user_name}}',
+          version: 3, createdDate: '2023-08-01', createdBy: 'Jennifer Adams',
+          lastModifiedDate: '2024-03-10', lastModifiedBy: 'Jennifer Adams',
+          versions: [
+            { version: 1, savedDate: '2023-08-01', savedBy: 'Jennifer Adams', notes: 'Initial version', body: '...' },
+            { version: 2, savedDate: '2024-01-15', savedBy: 'Jennifer Adams', notes: 'Updated fee amounts', body: '...' },
+            { version: 3, savedDate: '2024-03-10', savedBy: 'Jennifer Adams', notes: 'Final update before archiving', body: '...' }
+          ]
         }
       ];
 
       localStorage.setItem('emailTemplates', JSON.stringify(emailTemplates));
       localStorage.setItem('letterTemplates', JSON.stringify(letterTemplates));
-      localStorage.setItem('correspondenceSeeded', 'true');
+      localStorage.setItem('correspondenceSeeded_v3', 'true');
     }
 
     // ---- Helpers ----
     function statusClass(status) {
-      const map = { Active: 'status-active', Draft: 'status-draft', Archived: 'status-archived' };
+      const map = {
+        Active:   'status-active',
+        Draft:    'status-draft',
+        Inactive: 'status-inactive',
+        Archived: 'status-archived'
+      };
       return map[status] || '';
     }
 
@@ -498,6 +593,50 @@
 
     function escAttr(s) {
       return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+
+    // ---- Inline SVG Icons ----
+    const SVG_EDIT     = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M14.5 2.5a2.121 2.121 0 0 1 3 3L6 17l-4 1 1-4 11.5-11.5z" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5l3 3" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+    const SVG_PREVIEW  = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M1 10s3.5-7 9-7 9 7 9 7-3.5 7-9 7-9-7-9-7z" stroke="#005ea2" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.5" stroke="#005ea2" stroke-width="1.5"/></svg>`;
+    const SVG_PUBLISH  = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="#00a91c" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 4.5-5" stroke="#00a91c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const SVG_DEACT    = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="#c2850c" stroke-width="1.5"/><rect x="7" y="6.5" width="2" height="7" rx="0.5" fill="#c2850c"/><rect x="11" y="6.5" width="2" height="7" rx="0.5" fill="#c2850c"/></svg>`;
+    const SVG_REACT    = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 10a6.5 6.5 0 1 0 1.5-4.1" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round"/><path d="M3.5 4.5v3h3" stroke="#005ea2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const SVG_ARCHIVE  = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="3.5" rx="1" stroke="#5c5f66" stroke-width="1.5"/><path d="M4 6v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6" stroke="#5c5f66" stroke-width="1.5" stroke-linecap="round"/><path d="M10 9.5v4m-2-2l2 2 2-2" stroke="#5c5f66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const SVG_DELETE   = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 5.5h13M8 5.5V4h4v1.5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5l.9 10.1a1 1 0 0 0 1 .9h6.2a1 1 0 0 0 1-.9L15 5.5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 8.5v5M11.5 8.5v5" stroke="#d54309" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+
+    // ---- Build controls HTML based on status and hasUsage ----
+    function buildControls(t, type, editUrl) {
+      const id   = t.id;
+      const name = escAttr(t.name);
+
+      // Status transition button
+      let transitionBtn = '';
+      if (t.status === 'Draft') {
+        transitionBtn = `<button type="button" class="icon-button" onclick="publishTemplate('${id}','${type}')" title="Publish — move to Active" aria-label="Publish ${t.name}">${SVG_PUBLISH}</button>`;
+      } else if (t.status === 'Active') {
+        transitionBtn = `<button type="button" class="icon-button" onclick="deactivateTemplate('${id}','${type}')" title="Deactivate — move to Inactive" aria-label="Deactivate ${t.name}">${SVG_DEACT}</button>`;
+      } else if (t.status === 'Inactive') {
+        transitionBtn = `<button type="button" class="icon-button" onclick="reactivateTemplate('${id}','${type}')" title="Reactivate — move to Active" aria-label="Reactivate ${t.name}">${SVG_REACT}</button>`;
+      }
+      // Archived: no transition button
+
+      // Remove button: Archive if associations exist, Delete if not; Archived+hasUsage = nothing
+      let removeBtn = '';
+      if (t.status === 'Archived') {
+        if (!t.hasUsage) {
+          removeBtn = `<button type="button" class="icon-button" onclick="openDeleteModal('${id}','${name}','${type}')" title="Delete permanently" aria-label="Delete ${t.name}">${SVG_DELETE}</button>`;
+        }
+      } else if (t.hasUsage) {
+        removeBtn = `<button type="button" class="icon-button" onclick="openArchiveModal('${id}','${name}','${type}')" title="Archive — retire for reference only" aria-label="Archive ${t.name}">${SVG_ARCHIVE}</button>`;
+      } else {
+        removeBtn = `<button type="button" class="icon-button" onclick="openDeleteModal('${id}','${name}','${type}')" title="Delete permanently" aria-label="Delete ${t.name}">${SVG_DELETE}</button>`;
+      }
+
+      return `
+        <a href="${editUrl}" class="icon-button" title="Edit" aria-label="Edit ${t.name}">${SVG_EDIT}</a>
+        <button type="button" class="icon-button" onclick="openPreviewModal('${id}','${type}')" title="Preview" aria-label="Preview ${t.name}">${SVG_PREVIEW}</button>
+        ${transitionBtn}
+        ${removeBtn}`;
     }
 
     // ---- Filter state ----
@@ -529,17 +668,7 @@
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>
           <td>v${t.version}</td>
           <td>${formatDate(t.lastModifiedDate)}</td>
-          <td style="white-space: nowrap;">
-            <a href="correspondence-email-template.html?id=${t.id}" class="icon-button" aria-label="Edit ${t.name}">
-              <img src="assets/edit-icon.png" alt="" width="30" height="30">
-            </a>
-            <button type="button" class="icon-button" onclick="openPreviewModal('${t.id}','email')" aria-label="Preview ${t.name}">
-              <img src="assets/eye-icon.png" alt="" width="30" height="30">
-            </button>
-            <button type="button" class="icon-button" onclick="openDeleteModal('${t.id}','${escAttr(t.name)}','email')" aria-label="Delete ${t.name}">
-              <img src="assets/icon-delete.png" alt="" width="30" height="30">
-            </button>
-          </td>
+          <td style="white-space: nowrap;">${buildControls(t, 'email', 'correspondence-email-template.html?id=' + t.id)}</td>
         </tr>`).join('');
     }
 
@@ -568,18 +697,35 @@
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>
           <td>v${t.version}</td>
           <td>${formatDate(t.lastModifiedDate)}</td>
-          <td style="white-space: nowrap;">
-            <a href="correspondence-letter-template.html?id=${t.id}" class="icon-button" aria-label="Edit ${t.name}">
-              <img src="assets/edit-icon.png" alt="" width="30" height="30">
-            </a>
-            <button type="button" class="icon-button" onclick="openPreviewModal('${t.id}','letter')" aria-label="Preview ${t.name}">
-              <img src="assets/eye-icon.png" alt="" width="30" height="30">
-            </button>
-            <button type="button" class="icon-button" onclick="openDeleteModal('${t.id}','${escAttr(t.name)}','letter')" aria-label="Delete ${t.name}">
-              <img src="assets/icon-delete.png" alt="" width="30" height="30">
-            </button>
-          </td>
+          <td style="white-space: nowrap;">${buildControls(t, 'letter', 'correspondence-letter-template.html?id=' + t.id)}</td>
         </tr>`).join('');
+    }
+
+    // ---- Status Transition Functions ----
+    function updateTemplateStatus(id, type, newStatus) {
+      const key = type === 'email' ? 'emailTemplates' : 'letterTemplates';
+      const items = JSON.parse(localStorage.getItem(key) || '[]');
+      const idx = items.findIndex(t => t.id === id);
+      if (idx === -1) return;
+      items[idx].status = newStatus;
+      items[idx].lastModifiedDate = new Date().toISOString().split('T')[0];
+      localStorage.setItem(key, JSON.stringify(items));
+      type === 'email' ? renderEmailTable() : renderLetterTable();
+    }
+
+    function publishTemplate(id, type) {
+      updateTemplateStatus(id, type, 'Active');
+      showNotification('Template published and set to Active.');
+    }
+
+    function deactivateTemplate(id, type) {
+      updateTemplateStatus(id, type, 'Inactive');
+      showNotification('Template deactivated. Set to Inactive.');
+    }
+
+    function reactivateTemplate(id, type) {
+      updateTemplateStatus(id, type, 'Active');
+      showNotification('Template reactivated and set to Active.');
     }
 
     // ---- Tab switcher ----
@@ -598,7 +744,7 @@
       });
     });
 
-    // ---- Status filters ----
+    // ---- Status Filters ----
     document.querySelectorAll('.email-status-filter').forEach(btn => {
       btn.addEventListener('click', function () {
         const status = this.getAttribute('data-status');
@@ -726,7 +872,7 @@
       if (e.target === this) closePreviewModal();
     });
 
-    // ---- Delete modal ----
+    // ---- Delete Modal ----
     let deleteTarget = { id: null, type: null };
 
     function openDeleteModal(id, name, type) {
@@ -756,6 +902,34 @@
       closeDeleteModal();
       deleteTarget.type === 'email' ? renderEmailTable() : renderLetterTable();
       showNotification('Template deleted successfully.');
+    });
+
+    // ---- Archive Modal ----
+    let archiveTarget = { id: null, type: null };
+
+    function openArchiveModal(id, name, type) {
+      archiveTarget = { id, type };
+      document.getElementById('archive-template-name').textContent = name;
+      document.getElementById('archive-modal').removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('confirm-archive-btn').focus();
+    }
+
+    function closeArchiveModal() {
+      document.getElementById('archive-modal').setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('close-archive-modal').addEventListener('click', closeArchiveModal);
+    document.getElementById('cancel-archive-btn').addEventListener('click', closeArchiveModal);
+    document.getElementById('archive-modal').addEventListener('click', function (e) {
+      if (e.target === this) closeArchiveModal();
+    });
+
+    document.getElementById('confirm-archive-btn').addEventListener('click', function () {
+      updateTemplateStatus(archiveTarget.id, archiveTarget.type, 'Archived');
+      closeArchiveModal();
+      showNotification('Template archived successfully.');
     });
 
     // ---- Notification ----
