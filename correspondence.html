@@ -179,7 +179,6 @@
             <thead>
               <tr>
                 <th scope="col" role="columnheader" aria-sort="none">Template Name <span class="sort-arrows"></span></th>
-                <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Version <span class="sort-arrows"></span></th>
@@ -281,7 +280,6 @@
             <thead>
               <tr>
                 <th scope="col" role="columnheader" aria-sort="none">Template Name <span class="sort-arrows"></span></th>
-                <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Delivery <span class="sort-arrows"></span></th>
                 <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
@@ -652,7 +650,6 @@
       tbody.innerHTML = templates.map(t => `
         <tr>
           <td><a href="correspondence-email-template.html?id=${t.id}" class="usa-link">${t.name}</a></td>
-          <td>${t.licenseType || ''}</td>
           <td>${t.recordType || ''}</td>
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>
           <td>v${t.version}</td>
@@ -680,7 +677,6 @@
       tbody.innerHTML = templates.map(t => `
         <tr>
           <td><a href="correspondence-letter-template.html?id=${t.id}" class="usa-link">${t.name}</a></td>
-          <td>${t.licenseType || ''}</td>
           <td>${t.recordType || ''}</td>
           <td>${t.deliveryMethod || ''}</td>
           <td><span class="${statusClass(t.status)}">${t.status}</span></td>

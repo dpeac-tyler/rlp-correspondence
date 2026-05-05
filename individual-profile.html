@@ -581,7 +581,6 @@
                     <th scope="col" role="columnheader" aria-sort="none">Visibility <span class="sort-arrows"></span></th>
                     <th scope="col" role="columnheader" aria-sort="none">Uploaded By <span class="sort-arrows"></span></th>
                     <th scope="col" role="columnheader" aria-sort="none">Uploaded Date <span class="sort-arrows"></span></th>
-                    <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                     <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
                     <th scope="col" role="columnheader">Controls</th>
                   </tr>
@@ -678,7 +677,6 @@
                       <th scope="col" role="columnheader" aria-sort="none">Generated Date <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Last Sent Date <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Last Delivered Date <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Sent Count <span class="sort-arrows"></span></th>
@@ -766,7 +764,6 @@
                       <th scope="col" role="columnheader" aria-sort="none">Delivery Method <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Generated Date <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Mailed Date <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Record Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" style="width: 200px; white-space: nowrap;">Controls</th>
@@ -859,16 +856,6 @@
               <div class="usa-hint">mm/dd/yyyy</div>
               <input class="usa-input date-input-custom" id="letter-received-date" name="letter-received-date" type="date" disabled>
             </div>
-          </div>
-
-          <div class="usa-form-group margin-bottom-4">
-            <label class="usa-label" for="letter-license-type">License Type</label>
-            <select class="usa-select" id="letter-license-type" name="letter-license-type">
-              <option value="">Please Select</option>
-              <option value="Commercial Fishing">Commercial Fishing</option>
-              <option value="Hunting">Hunting</option>
-              <option value="Boating">Boating</option>
-            </select>
           </div>
 
           <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
@@ -974,11 +961,7 @@
             <p id="view-received-date" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
-            <div>
-              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">License Type</p>
-              <p id="view-license-type" style="margin: 0; font-size: 1.6rem;">-</p>
-            </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div>
               <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Record Type</p>
               <p id="view-record-type" style="margin: 0; font-size: 1.6rem;">-</p>
@@ -1272,11 +1255,7 @@
               <p id="view-email-last-delivered-date" style="margin: 0; font-size: 1.6rem;">-</p>
             </div>
           </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
-            <div>
-              <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">License Type</p>
-              <p id="view-email-license-type" style="margin: 0; font-size: 1.6rem;">-</p>
-            </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div>
               <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Record Type</p>
               <p id="view-email-record-type" style="margin: 0; font-size: 1.6rem;">-</p>
@@ -2005,7 +1984,6 @@
             <td>${generatedDate}</td>
             <td>${lastSentDate}</td>
             <td>${lastDeliveredDate}</td>
-            <td>${email.licenseType}</td>
             <td>${recordTypeDisplay}</td>
             <td><span class="status-${email.status.toLowerCase().replace(' ', '-')}">${email.status}</span></td>
             <td>${email.sentCount || 0}</td>
@@ -2038,7 +2016,6 @@
           newRow.dataset.generatedDate = email.generatedDate;
           newRow.dataset.lastSentDate = email.lastSentDate || '';
           newRow.dataset.lastDeliveredDate = email.lastDeliveredDate || '';
-          newRow.dataset.licenseType = email.licenseType;
           newRow.dataset.recordType = email.recordType;
           newRow.dataset.associatedRecord = email.associatedRecord || '';
           newRow.dataset.emailStatus = email.status;
@@ -2204,7 +2181,6 @@
       document.getElementById('view-email-generated-date').textContent = formatDateForDisplay(row.dataset.generatedDate);
       document.getElementById('view-email-last-sent-date').textContent = formatDateForDisplay(row.dataset.lastSentDate);
       document.getElementById('view-email-last-delivered-date').textContent = formatDateForDisplay(row.dataset.lastDeliveredDate);
-      document.getElementById('view-email-license-type').textContent = row.dataset.licenseType || '-';
       document.getElementById('view-email-record-type').textContent = row.dataset.recordType || '-';
       document.getElementById('view-email-associated-record').textContent = row.dataset.associatedRecord || '-';
       document.getElementById('view-email-sent-count').textContent = row.dataset.sentCount || '0';
@@ -2371,7 +2347,6 @@
         const deliveryMethod = document.querySelector('input[name="letter-delivery-method"]:checked').value;
         const mailedDateRaw = document.getElementById('letter-mailed-date').value.trim();
         const receivedDateRaw = document.getElementById('letter-received-date').value.trim();
-        const licenseType = document.getElementById('letter-license-type').value || '-';
         const recordType = document.getElementById('letter-record-type').value || '-';
         const associatedRecord = document.getElementById('letter-associated-record').value || '-';
         const trackingNumber = document.getElementById('letter-tracking-number').value || '-';
@@ -2415,7 +2390,6 @@
             <td>${deliveryMethod}</td>
             <td>${generatedDate}</td>
             <td>${mailedDate}</td>
-            <td>${licenseType}</td>
             <td>${recordTypeDisplay}</td>
             <td><span class="status-${letterStatus.toLowerCase().replace(' ', '-')}">${letterStatus}</span></td>
             <td style="white-space: nowrap;">
@@ -2443,7 +2417,6 @@
           rowToEdit.dataset.deliveryMethod = deliveryMethod;
           rowToEdit.dataset.mailedDate = mailedDateRaw;
           rowToEdit.dataset.receivedDate = receivedDateRaw;
-          rowToEdit.dataset.licenseType = licenseType;
           rowToEdit.dataset.recordType = recordType;
           rowToEdit.dataset.associatedRecord = associatedRecord;
           rowToEdit.dataset.trackingNumber = trackingNumber;
@@ -2476,7 +2449,6 @@
             <td>${deliveryMethod}</td>
             <td>${generatedDate}</td>
             <td>${mailedDate}</td>
-            <td>${licenseType}</td>
             <td>${recordTypeDisplay}</td>
             <td><span class="status-${letterStatus.toLowerCase().replace(' ', '-')}">${letterStatus}</span></td>
             <td style="white-space: nowrap;">
@@ -2505,7 +2477,6 @@
           newRow.dataset.deliveryMethod = deliveryMethod;
           newRow.dataset.mailedDate = mailedDateRaw;
           newRow.dataset.receivedDate = receivedDateRaw;
-          newRow.dataset.licenseType = licenseType;
           newRow.dataset.recordType = recordType;
           newRow.dataset.associatedRecord = associatedRecord;
           newRow.dataset.trackingNumber = trackingNumber;
@@ -2773,7 +2744,6 @@
         trackingContainer.style.display = 'none';
       }
 
-      document.getElementById('view-license-type').textContent = row.dataset.licenseType !== '-' ? row.dataset.licenseType : '-';
       document.getElementById('view-record-type').textContent = row.dataset.recordType !== '-' ? row.dataset.recordType : '-';
       document.getElementById('view-associated-record').textContent = row.dataset.associatedRecord !== '-' ? row.dataset.associatedRecord : '-';
       document.getElementById('view-delivery-notes').textContent = row.dataset.deliveryNotes || '-';
@@ -2876,9 +2846,6 @@
       // Set dates (stored in YYYY-MM-DD format, perfect for date inputs)
       document.getElementById('letter-mailed-date').value = (row.dataset.mailedDate && row.dataset.mailedDate !== '-') ? row.dataset.mailedDate : '';
       document.getElementById('letter-received-date').value = (row.dataset.receivedDate && row.dataset.receivedDate !== '-') ? row.dataset.receivedDate : '';
-
-      // Set license type
-      document.getElementById('letter-license-type').value = row.dataset.licenseType !== '-' ? row.dataset.licenseType : '';
 
       // Set record type and associated record
       document.getElementById('letter-record-type').value = row.dataset.recordType !== '-' ? row.dataset.recordType : '';
@@ -2999,7 +2966,6 @@
             <td>${letter.deliveryMethod}</td>
             <td>${generatedDate}</td>
             <td>${mailedDate}</td>
-            <td>${letter.licenseType}</td>
             <td>${recordTypeDisplay}</td>
             <td><span class="status-${letter.status.toLowerCase().replace(' ', '-')}">${letter.status}</span></td>
             <td style="white-space: nowrap;">
@@ -3027,7 +2993,6 @@
           newRow.dataset.letterType = letter.letterType;
           newRow.dataset.deliveryMethod = letter.deliveryMethod;
           newRow.dataset.mailedDate = letter.mailedDate || '';
-          newRow.dataset.licenseType = letter.licenseType;
           newRow.dataset.recordType = letter.recordType;
           newRow.dataset.associatedRecord = letter.associatedRecord || '';
           newRow.dataset.trackingNumber = letter.trackingNumber || '';

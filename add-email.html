@@ -146,21 +146,10 @@
                 <label class="usa-radio__label" for="email-visibility-agency-only">Agency Only</label>
               </div>
               <div class="usa-radio">
-                <input class="usa-radio__input" id="email-visibility-agency-constituent" type="radio" name="email-visibility" value="Agency + Constituent" required>
+                <input class="usa-radio__input" id="email-visibility-agency-constituent" type="radio" name="email-visibility" value="Agency + Constituent" required checked>
                 <label class="usa-radio__label" for="email-visibility-agency-constituent">Agency + Constituent</label>
               </div>
             </fieldset>
-
-            <!-- License Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="email-license-type">License Type</label>
-              <select class="usa-select" id="email-license-type" name="email-license-type">
-                <option value="">Please Select</option>
-                <option value="Commercial Fishing">Commercial Fishing</option>
-                <option value="Hunting">Hunting</option>
-                <option value="Boating">Boating</option>
-              </select>
-            </div>
 
             <!-- Record Type -->
             <div class="usa-form-group">
@@ -467,7 +456,6 @@
         generatedDate:     now,
         lastSentDate:      now,
         lastDeliveredDate: '',
-        licenseType:       document.getElementById('email-license-type').value || '-',
         recordType:        document.getElementById('email-record-type').value  || '-',
         associatedRecord:  document.getElementById('email-associated-record').value || '',
         status:            'Sent',

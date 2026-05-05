@@ -152,21 +152,10 @@
                 <label class="usa-radio__label" for="letter-visibility-agency-only">Agency Only</label>
               </div>
               <div class="usa-radio">
-                <input class="usa-radio__input" id="letter-visibility-agency-constituent" type="radio" name="letter-visibility" value="Agency + Constituent" required>
+                <input class="usa-radio__input" id="letter-visibility-agency-constituent" type="radio" name="letter-visibility" value="Agency + Constituent" required checked>
                 <label class="usa-radio__label" for="letter-visibility-agency-constituent">Agency + Constituent</label>
               </div>
             </fieldset>
-
-            <!-- License Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="letter-license-type">License Type</label>
-              <select class="usa-select" id="letter-license-type" name="letter-license-type">
-                <option value="">Please Select</option>
-                <option value="Commercial Fishing">Commercial Fishing</option>
-                <option value="Hunting">Hunting</option>
-                <option value="Boating">Boating</option>
-              </select>
-            </div>
 
             <!-- Record Type -->
             <div class="usa-form-group">
@@ -455,7 +444,6 @@
         deliveryMethod:   checkedDelivery ? checkedDelivery.value : '',
         generatedDate:    now,
         mailedDate:       '',
-        licenseType:      document.getElementById('letter-license-type').value || '-',
         recordType:       document.getElementById('letter-record-type').value  || '-',
         associatedRecord: document.getElementById('letter-associated-record').value || '',
         trackingNumber:   '',

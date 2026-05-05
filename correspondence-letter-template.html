@@ -306,17 +306,6 @@
               </div>
             </div>
 
-            <!-- License Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="template-license-type">License Type</label>
-              <select class="usa-select" id="template-license-type" name="template-license-type">
-                <option value="All License Types">All License Types</option>
-                <option value="Commercial Fishing">Commercial Fishing</option>
-                <option value="Hunting">Hunting</option>
-                <option value="Boating">Boating</option>
-              </select>
-            </div>
-
             <!-- Record Type -->
             <div class="usa-form-group">
               <label class="usa-label" for="template-record-type">Record Type</label>
@@ -688,7 +677,6 @@
 
         document.getElementById('template-status').value = currentTemplate.status;
         document.getElementById('template-name').value = currentTemplate.name;
-        document.getElementById('template-license-type').value = currentTemplate.licenseType;
         document.getElementById('template-record-type').value = currentTemplate.recordType;
         document.getElementById('template-body').value = currentTemplate.body || '';
 
@@ -809,7 +797,6 @@
       const status = statusOverride || document.getElementById('template-status').value;
       const name = document.getElementById('template-name').value.trim();
       const description = document.getElementById('template-description').value.trim();
-      const licenseType = document.getElementById('template-license-type').value;
       const recordType = document.getElementById('template-record-type').value;
       const deliveryMethod = document.querySelector('input[name="template-delivery"]:checked').value;
       const body = document.getElementById('template-body').value;
@@ -842,7 +829,7 @@
           };
           templates[idx] = {
             ...templates[idx],
-            name, description, licenseType, recordType, deliveryMethod, status, body,
+            name, description, recordType, deliveryMethod, status, body,
             ...attachments,
             version: newVer,
             lastModifiedDate: now,
