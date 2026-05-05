@@ -55,6 +55,18 @@
       padding: 0.25rem 0.9rem;
       transition: background-color 0.12s, color 0.12s;
     }
+    .custom-merge-field-chip {
+      background-color: #fff;
+      border: 1px solid #faaf01;
+      border-radius: 2rem;
+      color: #6e610f;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 0.25rem 0.9rem;
+      transition: background-color 0.12s, color 0.12s;
+    }
     .merge-field-chip:hover  { background-color: #005ea2; color: #fff; }
     .merge-field-chip:focus  { outline: 0.25rem solid #2491ff; outline-offset: 2px; }
 
@@ -209,7 +221,7 @@
 
             <!-- Document Attachments heading (full width) -->
             <div class="form-field-full" style="margin-bottom: 0.5rem;">
-              <p class="usa-label text-bold margin-bottom-0">Document Attachments</p>
+              <p class="usa-label text-bold margin-bottom-0">Layout Options</p>
               <p class="usa-hint margin-top-0">Check each box to enable and upload a file for this template.</p>
             </div>
 
@@ -318,7 +330,7 @@
 
             <!-- Delivery Method (full width fieldset) -->
             <fieldset class="usa-fieldset form-field-full">
-              <legend class="usa-legend">Delivery Method <span class="field-required">Required</span></legend>
+              <legend class="usa-legend">Allowed Delivery Method <span class="field-required">Required</span></legend>
               <div class="usa-radio" style="display:inline-block; margin-right:3rem;">
                 <input class="usa-radio__input" id="delivery-standard" type="radio" name="template-delivery" value="Standard" checked>
                 <label class="usa-radio__label" for="delivery-standard">Standard</label>
@@ -398,14 +410,14 @@
                 <button type="button" class="merge-field-chip" onclick="insertField('rejection_dates')" aria-label="Insert rejection dates">rejection_dates</button>
               </div>
             </div>
-
+            <br>
             <div class="merge-fields-group" style="margin-bottom:0;">
-              <span class="merge-fields-group__label" id="mf-other-label">Other</span>
+              <span class="merge-fields-group__label" id="mf-other-label">Custom Merge Fields</span>
               <div class="merge-fields-list" role="group" aria-labelledby="mf-other-label">
-                <button type="button" class="merge-field-chip" onclick="insertField('agency_name')" aria-label="Insert agency name">agency_name</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('bg_number')" aria-label="Insert BG number">bg_number</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('tracking_number')" aria-label="Insert tracking number">tracking_number</button>
-                <button type="button" class="merge-field-chip" onclick="insertField('delivery_method')" aria-label="Insert delivery method">delivery_method</button>
+                <button type="button" class="custom-merge-field-chip" onclick="insertField('agency_name')" aria-label="Insert agency name">agency_name</button>
+                <button type="button" class="custom-merge-field-chip" onclick="insertField('bg_number')" aria-label="Insert BG number">bg_number</button>
+                <button type="button" class="custom-merge-field-chip" onclick="insertField('tracking_number')" aria-label="Insert tracking number">tracking_number</button>
+                <button type="button" class="custom-merge-field-chip" onclick="insertField('delivery_method')" aria-label="Insert delivery method">delivery_method</button>
               </div>
             </div>
           </div>
