@@ -157,27 +157,27 @@
               </div>
             </fieldset>
 
-            <!-- Record Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="letter-record-type">Record Type</label>
-              <select class="usa-select" id="letter-record-type" name="letter-record-type">
-                <option value="">Please Select</option>
-                <option value="License">License</option>
-                <option value="Application">Application</option>
-                <option value="Case">Case</option>
-              </select>
+            <!-- Record Type + Associated Record (2-col row) -->
+            <div class="form-field-full" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+              <div class="usa-form-group" style="margin-bottom:0;">
+                <label class="usa-label" for="letter-record-type">Record Type</label>
+                <select class="usa-select" id="letter-record-type" name="letter-record-type">
+                  <option value="">Please Select</option>
+                  <option value="License">License</option>
+                  <option value="Application">Application</option>
+                  <option value="Case">Case</option>
+                </select>
+              </div>
+              <div class="usa-form-group" id="letter-associated-record-group" style="margin-bottom:0; visibility:hidden;">
+                <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
+                <select class="usa-select" id="letter-associated-record" name="letter-associated-record">
+                  <option value="">Please Select</option>
+                </select>
+              </div>
             </div>
 
-            <!-- Associated Record (appears in 3rd column when Record Type is selected) -->
-            <div class="usa-form-group" id="letter-associated-record-group" style="visibility: hidden;">
-              <label class="usa-label" for="letter-associated-record">Associated Record <span class="field-required">Required</span></label>
-              <select class="usa-select" id="letter-associated-record" name="letter-associated-record">
-                <option value="">Please Select</option>
-              </select>
-            </div>
-
-            <!-- Letter Template -->
-            <div class="usa-form-group">
+            <!-- Letter Template (full width, own row) -->
+            <div class="usa-form-group form-field-full">
               <label class="usa-label" for="letter-type">Letter Template <span class="field-required">Required</span></label>
               <select class="usa-select" id="letter-type" name="letter-type" required>
                 <option value="">Please Select</option>

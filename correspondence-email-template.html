@@ -678,6 +678,46 @@
       ta.focus();
     }
 
+    // ---- Merge field context filtering ----
+    const FIELD_CONTEXTS = {
+      user_name:       null,
+      user_email:      null,
+      user_signature:  null,
+      manager_name:    null,
+      date:            null,
+      agency_name:     null,
+      contact_name:    ['Account', 'Application', 'License', 'Asset', 'Case'],
+      credential_name: ['Application', 'License'],
+      application_type:['Application'],
+      supervised_by:   ['Application', 'License'],
+      address_line1:   ['Account', 'Application', 'License', 'Asset', 'Case'],
+      address_line2:   ['Account', 'Application', 'License', 'Asset', 'Case'],
+      city:            ['Account', 'Application', 'License', 'Asset', 'Case'],
+      state:           ['Account', 'Application', 'License', 'Asset', 'Case'],
+      zip:             ['Account', 'Application', 'License', 'Asset', 'Case'],
+      rejection_dates: ['Application', 'Case'],
+      bg_number:       ['Application', 'Asset', 'Case'],
+      tracking_number: ['Account', 'Application', 'License', 'Asset', 'Case']
+    };
+
+    function applyContextFilter(context) {
+      const noContext = !context;
+      document.getElementById('merge-fields-prompt').style.display = noContext ? 'block' : 'none';
+      document.getElementById('publish-btn').disabled = noContext;
+
+      document.querySelectorAll('[data-field]').forEach(function (chip) {
+        const field = chip.getAttribute('data-field');
+        const allowed = FIELD_CONTEXTS[field];
+        const visible = !noContext && (allowed === null || allowed.includes(context));
+        chip.classList.toggle('merge-field--hidden', !visible);
+      });
+
+      document.querySelectorAll('[data-mf-group]').forEach(function (group) {
+        const chips = group.querySelectorAll('[data-field]:not(.merge-field--hidden)');
+        group.style.display = chips.length ? '' : 'none';
+      });
+    }
+
     // ---- Populate form in edit mode ----
     if (isEdit) {
       const templates = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
@@ -887,46 +927,6 @@
 
     document.getElementById('save-draft-btn').addEventListener('click', function () { saveTemplate('Draft'); });
     document.getElementById('publish-btn').addEventListener('click', function () { saveTemplate('Active'); });
-
-    // ---- Merge field context filtering ----
-    const FIELD_CONTEXTS = {
-      user_name:       null,
-      user_email:      null,
-      user_signature:  null,
-      manager_name:    null,
-      date:            null,
-      agency_name:     null,
-      contact_name:    ['Account', 'Application', 'License', 'Asset', 'Case'],
-      credential_name: ['Application', 'License'],
-      application_type:['Application'],
-      supervised_by:   ['Application', 'License'],
-      address_line1:   ['Account', 'Application', 'License', 'Asset', 'Case'],
-      address_line2:   ['Account', 'Application', 'License', 'Asset', 'Case'],
-      city:            ['Account', 'Application', 'License', 'Asset', 'Case'],
-      state:           ['Account', 'Application', 'License', 'Asset', 'Case'],
-      zip:             ['Account', 'Application', 'License', 'Asset', 'Case'],
-      rejection_dates: ['Application', 'Case'],
-      bg_number:       ['Application', 'Asset', 'Case'],
-      tracking_number: ['Account', 'Application', 'License', 'Asset', 'Case']
-    };
-
-    function applyContextFilter(context) {
-      const noContext = !context;
-      document.getElementById('merge-fields-prompt').style.display = noContext ? 'block' : 'none';
-      document.getElementById('publish-btn').disabled = noContext;
-
-      document.querySelectorAll('[data-field]').forEach(function (chip) {
-        const field = chip.getAttribute('data-field');
-        const allowed = FIELD_CONTEXTS[field];
-        const visible = !noContext && (allowed === null || allowed.includes(context));
-        chip.classList.toggle('merge-field--hidden', !visible);
-      });
-
-      document.querySelectorAll('[data-mf-group]').forEach(function (group) {
-        const chips = group.querySelectorAll('[data-field]:not(.merge-field--hidden)');
-        group.style.display = chips.length ? '' : 'none';
-      });
-    }
 
     document.getElementById('template-context').addEventListener('change', function () {
       applyContextFilter(this.value);

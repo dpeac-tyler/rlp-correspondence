@@ -151,27 +151,27 @@
               </div>
             </fieldset>
 
-            <!-- Record Type -->
-            <div class="usa-form-group">
-              <label class="usa-label" for="email-record-type">Record Type</label>
-              <select class="usa-select" id="email-record-type" name="email-record-type">
-                <option value="">Please Select</option>
-                <option value="License">License</option>
-                <option value="Application">Application</option>
-                <option value="Case">Case</option>
-              </select>
+            <!-- Record Type + Associated Record (2-col row) -->
+            <div class="form-field-full" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+              <div class="usa-form-group" style="margin-bottom:0;">
+                <label class="usa-label" for="email-record-type">Record Type</label>
+                <select class="usa-select" id="email-record-type" name="email-record-type">
+                  <option value="">Please Select</option>
+                  <option value="License">License</option>
+                  <option value="Application">Application</option>
+                  <option value="Case">Case</option>
+                </select>
+              </div>
+              <div class="usa-form-group" id="email-associated-record-group" style="margin-bottom:0; visibility:hidden;">
+                <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
+                <select class="usa-select" id="email-associated-record" name="email-associated-record">
+                  <option value="">Please Select</option>
+                </select>
+              </div>
             </div>
 
-            <!-- Associated Record (shown when Record Type is selected) -->
-            <div class="usa-form-group" id="email-associated-record-group" style="visibility: hidden;">
-              <label class="usa-label" for="email-associated-record">Associated Record <span class="field-required">Required</span></label>
-              <select class="usa-select" id="email-associated-record" name="email-associated-record">
-                <option value="">Please Select</option>
-              </select>
-            </div>
-
-            <!-- Email Template -->
-            <div class="usa-form-group">
+            <!-- Email Template (full width, own row) -->
+            <div class="usa-form-group form-field-full">
               <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
               <select class="usa-select" id="email-template" name="email-template" required>
                 <option value="">Please Select</option>
