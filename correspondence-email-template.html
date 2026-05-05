@@ -549,6 +549,14 @@
       return new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     }
 
+    function formatDateTime(d) {
+      if (!d) return '—';
+      const date = new Date(d.includes('T') ? d : d + 'T00:00:00Z');
+      const datePart = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+      const timePart = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'UTC' });
+      return datePart + ' ' + timePart + ' UTC';
+    }
+
     // ---- Description counter ----
     document.getElementById('template-description').addEventListener('input', function () {
       document.getElementById('description-counter').textContent = this.value.length + ' / 1000 characters';
@@ -733,7 +741,7 @@
       tbody.innerHTML = sorted.map(v => `
         <tr>
           <td><strong>v${v.version}</strong>${v.version === currentTemplate.version ? ' <span class="usa-tag usa-tag--active" style="font-size:1.1rem; vertical-align:middle;">Current</span>' : ''}</td>
-          <td>${formatDate(v.savedDate)}</td>
+          <td>${formatDateTime(v.savedDate)}</td>
           <td>${v.savedBy || '—'}</td>
           <td>${v.notes || '—'}</td>
           <td>
@@ -753,7 +761,7 @@
 
       document.getElementById('version-preview-title').textContent = 'Version ' + versionNum + ' Preview';
       document.getElementById('version-preview-meta').textContent =
-        'Saved ' + formatDate(v.savedDate) + ' by ' + (v.savedBy || '—') + (v.notes ? ' — ' + v.notes : '');
+        'Saved ' + formatDateTime(v.savedDate) + ' by ' + (v.savedBy || '—') + (v.notes ? ' — ' + v.notes : '');
       document.getElementById('version-preview-subject').textContent = v.subject || '(no subject)';
       document.getElementById('version-preview-body').textContent = v.body || '(no content)';
 
@@ -822,6 +830,7 @@
       const subject = document.getElementById('template-subject').value.trim();
       const body = document.getElementById('template-body').value;
       const now = new Date().toISOString().split('T')[0];
+      const nowISO = new Date().toISOString();
       const author = 'Michael Rodriguez';
 
       const attachments = {};
@@ -842,7 +851,7 @@
           const newVer = templates[idx].version + 1;
           const vEntry = {
             version: newVer,
-            savedDate: now,
+            savedDate: nowISO,
             savedBy: author,
             notes: document.getElementById('version-notes').value.trim() || '',
             subject,
