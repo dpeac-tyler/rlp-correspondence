@@ -169,11 +169,6 @@
               <label class="usa-label" for="email-template">Email Template <span class="field-required">Required</span></label>
               <select class="usa-select" id="email-template" name="email-template" disabled>
                 <option value="">Please Select</option>
-                <option value="Application Voided">Application Voided</option>
-                <option value="Email Template 2">Email Template 2</option>
-                <option value="Email Template 3">Email Template 3</option>
-                <option value="Email Template 4">Email Template 4</option>
-                <option value="Email Template 5">Email Template 5</option>
               </select>
             </div>
 
@@ -348,6 +343,18 @@
     document.getElementById('email-template-date').value = todayFormatted;
 
     // Helper: populate associated record options for a given record type
+    // Populate email template select from localStorage
+    (function loadEmailTemplates() {
+      const sel = document.getElementById('email-template');
+      const all = JSON.parse(localStorage.getItem('emailTemplates') || '[]');
+      all.forEach(function(t) {
+        const opt = document.createElement('option');
+        opt.value = t.name;
+        opt.textContent = t.name;
+        sel.appendChild(opt);
+      });
+    })();
+
     function populateAssociatedRecords(recordType) {
       const associatedRecordSelect = document.getElementById('email-associated-record');
       associatedRecordSelect.innerHTML = '<option value="">Please Select</option>';
@@ -391,9 +398,6 @@
 
     // Pre-populate form from saved email data
     if (email) {
-      // License Type
-      document.getElementById('email-license-type').value = email.licenseType !== '-' ? email.licenseType : '';
-
       // Record Type + Associated Record
       const recordTypeSelect = document.getElementById('email-record-type');
       if (email.recordType && email.recordType !== '-') {
