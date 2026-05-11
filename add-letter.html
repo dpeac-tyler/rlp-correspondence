@@ -509,23 +509,17 @@
         });
       }
 
-      const bodyText    = sub(selectedTemplate.body || '');
+      const bodyText     = sub(selectedTemplate.body || '');
       const headerUrl    = selectedTemplate.headerEnabled    ? selectedTemplate.headerDataUrl    : null;
       const footerUrl    = selectedTemplate.footerEnabled    ? selectedTemplate.footerDataUrl    : null;
       const watermarkUrl = selectedTemplate.watermarkEnabled ? selectedTemplate.watermarkDataUrl : null;
+      const sidebarUrl   = selectedTemplate.sidebarEnabled   ? selectedTemplate.sidebarDataUrl   : null;
 
       letterPreviewContent.innerHTML = '';
       const paper = document.createElement('div');
-      paper.style.cssText = 'position: relative; background: #fff; border: 1px solid #c9c9c9; overflow: hidden;';
+      paper.style.cssText = 'background: #fff; border: 1px solid #c9c9c9; overflow: hidden;';
 
-      if (watermarkUrl) {
-        const wImg = document.createElement('img');
-        wImg.src = watermarkUrl;
-        wImg.alt = '';
-        wImg.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); max-width: 65%; max-height: 65%; opacity: 0.12; pointer-events: none; z-index: 0;';
-        paper.appendChild(wImg);
-      }
-
+      // Header — full width
       if (headerUrl) {
         const hDiv = document.createElement('div');
         hDiv.style.cssText = 'border-bottom: 1px solid #d9d9d9; line-height: 0;';
@@ -537,10 +531,32 @@
         paper.appendChild(hDiv);
       }
 
+      // Middle row: sidebar + body
+      const middle = document.createElement('div');
+      middle.style.cssText = 'display: flex;';
+
+      if (sidebarUrl) {
+        const sDiv = document.createElement('div');
+        sDiv.style.cssText = 'flex-shrink: 0; border-right: 1px solid #d9d9d9; line-height: 0;';
+        const sImg = document.createElement('img');
+        sImg.src = sidebarUrl;
+        sImg.alt = 'Left Sidebar';
+        sImg.style.cssText = 'display: block; width: 90px; min-height: 400px; object-fit: cover;';
+        sDiv.appendChild(sImg);
+        middle.appendChild(sDiv);
+      }
+
       const bodyWrap = document.createElement('div');
-      bodyWrap.style.cssText = 'padding: 2rem 2.5rem; position: relative; z-index: 1;';
+      bodyWrap.style.cssText = 'flex: 1; position: relative; padding: 2rem 2.5rem;';
+      if (watermarkUrl) {
+        const wImg = document.createElement('img');
+        wImg.src = watermarkUrl;
+        wImg.alt = '';
+        wImg.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); max-width: 65%; max-height: 65%; opacity: 0.12; pointer-events: none; z-index: 0;';
+        bodyWrap.appendChild(wImg);
+      }
       const bodyEl = document.createElement('div');
-      bodyEl.style.cssText = 'white-space: pre-wrap; font-family: Georgia, serif; font-size: 14px; line-height: 1.7;';
+      bodyEl.style.cssText = 'white-space: pre-wrap; font-family: Georgia, serif; font-size: 14px; line-height: 1.7; position: relative; z-index: 1;';
       const bodyParts = (bodyText || '(no content)').split('{{user_signature}}');
       bodyParts.forEach(function(part, i) {
         bodyEl.appendChild(document.createTextNode(part));
@@ -553,8 +569,10 @@
         }
       });
       bodyWrap.appendChild(bodyEl);
-      paper.appendChild(bodyWrap);
+      middle.appendChild(bodyWrap);
+      paper.appendChild(middle);
 
+      // Footer — full width
       if (footerUrl) {
         const fDiv = document.createElement('div');
         fDiv.style.cssText = 'border-top: 1px solid #d9d9d9; line-height: 0;';
