@@ -1234,10 +1234,6 @@
       <div class="modal-body">
         <div style="display: grid; gap: 1.5rem;">
           <div>
-            <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Visibility</p>
-            <p id="view-email-visibility" style="margin: 0; font-size: 1.6rem;">-</p>
-          </div>
-          <div>
             <p style="margin: 0; font-weight: bold; font-size: 1.6rem;">Email Template</p>
             <p id="view-email-template" style="margin: 0; font-size: 1.6rem;">-</p>
           </div>
@@ -1974,13 +1970,10 @@
             recordTypeDisplay = `${email.recordType}: ${email.associatedRecord}`;
           }
 
-          // Add lock icon if Agency Only
-          const lockIcon = email.visibility === 'Agency Only' ? '<img src="assets/lock.png" alt="Agency Only" width="16" height="16" style="margin-right: 0.5rem; vertical-align: middle;">' : '';
-
           // Create new table row
           const newRow = document.createElement('tr');
           newRow.innerHTML = `
-            <td>${lockIcon}${email.title}</td>
+            <td>${email.title}</td>
             <td>${generatedDate}</td>
             <td>${lastSentDate}</td>
             <td>${lastDeliveredDate}</td>
@@ -2011,7 +2004,6 @@
 
           // Store data attributes
           newRow.dataset.id = email.id;
-          newRow.dataset.visibility = email.visibility;
           newRow.dataset.title = email.title;
           newRow.dataset.generatedDate = email.generatedDate;
           newRow.dataset.lastSentDate = email.lastSentDate || '';
@@ -2176,7 +2168,6 @@
         return `${month}/${day}/${year}`;
       }
 
-      document.getElementById('view-email-visibility').textContent = row.dataset.visibility || '-';
       document.getElementById('view-email-template').textContent = row.dataset.title || '-';
       document.getElementById('view-email-generated-date').textContent = formatDateForDisplay(row.dataset.generatedDate);
       document.getElementById('view-email-last-sent-date').textContent = formatDateForDisplay(row.dataset.lastSentDate);

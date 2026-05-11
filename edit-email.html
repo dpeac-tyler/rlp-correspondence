@@ -145,19 +145,6 @@
         <form id="edit-email-form">
           <div class="form-grid-3col">
 
-            <!-- Visibility (full width) -->
-            <fieldset class="usa-fieldset form-field-full">
-              <legend class="usa-legend">Visibility <span class="field-required">Required</span></legend>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="email-visibility-agency-only" type="radio" name="email-visibility" value="Agency Only" required>
-                <label class="usa-radio__label" for="email-visibility-agency-only">Agency Only</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="email-visibility-agency-constituent" type="radio" name="email-visibility" value="Agency + Constituent" required>
-                <label class="usa-radio__label" for="email-visibility-agency-constituent">Agency + Constituent</label>
-              </div>
-            </fieldset>
-
             <!-- Record Type -->
             <div class="usa-form-group">
               <label class="usa-label" for="email-record-type">Record Type</label>
@@ -404,10 +391,6 @@
 
     // Pre-populate form from saved email data
     if (email) {
-      // Visibility
-      const visibilityRadio = document.querySelector(`input[name="email-visibility"][value="${email.visibility}"]`);
-      if (visibilityRadio) visibilityRadio.checked = true;
-
       // License Type
       document.getElementById('email-license-type').value = email.licenseType !== '-' ? email.licenseType : '';
 
@@ -472,7 +455,7 @@
       }
     });
 
-    // Form submission — only visibility and notes are editable
+    // Form submission — only notes are editable
     document.getElementById('edit-email-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -483,7 +466,6 @@
         return;
       }
 
-      emails[emailIndex].visibility = document.querySelector('input[name="email-visibility"]:checked').value;
       emails[emailIndex].notes = document.getElementById('email-notes').value || '';
 
       localStorage.setItem('emails', JSON.stringify(emails));
