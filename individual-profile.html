@@ -3102,6 +3102,23 @@
       localStorage.removeItem('showEmailNotification');
     }
 
+    // Return to Letters tab after cancel from edit-letter
+    if (localStorage.getItem('returnToLettersTab') === 'true') {
+      localStorage.removeItem('returnToLettersTab');
+      const lettersSubTab = document.querySelector('.horizontal-tab[data-correspondence-tab="letters"]');
+      const lettersSubTabContent = document.getElementById('letters-subtab');
+      if (lettersSubTab && lettersSubTabContent) {
+        document.querySelectorAll('.horizontal-tab[data-correspondence-tab]').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.correspondence-subtab-content').forEach(content => {
+          content.classList.remove('active');
+          content.setAttribute('hidden', '');
+        });
+        lettersSubTab.classList.add('active');
+        lettersSubTabContent.classList.add('active');
+        lettersSubTabContent.removeAttribute('hidden');
+      }
+    }
+
     // Load emails on page load
     loadEmailsFromStorage();
 

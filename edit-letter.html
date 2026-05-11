@@ -459,7 +459,6 @@
 
           document.getElementById('letter-mailed-date').value = letterData.mailedDate || '';
           document.getElementById('letter-received-date').value = letterData.receivedDate || '';
-          document.getElementById('letter-license-type').value = letterData.licenseType === '-' ? '' : letterData.licenseType;
           document.getElementById('letter-record-type').value = letterData.recordType === '-' ? '' : letterData.recordType;
 
           // Trigger record type change to show associated record if needed
@@ -572,9 +571,8 @@
 
     // Cancel button handler
     document.getElementById('cancel-edit-letter').addEventListener('click', function() {
-      if (confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
-        window.location.href = 'individual-profile.html';
-      }
+      localStorage.setItem('returnToLettersTab', 'true');
+      window.location.href = 'individual-profile.html';
     });
   </script>
 </body>
